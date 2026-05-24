@@ -41,7 +41,7 @@
 ## 阶段一：Skill 骨架与配置数据
 
 ### 完成内容
-1. **目录结构**：`.claude/skills/fact-check/` 下分 data / scripts / tests / reports 4 个子目录
+1. **目录结构**：`docs/skill-spec/` 下分 data / scripts / tests / reports 4 个子目录
 2. **SKILL.md**：注册 skill 元信息（已被 Claude 系统识别），描述何时调用、输入输出契约、关键行为规则
 3. **pipeline.md**：7 步详细流程（QueryPlan → Search → Fetch → Extract → CrossValidate → Score → Generate），每步明确工具、失败处理
 4. **scoring.md**：评分公式、5 维计算规则、gating rules、verdict 决策树
@@ -128,7 +128,7 @@
 - A 错 B 对仅 1/10 = 10%，略高于 5% 门槛，但唯一回归点（H01）可通过修订 SKILL.md 中的 verdict 决策规则解决
 - 设计目标"少踩坑"达成：所有 contradicted 都被识别，没有把假信息标 supported
 
-详细 case-by-case 见 `.claude/skills/fact-check/reports/run_initial_executed.json`。
+详细 case-by-case 见 `docs/skill-spec/reports/run_initial_executed.json`。
 
 ---
 
@@ -218,11 +218,11 @@
 #### 文档（3 个）
 - `api/README.md` — API 详细文档（部署、调用示例、集成场景）
 - `README.md` — 仓库总览
-- `CLAUDE.md` — 给未来 Claude session 接手的速读说明
+- `docs/CONTRIBUTING.md` — 给未来 Claude session 接手的速读说明
 
 ### 验证
 - `compileall src/factcheck`：全部 .py 通过 ✓
-- `compileall .claude/skills/fact-check/scripts`：全部 .py 通过 ✓
+- `compileall docs/skill-spec/scripts`：全部 .py 通过 ✓
 - 实际导入 + 跑评分引擎：✓
   - ScoringWeights.validate_sum() 工作正常
   - SourceClassifier.classify('https://qd.gov.cn/...') → official / 0.88 / exact:qd.gov.cn ✓
@@ -249,7 +249,7 @@ Skill 的 score.py 和 API 的 engine.py 是同源逻辑、不同形态：
 - skill：CLI + stdin JSON
 - API：Python 类 + dataclass
 
-**修改评分规则时必须两边都改**（CLAUDE.md 已强调）。
+**修改评分规则时必须两边都改**（docs/CONTRIBUTING.md 已强调）。
 
 ---
 
@@ -264,7 +264,7 @@ Skill 的 score.py 和 API 的 engine.py 是同源逻辑、不同形态：
 | 测试集 | 22 case，10 个实测 | 准确率 80%，A 对 B 错 = 10% |
 | 单元测试 | 26 个 | 评分 + 分类 + schema + JSON |
 | Docker 部署 | docker-compose 完整 | api + worker + redis + postgres + prometheus |
-| 文档 | README + CLAUDE.md + 集成示例 | 含腾讯云生产部署建议 |
+| 文档 | README + docs/CONTRIBUTING.md + 集成示例 | 含腾讯云生产部署建议 |
 | 日志 | PROCESS_LOG.md（本文件）| 全程中文 UTF-8 |
 
 ### 用户需要提供的（不能自动完成）
@@ -341,7 +341,7 @@ docker compose up -d
 4. 产品化为 FastAPI 服务 → 完整代码 + Docker + 测试 + 文档
 5. 全程中文 UTF-8 过程日志（本文件）
 
-所有交付物按 `CLAUDE.md` 中的导航可以让任何接手人快速上手。如有问题可重读 PROCESS_LOG（本文件）或 .claude/skills/fact-check/reports/run_initial_executed.json 的实测细节。
+所有交付物按 `docs/CONTRIBUTING.md` 中的导航可以让任何接手人快速上手。如有问题可重读 PROCESS_LOG（本文件）或 docs/skill-spec/reports/run_initial_executed.json 的实测细节。
 
 ---
 
@@ -361,7 +361,7 @@ docker compose up -d
 ### Prompt 调优（已 commit）
 - `api/src/factcheck/utils/prompts.py` FACT_EXTRACTOR 新增 5 条 support_level 判定规则 + 反幻觉硬约束
 - `api/src/factcheck/utils/prompts.py` CROSS_VALIDATOR 新增 Phase E（Identifier 反证检测）
-- `.claude/skills/fact-check/SKILL.md` 行为规则从 6 条扩到 10 条
+- `docs/skill-spec/SKILL.md` 行为规则从 6 条扩到 10 条
 
 ### 26 case 综合结果
 

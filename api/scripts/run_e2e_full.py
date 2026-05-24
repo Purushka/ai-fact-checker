@@ -4,7 +4,7 @@ search (博查) → fetch → extract (DeepSeek) → verify (DeepSeek) → score
 用法：
     python scripts/run_e2e_full.py --case-id MA01
     python scripts/run_e2e_full.py --claim "2025年中国GDP突破140万亿元" --mode numeric
-    python scripts/run_e2e_full.py --cases-file ../.claude/skills/fact-check/tests/test_cases_v2.jsonl --limit 5
+    python scripts/run_e2e_full.py --cases-file ../docs/skill-spec/tests/test_cases_v2.jsonl --limit 5
 """
 from __future__ import annotations
 

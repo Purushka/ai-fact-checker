@@ -6,7 +6,7 @@ AI 事实核查基础设施，服务父项目 OpenClaw 创业解决方案平台�
 
 ## 两份等价实现
 
-1. **Claude Skill**（`.claude/skills/fact-check/`）：Claude 直接调用，验证用
+1. **Claude Skill**（`docs/skill-spec/`）：Claude 直接调用，验证用
 2. **FastAPI 服务**（`api/`）：生产部署用，部署到腾讯云与父项目同 VPC
 
 两者**共用同一份**：权威源库 / 黑名单 / 模板 / 评分逻辑。Skill 的 `scripts/` 是 standalone 版，API 的 `src/factcheck/score/` 是类化版，逻辑一一对应。**修改评分规则时两边都要改**。
@@ -21,9 +21,9 @@ AI 事实核查基础设施，服务父项目 OpenClaw 创业解决方案平台�
 
 ## 重要路径
 
-- `.claude/skills/fact-check/SKILL.md` — skill 入口、当 product spec 看
-- `.claude/skills/fact-check/pipeline.md` — 7 步执行细则
-- `.claude/skills/fact-check/scoring.md` — 评分公式（必读）
+- `docs/skill-spec/SKILL.md` — skill 入口、当 product spec 看
+- `docs/skill-spec/pipeline.md` — 7 步执行细则
+- `docs/skill-spec/scoring.md` — 评分公式（必读）
 - `api/src/factcheck/pipeline.py` — pipeline 编排主代码
 - `api/src/factcheck/score/engine.py` — 评分引擎
 - `api/src/factcheck/score/data/source_authority.json` — 210+ 权威源（修改时注意 tier 一致性）
@@ -50,7 +50,7 @@ pytest tests/test_score_engine.py -v   # 评分引擎专项
 
 ## 如何加新权威源
 
-编辑 `api/src/factcheck/score/data/source_authority.json` + `.claude/skills/fact-check/data/source_authority.json`（两边都要改）。然后跑 `test_source_classify.py` 确认没回归。
+编辑 `api/src/factcheck/score/data/source_authority.json` + `docs/skill-spec/data/source_authority.json`（两边都要改）。然后跑 `test_source_classify.py` 确认没回归。
 
 ## 不要做什么
 

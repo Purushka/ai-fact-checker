@@ -194,7 +194,7 @@ async def amain(cases_path: Path, out_path: Path, limit: int | None = None) -> i
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--cases", default="../.claude/skills/fact-check/tests/test_cases_v4_balanced.jsonl")
+    ap.add_argument("--cases", default="../docs/skill-spec/tests/test_cases_v4_balanced.jsonl")
     ap.add_argument("--out", default="reports/hybrid_n50.json")
     ap.add_argument("--limit", type=int)
     args = ap.parse_args()

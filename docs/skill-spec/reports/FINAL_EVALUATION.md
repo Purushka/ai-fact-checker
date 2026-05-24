@@ -83,7 +83,7 @@
 ### `api/src/factcheck/utils/prompts.py` — CROSS_VALIDATOR_SYSTEM
 新增 Phase E：**Identifier 反证检测**——多个权威源出现"同主题但 identifier 不同"的文件时，verdict 强制 contradicted。
 
-### `.claude/skills/fact-check/SKILL.md` — 关键行为规则
+### `docs/skill-spec/SKILL.md` — 关键行为规则
 扩展到 10 条，新增：
 - 7. Identifier 反证规则
 - 8. 数据修订识别

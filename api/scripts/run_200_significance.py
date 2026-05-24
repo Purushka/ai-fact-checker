@@ -197,7 +197,7 @@ async def amain(cases_path: Path, out_path: Path, resume: bool = True) -> int:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--cases", default="../.claude/skills/fact-check/tests/test_cases_v6_combined.jsonl")
+    ap.add_argument("--cases", default="../docs/skill-spec/tests/test_cases_v6_combined.jsonl")
     ap.add_argument("--out", default="reports/significance_n200.json")
     args = ap.parse_args()
     cases_path = Path(args.cases)

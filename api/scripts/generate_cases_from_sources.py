@@ -211,7 +211,7 @@ async def amain(topics: list[str], out_path: Path) -> int:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default="../.claude/skills/fact-check/tests/test_cases_v5_generated.jsonl")
+    ap.add_argument("--out", default="../docs/skill-spec/tests/test_cases_v5_generated.jsonl")
     ap.add_argument("--limit", type=int, help="只跑前 N 个 topic")
     args = ap.parse_args()
     out_path = Path(args.out)
