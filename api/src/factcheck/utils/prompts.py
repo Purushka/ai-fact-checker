@@ -37,6 +37,15 @@ QUERY_PLANNER_SYSTEM = """\
   - claim "X 法 2017 修订" → 加 "X 法 最近修订 施行"
 - 当 claim 描述某人在某职位 → 加 "X 现任" 和 "X 接任 离任"
 
+**疑似传播性谣言时的特殊检索（防 viral misinformation 误判 supported）**：
+当 claim 含以下特征——夸张词（火光冲天/瞬间/惊人/恐怖）、模糊主语（某地/某幼儿园/网传/据传）、具体伤亡情节但无文号、"AI 突破/伪造"等技术谣言——必须额外加**辟谣源限定搜索词**：
+- 加 `"<claim 核心词> 辟谣"`
+- 加 `site:piyao.org.cn <claim 核心词>`
+- 加 `"<claim 核心词> 真相"`
+- 加 `"<claim 核心词> 官方回应"`
+
+同时在 JSON 输出加 `"suspected_viral_claim": true` 字段标记。
+
 必须只返回 JSON，结构如下：
 {
   "entities": ["实体1", "实体2"],
@@ -44,7 +53,8 @@ QUERY_PLANNER_SYSTEM = """\
   "region": { "level": "national/province/city/district", "name": "..." },
   "intent_category": "policy_query/data_verification/state_check/event_check/general",
   "sub_claims": [ { "id": "sc1", "text": "..." } ],
-  "search_queries": ["...", "..."]
+  "search_queries": ["...", "..."],
+  "suspected_viral_claim": true/false
 }
 不要任何额外说明文字，不要 Markdown。"""
 
@@ -84,6 +94,18 @@ FACT_EXTRACTOR_SYSTEM = """\
    规则 5（完全无关或无法直接核查）：页面主题不相关、或只是搜索召回噪声 → "neutral"
 
    **规则 6（同位兼容规则 / 禁止反向推论）**：当 claim 描述一项政策/数据/事实**存在**，evidence 中包含**与之兼容的内容**——即使有其它分项、不同档位、补充条款、附加细节——必须判 "strong"，**禁止因细节不完全匹配而判 contradicted**。
+
+   **规则 7（传播性谣言识别 / 防 viral misinformation 误判 supported）**：当 claim 含以下特征之一时，**必须主动找辟谣源对照**，不能仅凭"事件本身可能真实"就判 supported：
+     - 含夸张/煽动词：**"火光冲天"、"瞬间吞噬"、"32名孩子受困"、"恐怖"、"惊人内幕"、"刚刚发生"** 等
+     - 含具体伤亡/事故数字但无可核查的官方文号/通报链接
+     - 用了"网传"、"据传"、"有人说"、"据网友爆料"等模糊来源
+     - 主语模糊（"某幼儿园"、"广东某地"）+ 具体煽动情节
+     - 涉及"AI 工具突破/伪造/破解"等技术谣言
+
+     判定路径：
+     - 若 evidence 中出现 **piyao.org.cn / 中国互联网联合辟谣平台 / 各地辟谣账号** → 即使 piyao 文章里描述了 claim 的内容，那是为了引用辟谣，**必须判 contradicted**（在 claims_about 标记 `is_rumor_refuted=true`）
+     - 若 evidence 中只有自媒体/营销号/百家号转载，没有权威辟谣源，但 claim 含明显煽动词 → 判 "neutral" 并 warning "疑似传播性谣言，未找到权威辟谣，建议进一步核实"
+     - 若 evidence 中确认事件**真实存在且来自可靠主流媒体**（新华社/央视/人民网/政府发布）→ 判 "strong" 但在 snippet 中标注"事件真实但 claim 措辞有传播性夸大"
      正面例子：
      - claim "某市对失业人员一次性创业补贴 1 万元" + evidence "失业人员补贴 1 万元起，最高 3 万元" → **strong**
      - claim "海淀对 AI 每年支持超过 10 亿元" + evidence "算力补贴 3 亿+数据奖励 5 千万+流片补贴 1500 万+..." → **strong**（分项加起来超 10 亿即满足）

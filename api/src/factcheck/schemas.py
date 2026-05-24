@@ -259,6 +259,50 @@ class TokenUsage(BaseModel):
     fetch_calls: int = 0
 
 
+class PropagationStop(BaseModel):
+    """信息传播时间线上的一个节点。"""
+
+    model_config = ConfigDict(extra="allow")
+    source_url: str
+    source_name: str | None = None
+    source_category: Literal[
+        "social_media",  # 微博 / 知乎 / 抖音 / 小红书
+        "self_media",  # 百家号 / 头条号 / 微信公众号 / 搜狐号
+        "aggregator",  # 新浪 / 网易 / 腾讯网（聚合门户）
+        "mainstream_media",  # 财新 / 第一财经 / 澎湃 / 21经济
+        "local_official_media",  # 地方融媒体 / 地方党媒
+        "central_official_media",  # 新华社 / 人民日报 / 央视
+        "encyclopedia",  # 百度百科 / 维基
+        "official",  # gov.cn / 部委
+        "fact_check_platform",  # piyao.org.cn / 各地辟谣
+        "other",
+    ] = "other"
+    earliest_seen: str | None = None  # ISO8601 date
+    is_likely_origin: bool = False
+    is_likely_amplifier: bool = False
+    snippet: str | None = None
+
+
+class PropagationTimeline(BaseModel):
+    """信息传播时间线 — 该 claim/事件从何处发起、如何扩散。"""
+
+    model_config = ConfigDict(extra="allow")
+    earliest_date: str | None = None
+    latest_date: str | None = None
+    n_stops: int = 0
+    stops: list[PropagationStop] = Field(default_factory=list)  # 按时间正序
+    pattern: Literal[
+        "grassroots_viral",  # 社交媒体起源 → 主流扩散（典型病毒传播）
+        "official_dissemination",  # 官方发布 → 媒体转载（正常信息发布）
+        "narrative_distortion",  # 官方 → 自媒体扭曲转述
+        "coordinated",  # 多平台同期出现（疑似有组织）
+        "fact_check_corrected",  # 含 piyao 等辟谣源，传播被纠正
+        "insufficient_data",  # 时间数据不足以判断
+    ] = "insufficient_data"
+    confidence: int = Field(default=0, ge=0, le=100)
+    note: str | None = None
+
+
 class ConfidenceInterval(BaseModel):
     """置信度区间 — bootstrap on 5 dim scores 得出 [lo, hi]，反映点估计的不确定性。
 
@@ -296,6 +340,8 @@ class CheckResponse(BaseModel):
     gating_applied: list[str] = Field(default_factory=list)
     reasoning_summary: str = ""
     answer: str | None = None
+    propagation_timeline: PropagationTimeline | None = None
+    suspected_viral_claim: bool = False
     collected_at: str
     cache_hit: bool = False
     token_usage: TokenUsage | None = None

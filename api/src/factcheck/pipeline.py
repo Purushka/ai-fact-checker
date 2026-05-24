@@ -8,7 +8,7 @@ from datetime import UTC, datetime
 
 from .cache import RedisCache, build_cache
 from .config import get_settings
-from .extract import FactExtractor, QueryPlanner
+from .extract import FactExtractor, QueryPlanner, TimelineBuilder
 from .fetch import FetchOrchestrator
 from .llm import LLMMessage, get_provider
 from .schemas import (
@@ -203,6 +203,25 @@ class FactCheckPipeline:
                 token_acc,
             )
 
+        # 信息传播时间线 — 从 evidence 域名 + 时间戳反推传播路径
+        timeline = None
+        if evidences:
+            ev_for_timeline = [
+                {
+                    "source_url": e.source_url,
+                    "source_name": e.source_name,
+                    "source_type": e.source_type,
+                    "agency": e.agency,
+                    "published_at": e.published_at,
+                    "snippet": e.snippet,
+                }
+                for e in evidences
+            ]
+            timeline = TimelineBuilder().build(ev_for_timeline)
+
+        # 传播性谣言启发式：query planner 标记的 viral claim flag
+        suspected_viral = bool(getattr(plan, "suspected_viral_claim", False))
+
         response = self._assemble_response(
             request_id=request_id,
             req=req,
@@ -211,6 +230,8 @@ class FactCheckPipeline:
             score_result=score_result,
             answer=answer,
             token_acc=token_acc,
+            propagation_timeline=timeline,
+            suspected_viral_claim=suspected_viral,
         )
 
         if req.options.use_cache and self.cache is not None:
@@ -375,6 +396,8 @@ class FactCheckPipeline:
         score_result,
         answer: str | None,
         token_acc: TokenAccumulator,
+        propagation_timeline=None,
+        suspected_viral_claim: bool = False,
     ) -> CheckResponse:
         ev_models = [
             Evidence(
@@ -458,6 +481,8 @@ class FactCheckPipeline:
             answer=answer,
             collected_at=datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z"),
             cache_hit=False,
+            propagation_timeline=propagation_timeline,
+            suspected_viral_claim=suspected_viral_claim,
             token_usage=TokenUsage(
                 provider=token_acc.provider,
                 model=token_acc.model,
