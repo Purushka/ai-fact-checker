@@ -1,4 +1,5 @@
 """POST /v1/solution-audit — 行业方案审计，批量核查多个事实声明。"""
+
 from __future__ import annotations
 
 import asyncio
@@ -14,7 +15,9 @@ router = APIRouter(prefix="/v1", tags=["audit"], dependencies=[Depends(verify_se
 
 
 @router.post("/solution-audit", response_model=BatchCheckResponse)
-async def solution_audit(req: SolutionAuditRequest, pipeline: FactCheckPipeline = Depends(get_pipeline)) -> BatchCheckResponse:
+async def solution_audit(
+    req: SolutionAuditRequest, pipeline: FactCheckPipeline = Depends(get_pipeline)
+) -> BatchCheckResponse:
     if not req.claims:
         raise HTTPException(status_code=400, detail="claims 不能为空")
 

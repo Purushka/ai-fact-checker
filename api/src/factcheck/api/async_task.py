@@ -1,9 +1,10 @@
 """异步任务接口骨架。生产部署用 Celery，这里给出内存版作为占位。"""
+
 from __future__ import annotations
 
 import asyncio
 import uuid
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -45,11 +46,13 @@ async def _run_job(job_id: str, payload: dict, job_type: str, pipeline: FactChec
 
 
 @router.post("/check/async", response_model=AsyncJobResponse)
-async def create_async_job(req: AsyncJobRequest, pipeline: FactCheckPipeline = Depends(get_pipeline)) -> AsyncJobResponse:
+async def create_async_job(
+    req: AsyncJobRequest, pipeline: FactCheckPipeline = Depends(get_pipeline)
+) -> AsyncJobResponse:
     job_id = str(uuid.uuid4())
     _jobs[job_id] = {
         "status": "pending",
-        "created_at": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
+        "created_at": datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z"),
         "progress": 0.0,
         "result": None,
         "error": None,
@@ -64,8 +67,11 @@ async def get_job(job_id: str) -> AsyncJobResponse:
         raise HTTPException(status_code=404, detail="job not found")
     j = _jobs[job_id]
     return AsyncJobResponse(
-        job_id=job_id, status=j["status"], created_at=j["created_at"],
-        progress=j["progress"], result=j["result"],
+        job_id=job_id,
+        status=j["status"],
+        created_at=j["created_at"],
+        progress=j["progress"],
+        result=j["result"],
         result_url=f"/v1/tasks/{job_id}/result" if j["status"] == "completed" else None,
         error=j["error"],
     )

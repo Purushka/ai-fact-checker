@@ -1,4 +1,5 @@
 """Pydantic v2 schemas — 全部 API 输入输出契约。"""
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -51,8 +52,15 @@ class ScoringWeights(BaseModel):
         return v
 
     def total(self) -> float:
-        return sum([self.source_authority, self.source_consistency, self.freshness,
-                    self.completeness, self.claim_clarity])
+        return sum(
+            [
+                self.source_authority,
+                self.source_consistency,
+                self.freshness,
+                self.completeness,
+                self.claim_clarity,
+            ]
+        )
 
     def validate_sum(self) -> None:
         if abs(self.total() - 1.0) > 0.001:
@@ -161,6 +169,7 @@ class Conflict(BaseModel):
 
 class VersionRef(BaseModel):
     """版本溯源——一条历史/当前版本的元信息。"""
+
     model_config = ConfigDict(extra="allow")
     label: str  # 如 "2018 修正" / "2023 修订"
     document_number: str | None = None
@@ -195,8 +204,13 @@ class PolicyMeta(BaseModel):
     previous_versions: list[VersionRef] = Field(default_factory=list)
     superseded_by: str | None = None
 
-    @field_validator("applicable_region", "applicable_subjects", "application_conditions",
-                     "required_materials", mode="before")
+    @field_validator(
+        "applicable_region",
+        "applicable_subjects",
+        "application_conditions",
+        "required_materials",
+        mode="before",
+    )
     @classmethod
     def _coerce_list(cls, v):
         """LLM 偶尔返回字符串或字典而非列表，自动 coerce 防止 validation 错误。"""
@@ -235,6 +249,7 @@ class ScoreBreakdown(BaseModel):
 
 class TokenUsage(BaseModel):
     """计入父项目按 token 报销的核心字段。"""
+
     provider: str
     model: str
     prompt_tokens: int = 0
@@ -252,6 +267,7 @@ class ConfidenceInterval(BaseModel):
       - 区间窄（如 [78, 85]）表示评估稳健
       - 用 confidence 作为点估计，[lo, hi] 反映系统对自身判断的"二阶不确定性"
     """
+
     lo: int = Field(ge=0, le=100)
     hi: int = Field(ge=0, le=100)
     method: str = "bootstrap_5dim"

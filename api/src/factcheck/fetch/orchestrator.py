@@ -1,4 +1,5 @@
 """Fetch 编排：HTTP 优先并发抓，失败的批量降级到 Playwright。"""
+
 from __future__ import annotations
 
 import asyncio
@@ -23,6 +24,7 @@ class FetchOrchestrator:
         if self._playwright is None:
             try:
                 from .playwright_fetcher import PlaywrightFetcher
+
                 s = get_settings()
                 self._playwright = PlaywrightFetcher(pool_size=s.playwright_pool_size)
             except RuntimeError:

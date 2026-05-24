@@ -1,4 +1,5 @@
 """配置加载层。所有配置从环境变量读，避免硬编码。"""
+
 from __future__ import annotations
 
 from functools import lru_cache

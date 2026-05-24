@@ -1,4 +1,5 @@
 """CrossValidator — pipeline 步骤 5。4 phase 检查 + 仲裁。"""
+
 from __future__ import annotations
 
 import json
@@ -26,19 +27,21 @@ class CrossValidator:
     def _serialize_evidence(self, evidence: list[ExtractedEvidence]) -> str:
         compact = []
         for e in evidence:
-            compact.append({
-                "source_url": e.source_url,
-                "source_type": e.source_type,
-                "authority_weight": e.authority_weight,
-                "agency": e.agency,
-                "agency_level": e.agency_level,
-                "published_at": e.published_at,
-                "support_level": e.support_level,
-                "snippet": (e.snippet or "")[:300],
-                "claims_about": e.claims_about,
-                "is_primary": e.is_primary,
-                "is_independent": e.is_independent,
-            })
+            compact.append(
+                {
+                    "source_url": e.source_url,
+                    "source_type": e.source_type,
+                    "authority_weight": e.authority_weight,
+                    "agency": e.agency,
+                    "agency_level": e.agency_level,
+                    "published_at": e.published_at,
+                    "support_level": e.support_level,
+                    "snippet": (e.snippet or "")[:300],
+                    "claims_about": e.claims_about,
+                    "is_primary": e.is_primary,
+                    "is_independent": e.is_independent,
+                }
+            )
         return json.dumps(compact, ensure_ascii=False, indent=2)
 
     async def validate(
@@ -58,14 +61,21 @@ class CrossValidator:
             f"请按 system 描述返回 JSON。"
         )
         resp = await self.provider.chat(
-            [LLMMessage(role="system", content=CROSS_VALIDATOR_SYSTEM),
-             LLMMessage(role="user", content=user_msg)],
-            temperature=0.0, max_tokens=1500, timeout=30.0,
+            [
+                LLMMessage(role="system", content=CROSS_VALIDATOR_SYSTEM),
+                LLMMessage(role="user", content=user_msg),
+            ],
+            temperature=0.0,
+            max_tokens=1500,
+            timeout=30.0,
         )
         token_acc.add_llm(
-            provider=resp.provider, model=resp.model,
-            prompt_tokens=resp.prompt_tokens, completion_tokens=resp.completion_tokens,
-            total_tokens=resp.total_tokens, label="cross_validator",
+            provider=resp.provider,
+            model=resp.model,
+            prompt_tokens=resp.prompt_tokens,
+            completion_tokens=resp.completion_tokens,
+            total_tokens=resp.total_tokens,
+            label="cross_validator",
         )
 
         parsed = parse_json_lenient(resp.text) or {}

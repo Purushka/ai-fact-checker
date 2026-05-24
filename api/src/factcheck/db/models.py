@@ -1,4 +1,5 @@
 """SQLAlchemy 模型。"""
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -32,7 +33,9 @@ class CheckRecord(Base):
 class EvidenceRecord(Base):
     __tablename__ = "evidence_records"
     id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
-    check_id: Mapped[str] = mapped_column(String(64), ForeignKey("check_records.id", ondelete="CASCADE"), index=True)
+    check_id: Mapped[str] = mapped_column(
+        String(64), ForeignKey("check_records.id", ondelete="CASCADE"), index=True
+    )
     source_url: Mapped[str] = mapped_column(Text)
     source_type: Mapped[str] = mapped_column(String(32))
     authority_weight: Mapped[float] = mapped_column()
@@ -47,7 +50,9 @@ class EvidenceRecord(Base):
 class UsageRecord(Base):
     __tablename__ = "usage_records"
     id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
-    check_id: Mapped[str] = mapped_column(String(64), ForeignKey("check_records.id", ondelete="CASCADE"), unique=True)
+    check_id: Mapped[str] = mapped_column(
+        String(64), ForeignKey("check_records.id", ondelete="CASCADE"), unique=True
+    )
     provider: Mapped[str] = mapped_column(String(32))
     model: Mapped[str] = mapped_column(String(64))
     prompt_tokens: Mapped[int] = mapped_column(Integer, default=0)

@@ -1,4 +1,5 @@
 """httpx + trafilatura 主路径抓取。失败时返回 status=blocked，由 orchestrator 决定是否升级到 Playwright。"""
+
 from __future__ import annotations
 
 import re
@@ -10,7 +11,9 @@ from .base import FetchedPage, Fetcher
 
 def _extract_with_trafilatura(html: str) -> str:
     import trafilatura
+
     return trafilatura.extract(html, include_comments=False, include_tables=True, favor_recall=True) or ""
+
 
 USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
@@ -22,7 +25,15 @@ USER_AGENTS = [
 def _is_likely_blocked(html: str) -> bool:
     if not html or len(html) < 200:
         return True
-    indicators = ["captcha", "人机验证", "请完成验证", "访问被拒绝", "403 Forbidden", "Access Denied", "cf-browser-verification"]
+    indicators = [
+        "captcha",
+        "人机验证",
+        "请完成验证",
+        "访问被拒绝",
+        "403 Forbidden",
+        "Access Denied",
+        "cf-browser-verification",
+    ]
     low = html.lower()
     return any(s.lower() in low for s in indicators)
 
@@ -55,8 +66,12 @@ class HttpFetcher(Fetcher):
             return FetchedPage(url=url, status="error", error_message=str(e))
 
         if resp.status_code >= 400:
-            return FetchedPage(url=url, status="blocked", http_status=resp.status_code,
-                               error_message=f"HTTP {resp.status_code}")
+            return FetchedPage(
+                url=url,
+                status="blocked",
+                http_status=resp.status_code,
+                error_message=f"HTTP {resp.status_code}",
+            )
 
         try:
             html = resp.text
@@ -64,8 +79,13 @@ class HttpFetcher(Fetcher):
             return FetchedPage(url=url, status="error", error_message=f"decode: {e}")
 
         if _is_likely_blocked(html):
-            return FetchedPage(url=url, status="blocked", http_status=resp.status_code,
-                               html=html[:2000], error_message="疑似反爬/人机验证")
+            return FetchedPage(
+                url=url,
+                status="blocked",
+                http_status=resp.status_code,
+                html=html[:2000],
+                error_message="疑似反爬/人机验证",
+            )
 
         content = _extract_with_trafilatura(html)
         title = ""
@@ -75,13 +95,22 @@ class HttpFetcher(Fetcher):
 
         if not content.strip():
             return FetchedPage(
-                url=url, final_url=str(resp.url), status="empty",
-                http_status=resp.status_code, html=html[:2000], title=title,
+                url=url,
+                final_url=str(resp.url),
+                status="empty",
+                http_status=resp.status_code,
+                html=html[:2000],
+                title=title,
                 error_message="trafilatura 提取正文为空",
             )
 
         return FetchedPage(
-            url=url, final_url=str(resp.url), title=title,
-            content=content[:50000], html=html[:5000],
-            http_status=resp.status_code, status="ok", method="http",
+            url=url,
+            final_url=str(resp.url),
+            title=title,
+            content=content[:50000],
+            html=html[:5000],
+            http_status=resp.status_code,
+            status="ok",
+            method="http",
         )

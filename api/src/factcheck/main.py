@@ -1,8 +1,9 @@
 """FastAPI 主入口。"""
+
 from __future__ import annotations
 
 from contextlib import asynccontextmanager
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -21,8 +22,13 @@ async def lifespan(app: FastAPI):
     s = get_settings()
     setup_logging(s.log_level)
     providers = list_providers()
-    logger.info("service_starting", env=s.env, llm_providers=providers,
-                search_primary=s.search_primary, search_secondary=s.search_secondary)
+    logger.info(
+        "service_starting",
+        env=s.env,
+        llm_providers=providers,
+        search_primary=s.search_primary,
+        search_secondary=s.search_secondary,
+    )
     if not providers:
         logger.warning("no_llm_provider_configured", message="请在 .env 中配置至少一个 LLM API key")
     yield
@@ -58,7 +64,7 @@ def create_app() -> FastAPI:
             "status": "ok",
             "service": "factcheck",
             "version": "0.1.0",
-            "time": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
+            "time": datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z"),
             "llm_providers": list_providers(),
         }
 

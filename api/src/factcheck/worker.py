@@ -1,7 +1,8 @@
 """Celery worker 入口。生产环境部署用：
 
-    celery -A factcheck.worker worker --concurrency=4 --loglevel=info
+celery -A factcheck.worker worker --concurrency=4 --loglevel=info
 """
+
 from __future__ import annotations
 
 from celery import Celery

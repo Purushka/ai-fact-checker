@@ -2,6 +2,7 @@
 
 由于初版只有一个共享的 source_authority.json，不做用户级 CRUD。
 """
+
 from __future__ import annotations
 
 import json
@@ -41,13 +42,19 @@ async def list_sources(source_type: str | None = None, limit: int = 200) -> dict
 @router.get("/source-profiles/classify")
 async def classify(url: str) -> dict:
     from ..score.source_classify import SourceClassifier
+
     if not url:
         raise HTTPException(status_code=400, detail="url 不能为空")
     c = SourceClassifier()
     cls = c.classify(url)
     return {
-        "url": cls.url, "domain": cls.domain, "source_type": cls.source_type,
-        "authority_weight": cls.authority_weight, "tier": cls.tier,
-        "agency": cls.agency, "agency_level": cls.agency_level,
-        "matched_by": cls.matched_by, "is_blacklisted": cls.is_blacklisted,
+        "url": cls.url,
+        "domain": cls.domain,
+        "source_type": cls.source_type,
+        "authority_weight": cls.authority_weight,
+        "tier": cls.tier,
+        "agency": cls.agency,
+        "agency_level": cls.agency_level,
+        "matched_by": cls.matched_by,
+        "is_blacklisted": cls.is_blacklisted,
     }

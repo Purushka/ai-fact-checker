@@ -6,12 +6,16 @@
 - entity_status：1 天
 - real-time：不缓存（TTL=0）
 """
+
 from __future__ import annotations
+
+import contextlib
 
 import orjson
 
 try:
     from redis.asyncio import Redis
+
     REDIS_AVAILABLE = True
 except ImportError:
     REDIS_AVAILABLE = False
@@ -24,7 +28,7 @@ logger = get_logger("cache")
 
 
 class RedisCache:
-    def __init__(self, redis: "Redis", namespace: str = "factcheck:cache") -> None:
+    def __init__(self, redis: Redis, namespace: str = "factcheck:cache") -> None:
         self._r = redis
         self._ns = namespace
 
@@ -50,10 +54,8 @@ class RedisCache:
             logger.warning("cache_set_failed", key=key, error=str(e))
 
     async def delete(self, key: str) -> None:
-        try:
+        with contextlib.suppress(Exception):
             await self._r.delete(self._k(key))
-        except Exception:
-            pass
 
     async def ping(self) -> bool:
         try:

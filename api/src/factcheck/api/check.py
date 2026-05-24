@@ -1,4 +1,5 @@
 """POST /v1/check — 通用核查接口。"""
+
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -23,7 +24,9 @@ async def check(req: CheckRequest, pipeline: FactCheckPipeline = Depends(get_pip
 
 
 @router.post("/check/batch", response_model=BatchCheckResponse)
-async def check_batch(req: BatchCheckRequest, pipeline: FactCheckPipeline = Depends(get_pipeline)) -> BatchCheckResponse:
+async def check_batch(
+    req: BatchCheckRequest, pipeline: FactCheckPipeline = Depends(get_pipeline)
+) -> BatchCheckResponse:
     import asyncio
     import uuid
 

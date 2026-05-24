@@ -1,4 +1,5 @@
 """Tavily Search API 适配。Tavily 专为 LLM 优化、返回 cleaned content，是默认主搜索源。"""
+
 from __future__ import annotations
 
 import httpx
@@ -53,13 +54,15 @@ class TavilyProvider(SearchProvider):
 
         out: list[SearchResult] = []
         for item in data.get("results", []):
-            out.append(SearchResult(
-                title=item.get("title", ""),
-                url=item.get("url", ""),
-                snippet=item.get("content", "") or item.get("snippet", ""),
-                published_at=item.get("published_date"),
-                provider=self.name,
-                raw_score=item.get("score"),
-                raw=item,
-            ))
+            out.append(
+                SearchResult(
+                    title=item.get("title", ""),
+                    url=item.get("url", ""),
+                    snippet=item.get("content", "") or item.get("snippet", ""),
+                    published_at=item.get("published_date"),
+                    provider=self.name,
+                    raw_score=item.get("score"),
+                    raw=item,
+                )
+            )
         return out

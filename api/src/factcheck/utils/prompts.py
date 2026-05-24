@@ -1,4 +1,5 @@
 """集中管理 prompt 模板。所有 prompt 强制 JSON 输出。"""
+
 from __future__ import annotations
 
 SUBJECTIVE_DETECTOR_SYSTEM = """\

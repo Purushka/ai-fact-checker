@@ -1,11 +1,10 @@
 """主 pipeline 编排器。串起 7 步：QueryPlan → Search → Fetch → Extract → CrossValidate → Score → Generate。"""
+
 from __future__ import annotations
 
-import asyncio
 import hashlib
 import uuid
-from datetime import datetime, timezone
-from typing import Any
+from datetime import UTC, datetime
 
 from .cache import RedisCache, build_cache
 from .config import get_settings
@@ -72,7 +71,7 @@ class FactCheckPipeline:
         self.cache = cache
 
     @classmethod
-    async def create(cls) -> "FactCheckPipeline":
+    async def create(cls) -> FactCheckPipeline:
         return cls(cache=await build_cache())
 
     async def run(self, req: CheckRequest) -> CheckResponse:
@@ -96,6 +95,7 @@ class FactCheckPipeline:
         weights = req.scoring_weights.to_dict() if req.scoring_weights else None
 
         from .extract import SubjectiveDetector
+
         subj_det = SubjectiveDetector(provider=None)
         is_subj, subj_reason = await subj_det.is_subjective(input_text, token_acc)
         if is_subj:
@@ -104,26 +104,40 @@ class FactCheckPipeline:
 
         planner = QueryPlanner(provider)
         plan = await planner.plan(input_text, mode=req.mode, token_acc=token_acc)
-        logger.info("query_planned", request_id=request_id, entities=plan.entities, queries=plan.search_queries[:3])
+        logger.info(
+            "query_planned", request_id=request_id, entities=plan.entities, queries=plan.search_queries[:3]
+        )
 
         if not plan.search_queries:
             plan.search_queries = [input_text]
 
         search_res = await self.search.search(
-            plan.search_queries[:s.max_search_calls_per_claim],
-            per_query_limit=6, total_cap=req.options.max_sources * 2,
+            plan.search_queries[: s.max_search_calls_per_claim],
+            per_query_limit=6,
+            total_cap=req.options.max_sources * 2,
         )
         token_acc.add_search(n=search_res.total_calls)
-        logger.info("search_done", request_id=request_id, urls=len(search_res.results), providers=search_res.used_providers)
+        logger.info(
+            "search_done",
+            request_id=request_id,
+            urls=len(search_res.results),
+            providers=search_res.used_providers,
+        )
 
         if not search_res.results:
             return self._build_response(
-                request_id=request_id, req=req, evidence=[], conflicts=[], policy_meta={},
-                warnings=["搜索引擎无相关结果"], missing_fields=[], reasoning="搜索引擎无相关结果",
+                request_id=request_id,
+                req=req,
+                evidence=[],
+                conflicts=[],
+                policy_meta={},
+                warnings=["搜索引擎无相关结果"],
+                missing_fields=[],
+                reasoning="搜索引擎无相关结果",
                 token_acc=token_acc,
             )
 
-        urls = [r.url for r in search_res.results[:req.options.max_sources]]
+        urls = [r.url for r in search_res.results[: req.options.max_sources]]
         pages = await self.fetch.fetch_many(urls)
         token_acc.add_fetch(n=len(pages))
         ok_pages = [p for p in pages if p.status == "ok"]
@@ -132,17 +146,23 @@ class FactCheckPipeline:
 
         if not ok_pages:
             return self._build_response(
-                request_id=request_id, req=req, evidence=[], conflicts=[], policy_meta={},
-                warnings=["所有候选 URL 抓取失败"], missing_fields=[], reasoning="抓取失败",
+                request_id=request_id,
+                req=req,
+                evidence=[],
+                conflicts=[],
+                policy_meta={},
+                warnings=["所有候选 URL 抓取失败"],
+                missing_fields=[],
+                reasoning="抓取失败",
                 token_acc=token_acc,
             )
 
-        from .extract import FactExtractor
         extractor = FactExtractor(provider)
         evidences = await extractor.extract_all(input_text, req.mode, ok_pages, ok_classifications, token_acc)
         logger.info("extracted", request_id=request_id, evidence_count=len(evidences))
 
         from .verify import CrossValidator
+
         validator = CrossValidator(provider)
         validation = await validator.validate(input_text, req.mode, evidences, token_acc)
 
@@ -174,14 +194,23 @@ class FactCheckPipeline:
         answer: str | None = None
         if req.options.return_answer and req.is_question():
             answer = await self._generate_answer(
-                provider, input_text, score_result.verdict, score_result.confidence,
-                evidences[:5], validation.warnings, token_acc,
+                provider,
+                input_text,
+                score_result.verdict,
+                score_result.confidence,
+                evidences[:5],
+                validation.warnings,
+                token_acc,
             )
 
         response = self._assemble_response(
-            request_id=request_id, req=req,
-            evidences=evidences, validation=validation,
-            score_result=score_result, answer=answer, token_acc=token_acc,
+            request_id=request_id,
+            req=req,
+            evidences=evidences,
+            validation=validation,
+            score_result=score_result,
+            answer=answer,
+            token_acc=token_acc,
         )
 
         if req.options.use_cache and self.cache is not None:
@@ -202,7 +231,12 @@ class FactCheckPipeline:
         token_acc: TokenAccumulator,
     ) -> str:
         ev_summary = [
-            {"url": e.source_url, "snippet": (e.snippet or "")[:200], "agency": e.agency, "published_at": e.published_at}
+            {
+                "url": e.source_url,
+                "snippet": (e.snippet or "")[:200],
+                "agency": e.agency,
+                "published_at": e.published_at,
+            }
             for e in evidences
         ]
         user_msg = (
@@ -213,24 +247,42 @@ class FactCheckPipeline:
             f"请生成 80-200 字的中文答案。"
         )
         resp = await provider.chat(
-            [LLMMessage(role="system", content=ANSWER_GENERATOR_SYSTEM),
-             LLMMessage(role="user", content=user_msg)],
-            temperature=0.2, max_tokens=400, timeout=20.0,
+            [
+                LLMMessage(role="system", content=ANSWER_GENERATOR_SYSTEM),
+                LLMMessage(role="user", content=user_msg),
+            ],
+            temperature=0.2,
+            max_tokens=400,
+            timeout=20.0,
         )
         token_acc.add_llm(
-            provider=resp.provider, model=resp.model,
-            prompt_tokens=resp.prompt_tokens, completion_tokens=resp.completion_tokens,
-            total_tokens=resp.total_tokens, label="answer_generator",
+            provider=resp.provider,
+            model=resp.model,
+            prompt_tokens=resp.prompt_tokens,
+            completion_tokens=resp.completion_tokens,
+            total_tokens=resp.total_tokens,
+            label="answer_generator",
         )
         return resp.text.strip()
 
-    def _make_empty_response(self, request_id: str, req: CheckRequest, msg: str, token_acc: TokenAccumulator) -> CheckResponse:
+    def _make_empty_response(
+        self, request_id: str, req: CheckRequest, msg: str, token_acc: TokenAccumulator
+    ) -> CheckResponse:
         return self._build_response(
-            request_id=request_id, req=req, evidence=[], conflicts=[], policy_meta={},
-            warnings=[msg], missing_fields=[], reasoning=msg, token_acc=token_acc,
+            request_id=request_id,
+            req=req,
+            evidence=[],
+            conflicts=[],
+            policy_meta={},
+            warnings=[msg],
+            missing_fields=[],
+            reasoning=msg,
+            token_acc=token_acc,
         )
 
-    def _build_subjective_response(self, request_id: str, req: CheckRequest, reason: str, token_acc: TokenAccumulator) -> CheckResponse:
+    def _build_subjective_response(
+        self, request_id: str, req: CheckRequest, reason: str, token_acc: TokenAccumulator
+    ) -> CheckResponse:
         """主观 claim 早期短路 — 直接 out_of_scope，不调搜索。"""
         breakdown = ScoreBreakdown(
             source_authority=DimScore(score=0, weight=0.4, weighted=0),
@@ -258,10 +310,11 @@ class FactCheckPipeline:
             gating_applied=["subjective_short_circuit"],
             reasoning_summary=f"主观评价/价值判断类，无法用事实核查（{reason}）",
             answer=None,
-            collected_at=datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
+            collected_at=datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z"),
             cache_hit=False,
             token_usage=TokenUsage(
-                provider=token_acc.provider, model=token_acc.model,
+                provider=token_acc.provider,
+                model=token_acc.model,
                 prompt_tokens=token_acc.prompt_tokens,
                 completion_tokens=token_acc.completion_tokens,
                 total_tokens=token_acc.total_tokens,
@@ -271,34 +324,73 @@ class FactCheckPipeline:
         )
 
     def _build_response(
-        self, *, request_id: str, req: CheckRequest, evidence: list, conflicts: list,
-        policy_meta: dict, warnings: list[str], missing_fields: list[str],
-        reasoning: str, token_acc: TokenAccumulator,
+        self,
+        *,
+        request_id: str,
+        req: CheckRequest,
+        evidence: list,
+        conflicts: list,
+        policy_meta: dict,
+        warnings: list[str],
+        missing_fields: list[str],
+        reasoning: str,
+        token_acc: TokenAccumulator,
     ) -> CheckResponse:
         weights = req.scoring_weights.to_dict() if req.scoring_weights else None
         score_result = self.scorer.score(
-            claim=req.input_text(), mode=req.mode,
-            evidence=evidence, conflicts=conflicts, policy_meta=policy_meta,
-            weights=weights, require_official_source=req.options.require_official_source,
+            claim=req.input_text(),
+            mode=req.mode,
+            evidence=evidence,
+            conflicts=conflicts,
+            policy_meta=policy_meta,
+            weights=weights,
+            require_official_source=req.options.require_official_source,
         )
         return self._assemble_response(
-            request_id=request_id, req=req, evidences=[],
-            validation=type("V", (), {"conflicts": conflicts, "warnings": warnings,
-                                       "missing_fields": missing_fields, "policy_meta": policy_meta})(),
-            score_result=score_result, answer=None, token_acc=token_acc,
+            request_id=request_id,
+            req=req,
+            evidences=[],
+            validation=type(
+                "V",
+                (),
+                {
+                    "conflicts": conflicts,
+                    "warnings": warnings,
+                    "missing_fields": missing_fields,
+                    "policy_meta": policy_meta,
+                },
+            )(),
+            score_result=score_result,
+            answer=None,
+            token_acc=token_acc,
         )
 
     def _assemble_response(
-        self, *, request_id: str, req: CheckRequest, evidences: list,
-        validation, score_result, answer: str | None, token_acc: TokenAccumulator,
+        self,
+        *,
+        request_id: str,
+        req: CheckRequest,
+        evidences: list,
+        validation,
+        score_result,
+        answer: str | None,
+        token_acc: TokenAccumulator,
     ) -> CheckResponse:
         ev_models = [
             Evidence(
-                source_url=e.source_url, source_name=e.source_name, source_type=e.source_type,
-                authority_weight=e.authority_weight, agency=e.agency, agency_level=e.agency_level,
-                published_at=e.published_at, snippet=e.snippet, support_level=e.support_level,
-                is_primary=e.is_primary, is_independent=e.is_independent,
-                content_fingerprint=e.content_fingerprint, claims_about=e.claims_about,
+                source_url=e.source_url,
+                source_name=e.source_name,
+                source_type=e.source_type,
+                authority_weight=e.authority_weight,
+                agency=e.agency,
+                agency_level=e.agency_level,
+                published_at=e.published_at,
+                snippet=e.snippet,
+                support_level=e.support_level,
+                is_primary=e.is_primary,
+                is_independent=e.is_independent,
+                content_fingerprint=e.content_fingerprint,
+                claims_about=e.claims_about,
             )
             for e in evidences
         ]
@@ -306,11 +398,29 @@ class FactCheckPipeline:
 
         bd = score_result.breakdown
         breakdown = ScoreBreakdown(
-            source_authority=DimScore(score=bd["source_authority"].score, weight=bd["source_authority"].weight, weighted=bd["source_authority"].weighted),
-            source_consistency=DimScore(score=bd["source_consistency"].score, weight=bd["source_consistency"].weight, weighted=bd["source_consistency"].weighted),
-            freshness=DimScore(score=bd["freshness"].score, weight=bd["freshness"].weight, weighted=bd["freshness"].weighted),
-            completeness=DimScore(score=bd["completeness"].score, weight=bd["completeness"].weight, weighted=bd["completeness"].weighted),
-            claim_clarity=DimScore(score=bd["claim_clarity"].score, weight=bd["claim_clarity"].weight, weighted=bd["claim_clarity"].weighted),
+            source_authority=DimScore(
+                score=bd["source_authority"].score,
+                weight=bd["source_authority"].weight,
+                weighted=bd["source_authority"].weighted,
+            ),
+            source_consistency=DimScore(
+                score=bd["source_consistency"].score,
+                weight=bd["source_consistency"].weight,
+                weighted=bd["source_consistency"].weighted,
+            ),
+            freshness=DimScore(
+                score=bd["freshness"].score, weight=bd["freshness"].weight, weighted=bd["freshness"].weighted
+            ),
+            completeness=DimScore(
+                score=bd["completeness"].score,
+                weight=bd["completeness"].weight,
+                weighted=bd["completeness"].weighted,
+            ),
+            claim_clarity=DimScore(
+                score=bd["claim_clarity"].score,
+                weight=bd["claim_clarity"].weight,
+                weighted=bd["claim_clarity"].weighted,
+            ),
         )
 
         pm = validation.policy_meta or {}
@@ -319,6 +429,7 @@ class FactCheckPipeline:
         reasoning = "； ".join(score_result.notes[:5]) if score_result.notes else "无足够证据生成详细推理"
 
         from .schemas import ConfidenceInterval
+
         ci = ConfidenceInterval(
             lo=score_result.confidence_lo,
             hi=score_result.confidence_hi,
@@ -345,10 +456,11 @@ class FactCheckPipeline:
             gating_applied=score_result.gating_applied,
             reasoning_summary=reasoning,
             answer=answer,
-            collected_at=datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
+            collected_at=datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z"),
             cache_hit=False,
             token_usage=TokenUsage(
-                provider=token_acc.provider, model=token_acc.model,
+                provider=token_acc.provider,
+                model=token_acc.model,
                 prompt_tokens=token_acc.prompt_tokens,
                 completion_tokens=token_acc.completion_tokens,
                 total_tokens=token_acc.total_tokens,

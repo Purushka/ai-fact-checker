@@ -1,4 +1,5 @@
 """URL → source_type + authority_weight。"""
+
 from __future__ import annotations
 
 import json
@@ -65,14 +66,19 @@ class SourceClassifier:
             if "/" in bad:
                 bad_host, _, bad_path = bad.partition("/")
                 if _suffix_match(host, bad_host) and bad_path in url:
-                    return Classification(url, host, "content_farm", 0.0, "blacklist", None, None, f"blacklist:{bad}", True)
+                    return Classification(
+                        url, host, "content_farm", 0.0, "blacklist", None, None, f"blacklist:{bad}", True
+                    )
             elif _suffix_match(host, bad):
-                return Classification(url, host, "content_farm", 0.0, "blacklist", None, None, f"blacklist:{bad}", True)
+                return Classification(
+                    url, host, "content_farm", 0.0, "blacklist", None, None, f"blacklist:{bad}", True
+                )
 
         for s in self._sources_sorted:
             if _suffix_match(host, s["domain"]):
                 return Classification(
-                    url=url, domain=host,
+                    url=url,
+                    domain=host,
                     source_type=s["source_type"],
                     authority_weight=s["authority_weight"],
                     tier=s.get("tier", "unknown"),
@@ -88,11 +94,13 @@ class SourceClassifier:
                 suffix = pat[2:]
                 if host.endswith("." + suffix) or host == suffix:
                     return Classification(
-                        url=url, domain=host,
+                        url=url,
+                        domain=host,
                         source_type=p["source_type"],
                         authority_weight=p["authority_weight"],
                         tier="pattern_fallback",
-                        agency=None, agency_level=None,
+                        agency=None,
+                        agency_level=None,
                         matched_by=f"pattern:{pat}",
                         is_blacklisted=False,
                     )

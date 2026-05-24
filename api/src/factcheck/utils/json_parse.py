@@ -1,4 +1,5 @@
 """容错 JSON 解析。LLM 返回偶尔包 ```json ... ``` 或前后带文字，需要剥离。"""
+
 from __future__ import annotations
 
 import json
@@ -20,7 +21,7 @@ def parse_json_lenient(text: str) -> dict | list | None:
         start = text.find(opener)
         end = text.rfind(closer)
         if 0 <= start < end:
-            chunk = text[start:end + 1]
+            chunk = text[start : end + 1]
             try:
                 return json.loads(chunk)
             except json.JSONDecodeError:

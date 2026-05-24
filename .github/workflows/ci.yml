@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+defaults:
+  run:
+    working-directory: api
+
+jobs:
+  test:
+    name: pytest + coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: Install
+        run: |
+          pip install -e ".[dev]"
+      - name: Run pytest with coverage
+        run: |
+          pytest --cov=factcheck --cov-report=xml --cov-report=term-missing -q
+      - name: Upload coverage
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-xml
+          path: api/coverage.xml
+          if-no-files-found: ignore
+
+  lint:
+    name: ruff + black + mypy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: Install lint tooling
+        run: |
+          pip install ruff black mypy pydantic pydantic-settings
+      - name: ruff
+        run: ruff check src/factcheck/
+      - name: black --check
+        run: black --check src/factcheck/
+      - name: mypy
+        run: mypy src/factcheck/ --ignore-missing-imports --no-strict-optional
+        continue-on-error: true

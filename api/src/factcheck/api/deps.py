@@ -1,4 +1,5 @@
 """FastAPI 依赖：鉴权、pipeline 单例。"""
+
 from __future__ import annotations
 
 from fastapi import Header, HTTPException, Request, status

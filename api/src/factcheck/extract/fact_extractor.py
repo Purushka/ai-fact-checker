@@ -1,4 +1,5 @@
 """FactExtractor — pipeline 步骤 4。给定原始 claim 和单个抓取页面，LLM 抽取结构化 evidence。"""
+
 from __future__ import annotations
 
 import asyncio
@@ -79,14 +80,21 @@ class FactExtractor:
         )
 
         resp = await self.provider.chat(
-            [LLMMessage(role="system", content=FACT_EXTRACTOR_SYSTEM),
-             LLMMessage(role="user", content=user_msg)],
-            temperature=0.0, max_tokens=1200, timeout=30.0,
+            [
+                LLMMessage(role="system", content=FACT_EXTRACTOR_SYSTEM),
+                LLMMessage(role="user", content=user_msg),
+            ],
+            temperature=0.0,
+            max_tokens=1200,
+            timeout=30.0,
         )
         token_acc.add_llm(
-            provider=resp.provider, model=resp.model,
-            prompt_tokens=resp.prompt_tokens, completion_tokens=resp.completion_tokens,
-            total_tokens=resp.total_tokens, label="fact_extractor",
+            provider=resp.provider,
+            model=resp.model,
+            prompt_tokens=resp.prompt_tokens,
+            completion_tokens=resp.completion_tokens,
+            total_tokens=resp.total_tokens,
+            label="fact_extractor",
         )
 
         parsed = parse_json_lenient(resp.text) or {}
@@ -122,7 +130,7 @@ class FactExtractor:
         classifications: list[Classification],
         token_acc: TokenAccumulator,
     ) -> list[ExtractedEvidence]:
-        pairs = list(zip(pages, classifications))
+        pairs = list(zip(pages, classifications, strict=False))
         results = await asyncio.gather(
             *[self._extract_one(claim, mode, p, c, token_acc) for p, c in pairs],
             return_exceptions=True,

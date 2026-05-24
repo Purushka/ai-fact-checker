@@ -1,4 +1,5 @@
 """博查 AI Search 适配。国内中文搜索源，对政务/中文内容召回更好。"""
+
 from __future__ import annotations
 
 import httpx
@@ -42,7 +43,7 @@ class BochaProvider(SearchProvider):
                 raise SearchError(f"Bocha HTTP {resp.status_code}: {resp.text[:300]}")
             data = resp.json()
 
-        webpages = (data.get("data", {}).get("webPages", {}).get("value", []) or [])
+        webpages = data.get("data", {}).get("webPages", {}).get("value", []) or []
         out: list[SearchResult] = []
         for item in webpages[:limit]:
             url = item.get("url", "")
@@ -50,12 +51,14 @@ class BochaProvider(SearchProvider):
                 continue
             if include_domains and not any(d in url for d in include_domains):
                 continue
-            out.append(SearchResult(
-                title=item.get("name", ""),
-                url=url,
-                snippet=item.get("summary") or item.get("snippet", ""),
-                published_at=item.get("dateLastCrawled"),
-                provider=self.name,
-                raw=item,
-            ))
+            out.append(
+                SearchResult(
+                    title=item.get("name", ""),
+                    url=url,
+                    snippet=item.get("summary") or item.get("snippet", ""),
+                    published_at=item.get("dateLastCrawled"),
+                    provider=self.name,
+                    raw=item,
+                )
+            )
         return out

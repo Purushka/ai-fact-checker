@@ -3,9 +3,10 @@
 特色：响应里自带 authorityType 字段（"government" / "news" 等），可用作权威性提示信号。
 价格：约 ¥0.03/查询。
 """
+
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import httpx
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
@@ -71,15 +72,17 @@ class MetasoProvider(SearchProvider):
             if pd:
                 try:
                     ts = int(pd)
-                    published_at = datetime.fromtimestamp(ts, tz=timezone.utc).date().isoformat()
+                    published_at = datetime.fromtimestamp(ts, tz=UTC).date().isoformat()
                 except (ValueError, OSError, TypeError):
                     published_at = item.get("date")
-            results.append(SearchResult(
-                title=item.get("title", ""),
-                url=item.get("link", ""),
-                snippet=item.get("title", ""),
-                published_at=published_at,
-                provider=self.name,
-                raw=item,
-            ))
+            results.append(
+                SearchResult(
+                    title=item.get("title", ""),
+                    url=item.get("link", ""),
+                    snippet=item.get("title", ""),
+                    published_at=published_at,
+                    provider=self.name,
+                    raw=item,
+                )
+            )
         return results

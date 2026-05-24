@@ -6,6 +6,7 @@
 - 1000 calls/day 免费配额
 - 价格付费档位待查询官方
 """
+
 from __future__ import annotations
 
 import httpx
@@ -73,13 +74,15 @@ class AnySearchProvider(SearchProvider):
 
         out: list[SearchResult] = []
         for item in items[:limit]:
-            out.append(SearchResult(
-                title=item.get("title", ""),
-                url=item.get("url", ""),
-                snippet=item.get("description") or item.get("content", "")[:300],
-                published_at=item.get("published_at"),
-                provider=self.name,
-                raw_score=item.get("quality_score") or item.get("score"),
-                raw=item,
-            ))
+            out.append(
+                SearchResult(
+                    title=item.get("title", ""),
+                    url=item.get("url", ""),
+                    snippet=item.get("description") or item.get("content", "")[:300],
+                    published_at=item.get("published_at"),
+                    provider=self.name,
+                    raw_score=item.get("quality_score") or item.get("score"),
+                    raw=item,
+                )
+            )
         return out

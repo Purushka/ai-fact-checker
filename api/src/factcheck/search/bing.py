@@ -1,4 +1,5 @@
 """Microsoft Bing Web Search API。"""
+
 from __future__ import annotations
 
 import httpx
@@ -41,12 +42,14 @@ class BingProvider(SearchProvider):
         pages = data.get("webPages", {}).get("value", []) or []
         out = []
         for item in pages[:limit]:
-            out.append(SearchResult(
-                title=item.get("name", ""),
-                url=item.get("url", ""),
-                snippet=item.get("snippet", ""),
-                published_at=item.get("dateLastCrawled"),
-                provider=self.name,
-                raw=item,
-            ))
+            out.append(
+                SearchResult(
+                    title=item.get("name", ""),
+                    url=item.get("url", ""),
+                    snippet=item.get("snippet", ""),
+                    published_at=item.get("dateLastCrawled"),
+                    provider=self.name,
+                    raw=item,
+                )
+            )
         return out

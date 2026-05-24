@@ -5,17 +5,19 @@
 - secondary 用于补充召回（中文政务必走博查）
 - fallback 仅在前两者均失败时使用
 """
+
 from __future__ import annotations
 
 import asyncio
+import contextlib
 from dataclasses import dataclass
 
 from ..config import get_settings
 from ..score.source_classify import SourceClassifier
+from .anysearch import AnySearchProvider
 from .base import SearchError, SearchProvider, SearchResult
 from .bing import BingProvider
 from .bocha import BochaProvider
-from .anysearch import AnySearchProvider
 from .metaso import MetasoProvider
 from .serper import SerperProvider
 from .tavily import TavilyProvider
@@ -104,10 +106,8 @@ class SearchOrchestrator:
 
         if ok_count == 0 and fallback:
             for q in queries[:2]:
-                try:
+                with contextlib.suppress(SearchError):
                     all_results.extend(await fallback.search(q, limit=per_query_limit))
-                except SearchError:
-                    pass
             used.append(fallback.name)
 
         seen_urls: set[str] = set()
@@ -129,6 +129,7 @@ class SearchOrchestrator:
         def _sort_key(r: SearchResult) -> float:
             cls = self._classifier.classify(r.url)
             return -cls.authority_weight
+
         deduped.sort(key=_sort_key)
 
         return OrchestratedResult(

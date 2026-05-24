@@ -1,11 +1,11 @@
 """评分引擎（生产版）。从 skill 的 score.py 重构为类，可注入今日日期、模板缓存。"""
+
 from __future__ import annotations
 
 import json
 from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
-from typing import Any
 
 DATA_DIR = Path(__file__).resolve().parent / "data"
 TEMPLATES_PATH = DATA_DIR / "completeness_templates.json"
@@ -126,8 +126,9 @@ class ScoreEngine:
             score = max(20, 50 - contradict * 10)
         return float(score), [f"{support}/{n_rel} 相关源支持（{len(ind) - n_rel} neutral 已排除）"]
 
-    def _freshness(self, evidence: list[dict], mode: str, policy_meta: dict, today: date) -> tuple[float, str | None, list[str]]:
-        notes: list[str] = []
+    def _freshness(
+        self, evidence: list[dict], mode: str, policy_meta: dict, today: date
+    ) -> tuple[float, str | None, list[str]]:
         if mode == "policy":
             expire = self._parse_date(policy_meta.get("expire_date"))
             superseded = policy_meta.get("superseded_by")
@@ -211,6 +212,7 @@ class ScoreEngine:
 
     def _clarity(self, claim: str) -> tuple[float, list[str]]:
         import re
+
         notes = []
         score = 100.0
         vague = ["近年来", "近期", "大幅", "显著", "较多", "据悉", "通常"]
@@ -257,7 +259,11 @@ class ScoreEngine:
             return "outdated", ["policy_expired"]
         if policy_status == "superseded":
             return "outdated", ["policy_superseded"]
-        contradict_strong = [e for e in ind if e.get("support_level") == "contradicted" and e.get("authority_weight", 0) >= 0.85]
+        contradict_strong = [
+            e
+            for e in ind
+            if e.get("support_level") == "contradicted" and e.get("authority_weight", 0) >= 0.85
+        ]
         support = sum(1 for e in ind if e.get("support_level") in ("strong", "weak"))
         contradict_count = sum(1 for e in ind if e.get("support_level") == "contradicted")
         if support == 0 and contradict_count == 0:
@@ -340,16 +346,28 @@ class ScoreEngine:
         clar_s, clar_n = self._clarity(claim)
 
         breakdown = {
-            "source_authority":  DimResult(auth_s, weights["source_authority"],  auth_s * weights["source_authority"], auth_n),
-            "source_consistency": DimResult(cons_s, weights["source_consistency"], cons_s * weights["source_consistency"], cons_n),
-            "freshness":         DimResult(fresh_s, weights["freshness"],         fresh_s * weights["freshness"], fresh_n),
-            "completeness":      DimResult(comp_s, weights["completeness"],      comp_s * weights["completeness"], comp_n),
-            "claim_clarity":     DimResult(clar_s, weights["claim_clarity"],     clar_s * weights["claim_clarity"], clar_n),
+            "source_authority": DimResult(
+                auth_s, weights["source_authority"], auth_s * weights["source_authority"], auth_n
+            ),
+            "source_consistency": DimResult(
+                cons_s, weights["source_consistency"], cons_s * weights["source_consistency"], cons_n
+            ),
+            "freshness": DimResult(fresh_s, weights["freshness"], fresh_s * weights["freshness"], fresh_n),
+            "completeness": DimResult(
+                comp_s, weights["completeness"], comp_s * weights["completeness"], comp_n
+            ),
+            "claim_clarity": DimResult(
+                clar_s, weights["claim_clarity"], clar_s * weights["claim_clarity"], clar_n
+            ),
         }
         raw_conf = sum(d.weighted for d in breakdown.values())
         has_official = self._has_official(evidence)
-        verdict, vg = self._decide_verdict(raw_conf, clar_s, evidence, has_official, conflicts, policy_status, mode)
-        final_conf, verdict, gg = self._apply_gating(raw_conf, verdict, has_official, mode, require_official_source, policy_status, conflicts)
+        verdict, vg = self._decide_verdict(
+            raw_conf, clar_s, evidence, has_official, conflicts, policy_status, mode
+        )
+        final_conf, verdict, gg = self._apply_gating(
+            raw_conf, verdict, has_official, mode, require_official_source, policy_status, conflicts
+        )
         if verdict in ("unverifiable", "out_of_scope") and final_conf > 30:
             final_conf = min(final_conf, 30)
 
@@ -361,9 +379,15 @@ class ScoreEngine:
 
         # 计算 CI：bootstrap on 5 dim scores + 模拟 evidence 子集采样
         ci_lo, ci_hi = self._bootstrap_ci(
-            breakdown=breakdown, weights=weights, evidence=evidence, conflicts=conflicts,
-            mode=mode, has_official=has_official, require_official=require_official_source,
-            policy_status=policy_status, final_conf=final_conf,
+            breakdown=breakdown,
+            weights=weights,
+            evidence=evidence,
+            conflicts=conflicts,
+            mode=mode,
+            has_official=has_official,
+            require_official=require_official_source,
+            policy_status=policy_status,
+            final_conf=final_conf,
         )
 
         return ScoreResult(
@@ -382,13 +406,22 @@ class ScoreEngine:
         )
 
     def _bootstrap_ci(
-        self, *, breakdown: dict[str, DimResult], weights: dict[str, float],
-        evidence: list[dict], conflicts: list[dict], mode: str,
-        has_official: bool, require_official: bool, policy_status: str | None,
-        final_conf: int, n_boot: int = 200,
+        self,
+        *,
+        breakdown: dict[str, DimResult],
+        weights: dict[str, float],
+        evidence: list[dict],
+        conflicts: list[dict],
+        mode: str,
+        has_official: bool,
+        require_official: bool,
+        policy_status: str | None,
+        final_conf: int,
+        n_boot: int = 200,
     ) -> tuple[int, int]:
         """Bootstrap 置信区间 — 对 5 维度分数加 ±10% 噪声、随机子采样 evidence 各 n_boot 次。"""
         import random
+
         rng = random.Random(42)
         boot_confs: list[float] = []
         base_scores = {k: d.score for k, d in breakdown.items()}

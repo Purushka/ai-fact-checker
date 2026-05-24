@@ -1,4 +1,4 @@
-from .base import FetchedPage, FetchError, Fetcher
+from .base import FetchedPage, Fetcher, FetchError
 from .http_fetcher import HttpFetcher
 from .orchestrator import FetchOrchestrator
 

@@ -1,4 +1,5 @@
 """OpenAI 兼容协议适配。DeepSeek / 通义 / Moonshot / 智谱 / 自部署 vLLM 都用这个。"""
+
 from __future__ import annotations
 
 import httpx

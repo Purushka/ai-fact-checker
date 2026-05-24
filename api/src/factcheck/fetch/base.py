@@ -1,9 +1,10 @@
 """Fetcher 抽象。"""
+
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Literal
 
 
@@ -18,7 +19,9 @@ class FetchedPage:
     title: str = ""
     content: str = ""
     html: str = ""
-    fetched_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"))
+    fetched_at: str = field(
+        default_factory=lambda: datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
+    )
     status: Literal["ok", "blocked", "empty", "timeout", "error"] = "ok"
     method: Literal["http", "playwright"] = "http"
     http_status: int | None = None

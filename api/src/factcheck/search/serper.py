@@ -1,4 +1,5 @@
 """Serper.dev — Google SERP 镜像。"""
+
 from __future__ import annotations
 
 import httpx
@@ -41,12 +42,14 @@ class SerperProvider(SearchProvider):
         organic = data.get("organic", []) or []
         out = []
         for item in organic[:limit]:
-            out.append(SearchResult(
-                title=item.get("title", ""),
-                url=item.get("link", ""),
-                snippet=item.get("snippet", ""),
-                published_at=item.get("date"),
-                provider=self.name,
-                raw=item,
-            ))
+            out.append(
+                SearchResult(
+                    title=item.get("title", ""),
+                    url=item.get("link", ""),
+                    snippet=item.get("snippet", ""),
+                    published_at=item.get("date"),
+                    provider=self.name,
+                    raw=item,
+                )
+            )
         return out

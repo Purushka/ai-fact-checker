@@ -4,6 +4,7 @@
 
 设计：维护一个固定大小的 browser context 池，避免每次启动 Chromium。
 """
+
 from __future__ import annotations
 
 import asyncio
@@ -15,10 +16,13 @@ from .base import FetchedPage, Fetcher
 
 def _extract_with_trafilatura(html: str) -> str:
     import trafilatura
+
     return trafilatura.extract(html, include_comments=False, include_tables=True, favor_recall=True) or ""
+
 
 try:
     from playwright.async_api import Browser, Playwright, async_playwright
+
     PLAYWRIGHT_AVAILABLE = True
 except ImportError:
     PLAYWRIGHT_AVAILABLE = False
@@ -68,10 +72,14 @@ class PlaywrightFetcher(Fetcher):
                 async with self._context() as ctx:
                     page = await ctx.new_page()
                     try:
-                        resp = await page.goto(url, timeout=int(timeout * 1000), wait_until="domcontentloaded")
+                        resp = await page.goto(
+                            url, timeout=int(timeout * 1000), wait_until="domcontentloaded"
+                        )
                     except Exception as e:
                         await page.close()
-                        return FetchedPage(url=url, status="timeout", method="playwright", error_message=str(e))
+                        return FetchedPage(
+                            url=url, status="timeout", method="playwright", error_message=str(e)
+                        )
                     await page.wait_for_timeout(800)
                     html = await page.content()
                     title = await page.title()
@@ -86,10 +94,14 @@ class PlaywrightFetcher(Fetcher):
 
         status = "ok" if content.strip() else "empty"
         return FetchedPage(
-            url=url, final_url=url, title=title,
-            content=content[:50000], html=html[:5000],
+            url=url,
+            final_url=url,
+            title=title,
+            content=content[:50000],
+            html=html[:5000],
             http_status=resp.status if resp else None,
-            status=status, method="playwright",
+            status=status,
+            method="playwright",
         )
 
     async def aclose(self) -> None:

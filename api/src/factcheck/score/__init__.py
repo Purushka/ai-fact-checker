@@ -1,4 +1,4 @@
-from .engine import ScoreEngine, ScoreResult, DEFAULT_WEIGHTS
-from .source_classify import SourceClassifier, Classification
+from .engine import DEFAULT_WEIGHTS, ScoreEngine, ScoreResult
+from .source_classify import Classification, SourceClassifier
 
 __all__ = ["ScoreEngine", "ScoreResult", "DEFAULT_WEIGHTS", "SourceClassifier", "Classification"]

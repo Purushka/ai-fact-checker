@@ -1,4 +1,5 @@
 """POST /v1/policy-check — 政策专用核查，强制 mode=policy + require_official_source=true。"""
+
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -11,7 +12,9 @@ router = APIRouter(prefix="/v1", tags=["policy"], dependencies=[Depends(verify_s
 
 
 @router.post("/policy-check", response_model=CheckResponse)
-async def policy_check(req: PolicyCheckRequest, pipeline: FactCheckPipeline = Depends(get_pipeline)) -> CheckResponse:
+async def policy_check(
+    req: PolicyCheckRequest, pipeline: FactCheckPipeline = Depends(get_pipeline)
+) -> CheckResponse:
     req.mode = "policy"
     req.options.require_official_source = True
     if not req.claim and not req.question:
