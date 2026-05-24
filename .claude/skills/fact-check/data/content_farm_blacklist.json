@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-05-21",
+  "notes": "已知低质量内容农场、聚合站、SEO 垃圾站。命中直接 authority_weight = 0 并 discard。",
+  "domains": [
+    "360doc.com",
+    "xuehua.us",
+    "sohu.com/a",
+    "baijiahao.baidu.com",
+    "kuaibao.qq.com",
+    "toutiao.com",
+    "haijiawang.com",
+    "kakanews.com",
+    "bilibili.com/read",
+    "163.com/dy",
+    "wenku.baidu.com",
+    "doc88.com",
+    "docin.com",
+    "docer.com",
+    "iqilu.com/lwk",
+    "wbg.cqu.edu.cn/mirror",
+    "ifanr.com",
+    "techcrunch.cn",
+    "36kr.com",
+    "tmtpost.com",
+    "huxiu.com",
+    "ithome.com",
+    "leiphone.com",
+    "donews.com",
+    "geekpark.net"
+  ],
+  "note_on_kr": "36kr / 钛媒体 / 虎嗅 等并非内容农场，但在政策类核查中信源价值低。这里加入是为了在政策核查 mode 下降权，泛领域核查时可考虑单独白名单",
+  "url_patterns_block": [
+    "*.com/s\\?wd=",
+    "www.baidu.com/s",
+    "www.sogou.com/web",
+    "www.so.com/s",
+    "weixin.sogou.com/weixin\\?",
+    "search.bilibili.com"
+  ],
+  "url_patterns_lowweight_only": [
+    "*/zhuanlan/*",
+    "*/dy/*",
+    "*/baijiahao/*"
+  ]
+}

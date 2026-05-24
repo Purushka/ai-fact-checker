@@ -1,0 +1,25 @@
+# v3 跨域测试集 — 验证 prompt 在政策外领域的稳定性
+# 字段同 v2，新增 domain
+# 类别：CD_medical / CD_finance / CD_education / CD_compound / CD_numeric_specific
+
+# === 医疗 ===
+{"id":"CD01","claim":"国家医保目录2024年版调整后中成药品种数量增加了40余种","domain":"medical","mode":"numeric","category":"CD_medical","expected_difficulty":"hard"}
+{"id":"CD02","claim":"2024年中国新发现癌症病例约482万例","domain":"medical","mode":"numeric","category":"CD_medical","expected_difficulty":"hard"}
+{"id":"CD03","claim":"国家卫健委规定三级综合医院床位数原则上不超过1500张","domain":"medical","mode":"policy","category":"CD_medical","expected_difficulty":"medium"}
+
+# === 金融 ===
+{"id":"CD04","claim":"2025年中国LPR一年期最新报价为3.1%","domain":"finance","mode":"numeric","category":"CD_finance","expected_difficulty":"hard"}
+{"id":"CD05","claim":"2024年A股IPO募集资金总额不足700亿元创近10年新低","domain":"finance","mode":"numeric","category":"CD_finance","expected_difficulty":"hard"}
+{"id":"CD06","claim":"国家金融监督管理总局是2023年新组建的金融监管机构","domain":"finance","mode":"entity_status","category":"CD_finance","expected_difficulty":"medium"}
+
+# === 教育 ===
+{"id":"CD07","claim":"2024年全国普通高考报名人数达到1342万人","domain":"education","mode":"numeric","category":"CD_education","expected_difficulty":"medium"}
+{"id":"CD08","claim":"教育部规定从2024年起取消高考英语听力测试","domain":"education","mode":"policy","category":"CD_education","expected_difficulty":"hard"}
+
+# === Compound claim（一句话含多个独立子命题）===
+{"id":"CD09","claim":"2024年中国新能源汽车销量超过1200万辆，且渗透率首次突破50%","domain":"auto","mode":"numeric","category":"CD_compound","expected_difficulty":"hard"}
+{"id":"CD10","claim":"民营经济促进法于2025年5月20日施行，是改革开放以来首部专门规范民营经济的法律","domain":"policy","mode":"policy","category":"CD_compound","expected_difficulty":"medium"}
+
+# === Numeric specific（精确数字易错）===
+{"id":"CD11","claim":"2023年中国研发经费投入36456亿元","domain":"science","mode":"numeric","category":"CD_numeric_specific","expected_difficulty":"hard","note":"实际约33357亿（前面已查）"}
+{"id":"CD12","claim":"国家集成电路产业投资基金二期注册资本2041.5亿元","domain":"industry","mode":"numeric","category":"CD_numeric_specific","expected_difficulty":"hard"}

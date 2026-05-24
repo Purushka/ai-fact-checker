@@ -1,0 +1,50 @@
+[
+  {
+    "case_id": "MD02",
+    "claim": "中华人民共和国公司法当前生效版本是2018年修正版",
+    "mode": "policy",
+    "predicted": "outdated",
+    "verdict": "supported",
+    "confidence": 78,
+    "confidence_level": "high",
+    "has_official_source": true,
+    "policy_status": "active",
+    "match": false,
+    "gating_applied": [],
+    "warnings": [
+      "第一个证据源（证监会）页面未提供任何具体信息，无法用于验证或反驳。",
+      "第二个证据源（全国人大常委会）明确支持 claim，但 claim 中未提及具体文号（主席令第15号），建议补充。"
+    ],
+    "evidence_count": 2,
+    "evidence_top": [
+      {
+        "url": "https://neris.csrc.gov.cn/falvfagui/rdqsHeader/mainbody?navbarId=3&secFutrsLawId=dc42cd1117744331b22850b0071d512f&body=",
+        "source_type": "regulator",
+        "authority": 0.97,
+        "support": "neutral",
+        "agency": "中国证券监督管理委员会",
+        "snippet": "页面未提供任何关于公司法版本或修正年份的具体信息，仅显示模板变量和网站声明。"
+      },
+      {
+        "url": "https://policy.mofcom.gov.cn/claw/clawInfo.shtml?id=65410",
+        "source_type": "regulator",
+        "authority": 0.97,
+        "support": "strong",
+        "agency": "全国人大常委会",
+        "snippet": "中华人民共和国公司法（2018修正）【发布部门】全国人大常委会【发布文号】中华人民共和国主席令第15号【发布日期】2018-10-26【实施日期】2018-10-26"
+      }
+    ],
+    "conflicts_count": 0,
+    "reasoning": "[source_authority] 2 个高权威源； [source_consistency] 单 tier1 权威源（>=0.95）； [freshness] 最新官方源 2018-10-26（92 月前，永久性法规（无过期/截止））； [completeness] 6/15 字段填出； [completeness] 缺必填: ['applicable_region', 'applicable",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 5401,
+      "completion_tokens": 888,
+      "total_tokens": 6289,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 35.21
+  }
+]

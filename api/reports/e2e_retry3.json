@@ -1,0 +1,217 @@
+[
+  {
+    "case_id": "MC01",
+    "claim": "国家统计局核定2023年中国GDP最终数为126.06万亿元",
+    "mode": "numeric",
+    "predicted": "contradicted",
+    "verdict": "partially_supported",
+    "confidence": 59,
+    "confidence_level": "medium",
+    "has_official_source": true,
+    "policy_status": null,
+    "match": false,
+    "gating_applied": [],
+    "warnings": [
+      "所有 evidence 均未提及 2023 年 GDP 最终数，claim 的时间点（2023年）与证据（2022年）完全错位，可能为虚假或混淆年份的 claim。",
+      "evidence 中无任何来源支持 claim 的数值 126.06万亿元，该数值与已知的 2022 年最终数（120.47万亿元）和 2023 年初步数（约126万亿元，但非最终数）均不匹配。"
+    ],
+    "evidence_count": 5,
+    "evidence_top": [
+      {
+        "url": "https://zzrb.zznews.gov.cn/content/202312/30/c1652942.html",
+        "source_type": "official",
+        "authority": 0.85,
+        "support": "neutral",
+        "agency": "国家统计局",
+        "snippet": "国家统计局29日发布关于2022年国内生产总值最终核实的公告，经最终核实，2022年，GDP现价总量为1204724亿元，比初步核算数减少5483亿元。"
+      },
+      {
+        "url": "http://www.qstheory.cn/yaowen/2023-12/29/c_1130050335.htm",
+        "source_type": "authoritative_media",
+        "authority": 0.85,
+        "support": "neutral",
+        "agency": "国家统计局",
+        "snippet": "国家统计局29日发布关于2022年国内生产总值最终核实的公告，经最终核实，2022年，GDP现价总量为1204724亿元，比初步核算数减少5483亿元。"
+      },
+      {
+        "url": "http://www.news.cn/fortune/20231229/61748a1976164078a80083fc2b95439b/c.html",
+        "source_type": "authoritative_media",
+        "authority": 0.82,
+        "support": "neutral",
+        "agency": "国家统计局",
+        "snippet": "国家统计局29日发布关于2022年国内生产总值最终核实的公告，经最终核实，2022年，GDP现价总量为1204724亿元，比初步核算数减少5483亿元。"
+      }
+    ],
+    "conflicts_count": 2,
+    "reasoning": "[source_consistency] 5 个证据全部 neutral，无可定性； [freshness] 最新证据 2023-12-29（874 天前）； [completeness] 9/10 字段填出",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 9870,
+      "completion_tokens": 1895,
+      "total_tokens": 11765,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 30.89
+  },
+  {
+    "case_id": "MA04",
+    "claim": "2025年中国GDP突破140万亿元",
+    "mode": "numeric",
+    "predicted": "supported",
+    "verdict": "supported",
+    "confidence": 85,
+    "confidence_level": "high",
+    "has_official_source": true,
+    "policy_status": null,
+    "match": true,
+    "gating_applied": [],
+    "warnings": [
+      "evidence 2 (人民日报) 无 snippet 和 claims_about，无法验证",
+      "evidence 4 的 published_at 为 2025-02-28，但 claim 是 2025 年全年数据，且该证据为转载，时间可能为误标"
+    ],
+    "evidence_count": 4,
+    "evidence_top": [
+      {
+        "url": "https://www.akss.gov.cn/qwfb/tjzc/20260119/i1364574.html",
+        "source_type": "official",
+        "authority": 0.85,
+        "support": "strong",
+        "agency": "国家统计局",
+        "snippet": "国家统计局1月19日发布数据显示，2025年中国国内生产总值（GDP）1401879亿元，首次跃上140万亿元新台阶，按不变价格计算，比上年增长5.0%。"
+      },
+      {
+        "url": "http://v.people.com.cn/n1/2026/0119/c413792-40648132.html",
+        "source_type": "authoritative_media",
+        "authority": 0.8,
+        "support": "neutral",
+        "agency": "人民日报",
+        "snippet": ""
+      },
+      {
+        "url": "http://www.ce.cn/xwzx/gnsz/gdxw/202601/t20260120_2715863.shtml",
+        "source_type": "authoritative_media",
+        "authority": 0.72,
+        "support": "strong",
+        "agency": "国家统计局国民经济核算司",
+        "snippet": "初步核算，2025年，我国国内生产总值（GDP）首次突破140万亿元，达到1401879亿元，按不变价格计算，比上年增长5.0%。"
+      }
+    ],
+    "conflicts_count": 0,
+    "reasoning": "[source_consistency] 3/3 相关源支持（1 neutral 已排除）； [freshness] 最新证据 2026-01-19（122 天前）； [completeness] 9/10 字段填出",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 11029,
+      "completion_tokens": 1261,
+      "total_tokens": 12290,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 23.84
+  },
+  {
+    "case_id": "CD01",
+    "claim": "国家医保目录2024年版调整后中成药品种数量增加了40余种",
+    "mode": "numeric",
+    "predicted": "contradicted",
+    "verdict": "contradicted",
+    "confidence": 33,
+    "confidence_level": "low",
+    "has_official_source": false,
+    "policy_status": null,
+    "match": true,
+    "gating_applied": [
+      "authority_contradicted"
+    ],
+    "warnings": [
+      "claim称'增加了40余种'，但所有evidence均未提供2023年版中成药基数，无法验证增量是否准确。",
+      "低权威第三方网站（yaopinnet.com）数据1336与官方1394不一致，可能统计口径不同（如是否含民族药、谈判药品等）。"
+    ],
+    "evidence_count": 5,
+    "evidence_top": [
+      {
+        "url": "http://www.nhsa.gov.cn/art/2024/11/28/art_14_14884.html",
+        "source_type": "regulator",
+        "authority": 0.95,
+        "support": "contradicted",
+        "agency": "国家医疗保障局",
+        "snippet": "本轮调整后，国家医保药品目录内药品总数达到3159种，其中西药1765种、中成药1394种。"
+      },
+      {
+        "url": "https://www.xjxinhe.gov.cn/xwdt/zyyw/20241129/i1119866.html",
+        "source_type": "official",
+        "authority": 0.85,
+        "support": "contradicted",
+        "agency": "国家医保局 人力资源社会保障部",
+        "snippet": "本轮调整后，国家医保药品目录内药品总数达到3159种，其中西药1765种、中成药1394种。"
+      },
+      {
+        "url": "http://www.lishi.gov.cn/zxxw/gwyyw/jd_42190/202412/t20241203_1916548.shtml",
+        "source_type": "official",
+        "authority": 0.85,
+        "support": "contradicted",
+        "agency": "国家医保局",
+        "snippet": "新版国家医保药品目录内药品总数3159种，其中，西药1765种，中成药1394种。"
+      }
+    ],
+    "conflicts_count": 1,
+    "reasoning": "[source_consistency] 0/4 相关源支持（1 neutral 已排除）； [freshness] 最新证据 2024-12-03（534 天前）； [completeness] 8/10 字段填出",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 12204,
+      "completion_tokens": 1584,
+      "total_tokens": 13788,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 25.66
+  },
+  {
+    "case_id": "CD06",
+    "claim": "国家金融监督管理总局是2023年新组建的金融监管机构",
+    "mode": "entity_status",
+    "predicted": "supported",
+    "verdict": "supported",
+    "confidence": 82,
+    "confidence_level": "high",
+    "has_official_source": true,
+    "policy_status": null,
+    "match": true,
+    "gating_applied": [],
+    "warnings": [],
+    "evidence_count": 2,
+    "evidence_top": [
+      {
+        "url": "http://cbirc.gjzwfw.gov.cn/",
+        "source_type": "official",
+        "authority": 0.95,
+        "support": "strong",
+        "agency": "国务院办公厅",
+        "snippet": "国家金融监督管理总局是2023年新组建的金融监管机构。"
+      },
+      {
+        "url": "http://finance.ce.cn/money/202401/29/t20240129_38885237.shtml",
+        "source_type": "authoritative_media",
+        "authority": 0.72,
+        "support": "strong",
+        "agency": "新华财经",
+        "snippet": "组建国家金融监督管理总局是新一轮金融体制改革的“重头戏”。2023年5月18日，国家金融监督管理总局揭牌，标志着我国金融监管领域机构改革迈出重要一步。"
+      }
+    ],
+    "conflicts_count": 0,
+    "reasoning": "[source_consistency] 2/2 相关源支持（0 neutral 已排除）； [freshness] 最新证据 2024-01-29（843 天前）； [completeness] 6/6 字段填出",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 4816,
+      "completion_tokens": 631,
+      "total_tokens": 5447,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 21.39
+  }
+]

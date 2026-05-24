@@ -1,0 +1,19 @@
+# Cycle 1 raw judgments — 严格在搜索前 commit，纯训练知识 + 诚实不确定度
+# 写完此文件后才能开始 WebSearch
+# committed_at: 2026-05-21
+{"case_id":"MA01","claim":"中华人民共和国民营经济促进法于2025年5月20日起施行","raw_verdict":"partially_supported","raw_confidence":50,"raw_reasoning":"训练里隐约有民营经济促进法被推动的记忆，2025 年通过有印象，但 5 月 20 日这个具体日期不能确认。","raw_uncertainty":["具体施行日期是否是5月20日","是2025年通过还是更早"]}
+{"case_id":"MA02","claim":"2025年中国新能源汽车销量超过1300万辆","raw_verdict":"unverifiable","raw_confidence":30,"raw_reasoning":"2023 年 949.5 万、2024 年我记得约 1100-1200 万。2025 年 1300 万是合理外推但我没有实际数据。","raw_uncertainty":["完全没有 2025 全年实际数据","训练截止前未公布"]}
+{"case_id":"MB01","claim":"北京市海淀区对在中关村注册的AI初创企业提供最高100万元启动资金支持","raw_verdict":"unverifiable","raw_confidence":25,"raw_reasoning":"海淀有 AI 扶持政策框架，但具体到 100 万元启动资金的细节我没记忆。","raw_uncertainty":["具体金额","是否是中关村专属","是否仍有效"]}
+{"case_id":"MB02","claim":"苏州工业园区2025年对集成电路设计企业给予300万元落户奖励","raw_verdict":"unverifiable","raw_confidence":25,"raw_reasoning":"苏州工业园区有 IC 产业扶持政策，但具体到 2025 年的 300 万元落户奖励数字我不知道。","raw_uncertainty":["具体金额","2025年是否还有效","是落户还是其他名目"]}
+{"case_id":"MC01","claim":"国家统计局核定2023年中国GDP最终数为126.06万亿元","raw_verdict":"partially_supported","raw_confidence":45,"raw_reasoning":"2024年1月初步核算确实是 126.06 万亿。但隐约记得后来有第五次经济普查修订。'最终数'这个措辞使其可能错。","raw_uncertainty":["修订后的最终数是多少","是否真的有'最终数'这个表述"]}
+{"case_id":"MC03","claim":"2023年全国研发经费投入强度为2.65%","raw_verdict":"supported","raw_confidence":65,"raw_reasoning":"记忆里 2023 年 R&D/GDP 是 2.65% 或 2.64%，接近这个值。","raw_uncertainty":["具体小数点后值","是否被修订"]}
+{"case_id":"MD02","claim":"中华人民共和国公司法当前生效版本是2018年修正版","raw_verdict":"partially_supported","raw_confidence":40,"raw_reasoning":"公司法 2018 年有修正版没错。但我隐约听过 2023 年又修订，具体记不清。","raw_uncertainty":["2023-12 是否真有新修订","新修订生效日期"]}
+{"case_id":"MD03","claim":"中华人民共和国行政复议法当前有效版本于2017年修订","raw_verdict":"partially_supported","raw_confidence":40,"raw_reasoning":"行政复议法 2017 年修订有印象。但 2023 年是否又通过新修订我不能确定。","raw_uncertainty":["是否有2023新修订","若有则当前生效版本是哪个"]}
+{"case_id":"ME01","claim":"国务院国发〔2024〕35号文件明确将人工智能列为战略性新兴产业之首","raw_verdict":"contradicted","raw_confidence":35,"raw_reasoning":"国发〔2017〕35 号才是《新一代人工智能发展规划》。〔2024〕35 号我没记忆，文号可能是 fabricated。","raw_uncertainty":["〔2024〕35号是否真实存在","若存在内容是什么"]}
+{"case_id":"ME04","claim":"个人所得税法规定居民个人综合所得专项附加扣除中3岁以下婴幼儿照护标准为每月1000元","raw_verdict":"contradicted","raw_confidence":60,"raw_reasoning":"2022 年是 1000 元/月，2023 年 8 月调整提高到每月 2000 元（每孩）。1000 元说法已过时。","raw_uncertainty":["调整后是 2000 还是其他数","是否每孩"]}
+{"case_id":"MF01","claim":"中国央行已批准发行总额超过1万亿元的特别国债用于支持国家重大战略实施和重点领域安全能力建设","raw_verdict":"partially_supported","raw_confidence":55,"raw_reasoning":"2024 年有 1 万亿超长期特别国债，但发行主体是财政部，央行不是批准方。措辞错。","raw_uncertainty":["确切金额","'央行批准'是否真错"]}
+{"case_id":"MF02","claim":"国家对生育三孩家庭可享受每月最高2000元个税专项附加扣除","raw_verdict":"partially_supported","raw_confidence":55,"raw_reasoning":"2023 年提升到每孩 2000 元/月。三孩家庭 = 3 个未满 3 岁的孩子最多 = 6000 元/月。'最高 2000 元' 措辞不清。","raw_uncertainty":["'最高2000元'是按孩还是按家庭"]}
+{"case_id":"MG01","claim":"当前中国证监会主席是易会满","raw_verdict":"contradicted","raw_confidence":65,"raw_reasoning":"易会满 2019-2024 任证监会主席，2024 年初离任。我不太确定接任人是谁。","raw_uncertainty":["接任人是吴清还是其他"]}
+{"case_id":"MH02","claim":"国办发〔2022〕14号是《关于进一步释放消费潜力促进消费持续恢复的意见》","raw_verdict":"unverifiable","raw_confidence":25,"raw_reasoning":"我不记得〔2022〕14号文件具体内容。","raw_uncertainty":["完全不记得"]}
+{"case_id":"MZ01","claim":"中华人民共和国宪法最近一次修正是2018年3月11日","raw_verdict":"supported","raw_confidence":95,"raw_reasoning":"2018 年 3 月 11 日十三届全国人大一次会议通过宪法修正案，这是高确定事实。","raw_uncertainty":[]}
+{"case_id":"MZ02","claim":"国家统计局是国务院直属机构","raw_verdict":"supported","raw_confidence":90,"raw_reasoning":"国家统计局确实是国务院直属机构。","raw_uncertainty":[]}

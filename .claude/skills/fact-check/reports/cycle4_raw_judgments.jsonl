@@ -1,0 +1,8 @@
+{"case_id":"CD01","claim":"国家医保目录2024年版调整后中成药品种数量增加了40余种","raw_verdict":"unverifiable","raw_confidence":25,"raw_reasoning":"医保目录每年调整有印象，但具体到2024年版中成药新增40余种不知道。","raw_uncertainty":["具体新增数量","2024年版与2025年版","中成药专门"]}
+{"case_id":"CD02","claim":"2024年中国新发现癌症病例约482万例","raw_verdict":"partially_supported","raw_confidence":55,"raw_reasoning":"中国年度新发癌症约480万这个数我有印象。482万具体到2024年的数字未必准。","raw_uncertainty":["482具体数","数据是否被官方更新"]}
+{"case_id":"CD04","claim":"2025年中国LPR一年期最新报价为3.1%","raw_verdict":"partially_supported","raw_confidence":60,"raw_reasoning":"2024末LPR一年期约3.10-3.45%降息趋势。3.1%合理但具体到'最新'未必。","raw_uncertainty":["最新时点","具体小数点"]}
+{"case_id":"CD06","claim":"国家金融监督管理总局是2023年新组建的金融监管机构","raw_verdict":"supported","raw_confidence":90,"raw_reasoning":"国家金融监管总局2023年组建，整合银保监会、人民银行部分职责等。","raw_uncertainty":[]}
+{"case_id":"CD07","claim":"2024年全国普通高考报名人数达到1342万人","raw_verdict":"supported","raw_confidence":75,"raw_reasoning":"2024高考报名约1342万有印象。","raw_uncertainty":["具体数字"]}
+{"case_id":"CD09","claim":"2024年中国新能源汽车销量超过1200万辆，且渗透率首次突破50%","raw_verdict":"partially_supported","raw_confidence":60,"raw_reasoning":"2024 NEV销量约1200-1300万。渗透率12月单月突破50%但全年是否突破50%我不确定。","raw_uncertainty":["全年渗透率是否突破50%"]}
+{"case_id":"CD10","claim":"民营经济促进法于2025年5月20日施行，是改革开放以来首部专门规范民营经济的法律","raw_verdict":"partially_supported","raw_confidence":70,"raw_reasoning":"前面查过2025-05-20施行确认。'首部专门规范民营经济的法律'前面也提过'第一次'。","raw_uncertainty":["'首部'措辞精准度"]}
+{"case_id":"CD11","claim":"2023年中国研发经费投入36456亿元","raw_verdict":"contradicted","raw_confidence":65,"raw_reasoning":"前面查过2023研发经费实际33357亿元。36456错。","raw_uncertainty":["是否被修订到此数"]}

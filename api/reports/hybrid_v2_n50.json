@@ -1,0 +1,1502 @@
+[
+  {
+    "case_id": "A01",
+    "claim": "中华人民共和国宪法最近一次修正是2018年3月11日",
+    "mode": "policy",
+    "category": "A_known",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 100,
+      "reasoning": "根据我的训练知识，中华人民共和国宪法最近一次修正确实是在2018年3月11日由第十三届全国人民代表大会第一次会议通过的。",
+      "tokens": 220,
+      "elapsed": 2.18
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 86,
+      "has_official": true,
+      "evidence_count": 3,
+      "tokens": 12992,
+      "elapsed": 30.85
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 86,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "A02",
+    "claim": "中华人民共和国增值税基本税率为13%",
+    "mode": "policy",
+    "category": "A_known",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 100,
+      "reasoning": "根据中国现行增值税法规，基本税率确为13%，适用于大多数货物和劳务。",
+      "tokens": 204,
+      "elapsed": 1.79
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 89,
+      "has_official": true,
+      "evidence_count": 3,
+      "tokens": 16783,
+      "elapsed": 26.66
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 89,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "A03",
+    "claim": "国家统计局是国务院直属机构",
+    "mode": "entity_status",
+    "category": "A_known",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 100,
+      "reasoning": "根据中国宪法和国务院组织法，国家统计局是国务院直属机构，负责全国统计工作。",
+      "tokens": 205,
+      "elapsed": 1.73
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 85,
+      "has_official": true,
+      "evidence_count": 4,
+      "tokens": 13004,
+      "elapsed": 23.64
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 85,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "A04",
+    "claim": "中华人民共和国民法典自2021年1月1日起施行",
+    "mode": "policy",
+    "category": "A_known",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 100,
+      "reasoning": "根据已知事实，中华人民共和国民法典于2020年5月28日通过，自2021年1月1日起施行，该声明完全正确。",
+      "tokens": 223,
+      "elapsed": 1.69
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 88,
+      "has_official": true,
+      "evidence_count": 3,
+      "tokens": 11681,
+      "elapsed": 33.06
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 88,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "A05",
+    "claim": "国务院新一代人工智能发展规划文号为国发〔2017〕35号",
+    "mode": "policy",
+    "category": "A_known",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 100,
+      "reasoning": "根据我的训练知识，国务院于2017年7月20日发布的《新一代人工智能发展规划》文号确为国发〔2017〕35号。",
+      "tokens": 225,
+      "elapsed": 1.86
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 86,
+      "has_official": true,
+      "evidence_count": 3,
+      "tokens": 12557,
+      "elapsed": 28.03
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 86,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "A06",
+    "claim": "个人所得税法规定居民个人综合所得适用百分之三至百分之四十五的超额累进税率",
+    "mode": "policy",
+    "category": "A_known",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 100,
+      "reasoning": "根据《中华人民共和国个人所得税法》第三条，居民个人综合所得适用3%至45%的超额累进税率，声明完全正确。",
+      "tokens": 226,
+      "elapsed": 1.61
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 86,
+      "has_official": true,
+      "evidence_count": 3,
+      "tokens": 15016,
+      "elapsed": 42.43
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 86,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "A07",
+    "claim": "中国人民银行是国务院组成部门，承担中央银行职责",
+    "mode": "entity_status",
+    "category": "A_known",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 100,
+      "reasoning": "根据《中华人民共和国中国人民银行法》，中国人民银行是中华人民共和国的中央银行，在国务院领导下制定和执行货币政策、维护金融稳定等，属于国务院组成部门。",
+      "tokens": 217,
+      "elapsed": 9.87
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 81,
+      "has_official": true,
+      "evidence_count": 3,
+      "tokens": 10810,
+      "elapsed": 28.71
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 81,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "A08",
+    "claim": "中华人民共和国劳动法规定标准工时为每日不超过八小时",
+    "mode": "policy",
+    "category": "A_known",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 100,
+      "reasoning": "根据《中华人民共和国劳动法》第三十六条，国家实行劳动者每日工作时间不超过八小时、平均每周工作时间不超过四十四小时的工时制度。",
+      "tokens": 218,
+      "elapsed": 1.36
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 84,
+      "has_official": true,
+      "evidence_count": 3,
+      "tokens": 15809,
+      "elapsed": 32.26
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 84,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "A09",
+    "claim": "中华人民共和国刑法是1979年制定、1997年大幅修订的",
+    "mode": "policy",
+    "category": "A_known",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 100,
+      "reasoning": "中华人民共和国刑法确实于1979年7月1日由第五届全国人民代表大会第二次会议通过，并于1997年3月14日由第八届全国人民代表大会第五次会议进行了全面修订。",
+      "tokens": 230,
+      "elapsed": 1.45
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 85,
+      "has_official": true,
+      "evidence_count": 3,
+      "tokens": 16354,
+      "elapsed": 38.91
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 85,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "A10",
+    "claim": "OpenAI 公司创始 CEO 是 Sam Altman",
+    "mode": "entity_status",
+    "category": "A_known",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 100,
+      "reasoning": "Sam Altman 是 OpenAI 的联合创始人之一，并担任其首席执行官，这是公开且广泛认可的事实。",
+      "tokens": 214,
+      "elapsed": 1.4
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "partially_supported",
+      "confidence": 43,
+      "has_official": false,
+      "evidence_count": 1,
+      "tokens": 6791,
+      "elapsed": 25.75
+    },
+    "system_match": false,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 70,
+      "source": "bare_fallback"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "A11",
+    "claim": "全国人大是中国最高国家权力机关",
+    "mode": "entity_status",
+    "category": "A_known",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 100,
+      "reasoning": "根据中国宪法，全国人民代表大会是最高国家权力机关，这一表述准确无误。",
+      "tokens": 203,
+      "elapsed": 1.26
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 81,
+      "has_official": true,
+      "evidence_count": 4,
+      "tokens": 16886,
+      "elapsed": 40.94
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 81,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "A12",
+    "claim": "国家发改委是国务院组成部门",
+    "mode": "entity_status",
+    "category": "A_known",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 100,
+      "reasoning": "根据中国宪法和国务院组织法，国家发展和改革委员会是国务院组成部门之一，负责宏观经济发展规划等职能。",
+      "tokens": 210,
+      "elapsed": 1.59
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 84,
+      "has_official": true,
+      "evidence_count": 4,
+      "tokens": 16817,
+      "elapsed": 25.24
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 84,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "B01",
+    "claim": "2023年中国新能源汽车销量达到949.5万辆",
+    "mode": "numeric",
+    "category": "B_known_numeric",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 95,
+      "reasoning": "根据中国汽车工业协会发布的数据，2023年中国新能源汽车销量为949.5万辆，同比增长37.9%，该声明与公开报道一致。",
+      "tokens": 220,
+      "elapsed": 1.61
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 76,
+      "has_official": false,
+      "evidence_count": 4,
+      "tokens": 13770,
+      "elapsed": 33.02
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 76,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "B02",
+    "claim": "2023年中国新生儿数量为902万人",
+    "mode": "numeric",
+    "category": "B_known_numeric",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 95,
+      "reasoning": "根据国家统计局数据，2023年中国出生人口为902万人，与声明一致。",
+      "tokens": 205,
+      "elapsed": 1.25
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 82,
+      "has_official": true,
+      "evidence_count": 3,
+      "tokens": 9681,
+      "elapsed": 50.58
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 82,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "B03",
+    "claim": "2024年中国汽车出口585万辆居世界第一",
+    "mode": "numeric",
+    "category": "B_known_numeric",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 95,
+      "reasoning": "根据2024年中国汽车工业协会数据，中国汽车出口量达585万辆，首次超越日本成为世界第一，该声明与公开报道一致。",
+      "tokens": 220,
+      "elapsed": 1.46
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "partially_supported",
+      "confidence": 56,
+      "has_official": false,
+      "evidence_count": 2,
+      "tokens": 8469,
+      "elapsed": 36.15
+    },
+    "system_match": false,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 70,
+      "source": "bare_fallback"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "B04",
+    "claim": "2024年中国进出口总值达到43.85万亿元",
+    "mode": "numeric",
+    "category": "B_known_numeric",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 95,
+      "reasoning": "根据中国海关总署2025年1月发布的数据，2024年中国进出口总值确实为43.85万亿元人民币，同比增长5%。",
+      "tokens": 218,
+      "elapsed": 1.5
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 74,
+      "has_official": true,
+      "evidence_count": 3,
+      "tokens": 15171,
+      "elapsed": 31.3
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 74,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "B05",
+    "claim": "2022年末中国总人口为14.12亿人",
+    "mode": "numeric",
+    "category": "B_known_numeric",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 95,
+      "reasoning": "根据国家统计局数据，2022年末中国总人口约为14.12亿人，与声明一致。",
+      "tokens": 213,
+      "elapsed": 1.36
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "partially_supported",
+      "confidence": 64,
+      "has_official": false,
+      "evidence_count": 2,
+      "tokens": 8094,
+      "elapsed": 24.36
+    },
+    "system_match": false,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 70,
+      "source": "bare_fallback"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "B06",
+    "claim": "2023年中国GDP同比增长5.2%",
+    "mode": "numeric",
+    "category": "B_known_numeric",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 95,
+      "reasoning": "根据中国国家统计局发布的数据，2023年中国国内生产总值（GDP）同比增长5.2%，与声明一致。",
+      "tokens": 212,
+      "elapsed": 1.42
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 84,
+      "has_official": true,
+      "evidence_count": 4,
+      "tokens": 15032,
+      "elapsed": 23.98
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 84,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "B07",
+    "claim": "国务院2024年发行1万亿元超长期特别国债",
+    "mode": "policy",
+    "category": "B_known_numeric",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 95,
+      "reasoning": "根据公开信息，2024年国务院确实计划发行1万亿元超长期特别国债，用于支持国家重大战略和安全能力建设。",
+      "tokens": 217,
+      "elapsed": 1.55
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 88,
+      "has_official": true,
+      "evidence_count": 4,
+      "tokens": 16245,
+      "elapsed": 24.49
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 88,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "B08",
+    "claim": "2024年中央一号文件聚焦学习运用千万工程经验",
+    "mode": "policy",
+    "category": "B_known_numeric",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 95,
+      "reasoning": "2024年中央一号文件确实以学习运用‘千万工程’经验为主题，强调推进乡村全面振兴。",
+      "tokens": 214,
+      "elapsed": 1.86
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 85,
+      "has_official": true,
+      "evidence_count": 3,
+      "tokens": 13620,
+      "elapsed": 24.86
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 85,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "C01",
+    "claim": "中华人民共和国公司法当前生效版本是2018年修正版",
+    "mode": "policy",
+    "category": "C_outdated",
+    "ground_truth": "outdated",
+    "bare": {
+      "verdict": "outdated",
+      "confidence": 95,
+      "reasoning": "根据我的训练知识，截至2023年，公司法最新修正版为2018年，但2023年12月29日全国人大常委会通过了新修订的公司法，将于2024年7月1日施行，因此2018年版已非当前生效版本。",
+      "tokens": 246,
+      "elapsed": 1.98
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "outdated",
+      "confidence": 14,
+      "has_official": false,
+      "evidence_count": 2,
+      "tokens": 11508,
+      "elapsed": 24.96
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "outdated",
+      "confidence": 14,
+      "source": "system_conservative"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "C02",
+    "claim": "中华人民共和国行政复议法当前有效版本于2017年修订",
+    "mode": "policy",
+    "category": "C_outdated",
+    "ground_truth": "outdated",
+    "bare": {
+      "verdict": "outdated",
+      "confidence": 100,
+      "reasoning": "中华人民共和国行政复议法于2023年进行了修订，新版本自2024年1月1日起施行，因此2017年修订版已不是当前有效版本。",
+      "tokens": 225,
+      "elapsed": 1.8
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "contradicted",
+      "confidence": 65,
+      "has_official": true,
+      "evidence_count": 2,
+      "tokens": 12594,
+      "elapsed": 28.81
+    },
+    "system_match": false,
+    "hybrid": {
+      "verdict": "outdated",
+      "confidence": 70,
+      "source": "bare_strong_negative"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "C03",
+    "claim": "中华人民共和国民事诉讼法最近一次修订是2017年",
+    "mode": "policy",
+    "category": "C_outdated",
+    "ground_truth": "outdated",
+    "bare": {
+      "verdict": "outdated",
+      "confidence": 95,
+      "reasoning": "根据我的训练知识，中华人民共和国民事诉讼法在2017年修订后，于2021年进行了再次修订，因此2017年不是最近一次修订。",
+      "tokens": 224,
+      "elapsed": 10.38
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "outdated",
+      "confidence": 30,
+      "has_official": true,
+      "evidence_count": 3,
+      "tokens": 19018,
+      "elapsed": 32.43
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "outdated",
+      "confidence": 30,
+      "source": "system_conservative"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "C04",
+    "claim": "反垄断法自2008年8月1日起施行至今未做修改",
+    "mode": "policy",
+    "category": "C_outdated",
+    "ground_truth": "outdated",
+    "bare": {
+      "verdict": "outdated",
+      "confidence": 100,
+      "reasoning": "反垄断法于2008年8月1日起施行，但2022年进行了修正，并于2022年8月1日起施行，因此声明称‘至今未做修改’已过时。",
+      "tokens": 239,
+      "elapsed": 1.65
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "contradicted",
+      "confidence": 61,
+      "has_official": true,
+      "evidence_count": 4,
+      "tokens": 16986,
+      "elapsed": 27.06
+    },
+    "system_match": false,
+    "hybrid": {
+      "verdict": "outdated",
+      "confidence": 70,
+      "source": "bare_strong_negative"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "C05",
+    "claim": "中华人民共和国合同法是当前调整合同关系的基本法律",
+    "mode": "policy",
+    "category": "C_outdated",
+    "ground_truth": "outdated",
+    "bare": {
+      "verdict": "outdated",
+      "confidence": 100,
+      "reasoning": "《中华人民共和国合同法》已于2021年1月1日被《中华人民共和国民法典》取代，民法典合同编成为调整合同关系的基本法律，因此该声明已过时。",
+      "tokens": 226,
+      "elapsed": 10.51
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "outdated",
+      "confidence": 30,
+      "has_official": true,
+      "evidence_count": 4,
+      "tokens": 23510,
+      "elapsed": 27.91
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "outdated",
+      "confidence": 30,
+      "source": "system_conservative"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "C06",
+    "claim": "当前中国证监会主席是易会满",
+    "mode": "entity_status",
+    "category": "C_outdated",
+    "ground_truth": "contradicted",
+    "bare": {
+      "verdict": "outdated",
+      "confidence": 100,
+      "reasoning": "易会满于2019年至2024年担任中国证监会主席，但2024年2月已由吴清接任，因此该声明已过时。",
+      "tokens": 223,
+      "elapsed": 1.45
+    },
+    "bare_match": false,
+    "system": {
+      "verdict": "unverifiable",
+      "confidence": 30,
+      "has_official": false,
+      "evidence_count": 1,
+      "tokens": 4320,
+      "elapsed": 21.29
+    },
+    "system_match": false,
+    "hybrid": {
+      "verdict": "outdated",
+      "confidence": 70,
+      "source": "bare_fallback"
+    },
+    "hybrid_match": false
+  },
+  {
+    "case_id": "C07",
+    "claim": "个人所得税法规定3岁以下婴幼儿照护专项附加扣除为每月1000元",
+    "mode": "policy",
+    "category": "C_outdated",
+    "ground_truth": "contradicted",
+    "bare": {
+      "verdict": "outdated",
+      "confidence": 100,
+      "reasoning": "根据我的训练知识，2023年国务院已将3岁以下婴幼儿照护专项附加扣除标准从每月1000元提高至每月2000元，因此原声明已过时。",
+      "tokens": 234,
+      "elapsed": 1.7
+    },
+    "bare_match": false,
+    "system": {
+      "verdict": "outdated",
+      "confidence": 30,
+      "has_official": true,
+      "evidence_count": 4,
+      "tokens": 15815,
+      "elapsed": 29.6
+    },
+    "system_match": false,
+    "hybrid": {
+      "verdict": "outdated",
+      "confidence": 30,
+      "source": "system_conservative"
+    },
+    "hybrid_match": false
+  },
+  {
+    "case_id": "C08",
+    "claim": "2023年中国GDP最终核定数为126.06万亿元",
+    "mode": "numeric",
+    "category": "C_outdated",
+    "ground_truth": "contradicted",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 95,
+      "reasoning": "根据国家统计局公布的数据，2023年中国GDP最终核实数为126.06万亿元，与声明一致。",
+      "tokens": 212,
+      "elapsed": 1.43
+    },
+    "bare_match": false,
+    "system": {
+      "verdict": "contradicted",
+      "confidence": 73,
+      "has_official": true,
+      "evidence_count": 4,
+      "tokens": 14223,
+      "elapsed": 26.06
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "contradicted",
+      "confidence": 73,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "C09",
+    "claim": "中国银行保险监督管理委员会是当前主要金融监管机构",
+    "mode": "entity_status",
+    "category": "C_outdated",
+    "ground_truth": "outdated",
+    "bare": {
+      "verdict": "outdated",
+      "confidence": 100,
+      "reasoning": "中国银行保险监督管理委员会已于2023年3月被撤销，其职能并入国家金融监督管理总局，因此该声明描述的状态已过时。",
+      "tokens": 222,
+      "elapsed": 1.96
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "contradicted",
+      "confidence": 26,
+      "has_official": false,
+      "evidence_count": 2,
+      "tokens": 7981,
+      "elapsed": 23.29
+    },
+    "system_match": false,
+    "hybrid": {
+      "verdict": "outdated",
+      "confidence": 70,
+      "source": "bare_strong_negative"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "C10",
+    "claim": "《国家中长期人才发展规划纲要(2010—2020年)》是当前人才工作的主要依据",
+    "mode": "policy",
+    "category": "C_outdated",
+    "ground_truth": "outdated",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 95,
+      "reasoning": "该纲要于2010年发布，明确作为2010-2020年人才工作的指导性文件，是当时及后续一段时期人才工作的主要依据。",
+      "tokens": 231,
+      "elapsed": 1.87
+    },
+    "bare_match": false,
+    "system": {
+      "verdict": "supported",
+      "confidence": 79,
+      "has_official": true,
+      "evidence_count": 3,
+      "tokens": 17614,
+      "elapsed": 26.52
+    },
+    "system_match": false,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 79,
+      "source": "system_strong"
+    },
+    "hybrid_match": false
+  },
+  {
+    "case_id": "D01",
+    "claim": "中华人民共和国民营经济促进法于2025年5月20日起施行",
+    "mode": "policy",
+    "category": "D_post_cutoff",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "outdated",
+      "confidence": 90,
+      "reasoning": "截至2025年5月，我无法确认该法律已正式施行，且该日期可能为未来或已过时，但根据我的训练知识，该法律尚未有明确施行信息，因此判断为过时或未生效。",
+      "tokens": 245,
+      "elapsed": 2.03
+    },
+    "bare_match": false,
+    "system": {
+      "verdict": "supported",
+      "confidence": 92,
+      "has_official": true,
+      "evidence_count": 4,
+      "tokens": 18743,
+      "elapsed": 25.61
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 92,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "D02",
+    "claim": "2025年中国GDP突破140万亿元",
+    "mode": "numeric",
+    "category": "D_post_cutoff",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "unverifiable",
+      "confidence": 30,
+      "reasoning": "2025年尚未结束，无法确认GDP数据；2024年中国GDP约为134.9万亿元，140万亿元的预测可能偏高，但缺乏实际数据支持。",
+      "tokens": 222,
+      "elapsed": 1.6
+    },
+    "bare_match": false,
+    "system": {
+      "verdict": "supported",
+      "confidence": 91,
+      "has_official": true,
+      "evidence_count": 4,
+      "tokens": 15372,
+      "elapsed": 26.12
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 91,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "D03",
+    "claim": "2025年中国新能源汽车销量达到1649万辆",
+    "mode": "numeric",
+    "category": "D_post_cutoff",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "outdated",
+      "confidence": 90,
+      "reasoning": "截至2024年7月，2025年全年数据尚未产生，该声明属于对未来预测或假设性陈述，无法基于当前训练知识验证。",
+      "tokens": 221,
+      "elapsed": 2.18
+    },
+    "bare_match": false,
+    "system": {
+      "verdict": "supported",
+      "confidence": 91,
+      "has_official": true,
+      "evidence_count": 4,
+      "tokens": 12271,
+      "elapsed": 28.81
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 91,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "D04",
+    "claim": "国家金融监督管理总局于2023年5月18日揭牌",
+    "mode": "entity_status",
+    "category": "D_post_cutoff",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 95,
+      "reasoning": "根据公开信息，国家金融监督管理总局于2023年5月18日正式揭牌，取代原有的银保监会，这一日期与声明一致。",
+      "tokens": 222,
+      "elapsed": 1.73
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 77,
+      "has_official": false,
+      "evidence_count": 3,
+      "tokens": 9913,
+      "elapsed": 24.45
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 77,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "D05",
+    "claim": "2026年中央一号文件主题是扎实推进乡村全面振兴",
+    "mode": "policy",
+    "category": "D_post_cutoff",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "outdated",
+      "confidence": 95,
+      "reasoning": "截至2025年5月，2026年中央一号文件尚未发布，因此该声明描述的是未来事件，无法确认其主题。",
+      "tokens": 221,
+      "elapsed": 1.66
+    },
+    "bare_match": false,
+    "system": {
+      "verdict": "supported",
+      "confidence": 82,
+      "has_official": true,
+      "evidence_count": 4,
+      "tokens": 16170,
+      "elapsed": 27.37
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 82,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "D06",
+    "claim": "国务院2025年发布《关于深入实施人工智能+行动的意见》(国发〔2025〕11号)",
+    "mode": "policy",
+    "category": "D_post_cutoff",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "unverifiable",
+      "confidence": 10,
+      "reasoning": "我的训练数据截止于2024年，无法确认2025年国务院是否发布了该文件，且文件编号和名称无法验证。",
+      "tokens": 232,
+      "elapsed": 1.6
+    },
+    "bare_match": false,
+    "system": {
+      "verdict": "supported",
+      "confidence": 89,
+      "has_official": true,
+      "evidence_count": 2,
+      "tokens": 10099,
+      "elapsed": 57.7
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 89,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "D07",
+    "claim": "2024年版国家医保目录新增91种药品其中中成药11种",
+    "mode": "numeric",
+    "category": "D_post_cutoff",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 95,
+      "reasoning": "根据公开信息，2024年国家医保目录调整新增91种药品，其中包括11种中成药，与声明一致。",
+      "tokens": 220,
+      "elapsed": 1.82
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 82,
+      "has_official": true,
+      "evidence_count": 3,
+      "tokens": 9788,
+      "elapsed": 27.49
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 82,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "D08",
+    "claim": "全国人大常委会2024年9月通过渐进式延迟法定退休年龄决定",
+    "mode": "policy",
+    "category": "D_post_cutoff",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 95,
+      "reasoning": "根据公开报道，2024年9月13日全国人大常委会通过了关于实施渐进式延迟法定退休年龄的决定，该声明与事实一致。",
+      "tokens": 224,
+      "elapsed": 1.63
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 92,
+      "has_official": true,
+      "evidence_count": 4,
+      "tokens": 16709,
+      "elapsed": 36.27
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 92,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "E01",
+    "claim": "深圳市对登记失业人员实施一次性创业补贴每人1万元",
+    "mode": "policy",
+    "category": "E_local",
+    "ground_truth": "partially_supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 90,
+      "reasoning": "根据公开政策信息，深圳市对登记失业人员成功创业并符合条件者，确实提供一次性创业补贴，标准为每人1万元。",
+      "tokens": 220,
+      "elapsed": 1.75
+    },
+    "bare_match": false,
+    "system": {
+      "verdict": "contradicted",
+      "confidence": 73,
+      "has_official": true,
+      "evidence_count": 2,
+      "tokens": 13765,
+      "elapsed": 32.84
+    },
+    "system_match": false,
+    "hybrid": {
+      "verdict": "contradicted",
+      "confidence": 73,
+      "source": "system_strong"
+    },
+    "hybrid_match": false
+  },
+  {
+    "case_id": "E02",
+    "claim": "苏州工业园区集成电路设计企业IP购买补贴最高300万元",
+    "mode": "policy",
+    "category": "E_local",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 90,
+      "reasoning": "根据公开政策信息，苏州工业园区对集成电路设计企业购买IP（知识产权）确实提供补贴，最高额度为300万元，该声明与已知政策一致。",
+      "tokens": 223,
+      "elapsed": 1.67
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 84,
+      "has_official": true,
+      "evidence_count": 4,
+      "tokens": 17703,
+      "elapsed": 34.46
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 84,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "E03",
+    "claim": "杭州未来科技城是国家级海外高层次人才创新创业基地",
+    "mode": "entity_status",
+    "category": "E_local",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 95,
+      "reasoning": "杭州未来科技城（海创园）确实被认定为国家级海外高层次人才创新创业基地，这是官方明确的定位。",
+      "tokens": 214,
+      "elapsed": 1.72
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 83,
+      "has_official": true,
+      "evidence_count": 2,
+      "tokens": 7695,
+      "elapsed": 34.72
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 83,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "E04",
+    "claim": "北京市海淀区中关村科学城对AI产业每年支持总额超过10亿元",
+    "mode": "policy",
+    "category": "E_local",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 85,
+      "reasoning": "根据公开报道，北京市海淀区中关村科学城近年来确实设立了专项支持资金，对人工智能产业的支持总额每年超过10亿元，符合已知政策信息。",
+      "tokens": 230,
+      "elapsed": 1.76
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 79,
+      "has_official": true,
+      "evidence_count": 3,
+      "tokens": 13374,
+      "elapsed": 29.3
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 79,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "E05",
+    "claim": "青岛市2025年对首次创业的高校毕业生发放5000元一次性创业补贴",
+    "mode": "policy",
+    "category": "E_local",
+    "ground_truth": "partially_supported",
+    "bare": {
+      "verdict": "unverifiable",
+      "confidence": 30,
+      "reasoning": "我无法确认青岛市2025年是否仍执行5000元一次性创业补贴政策，因为政策可能随时间调整，且我的知识截止于2024年，无法验证2025年的具体规定。",
+      "tokens": 239,
+      "elapsed": 1.81
+    },
+    "bare_match": false,
+    "system": {
+      "verdict": "contradicted",
+      "confidence": 71,
+      "has_official": true,
+      "evidence_count": 4,
+      "tokens": 20916,
+      "elapsed": 33.21
+    },
+    "system_match": false,
+    "hybrid": {
+      "verdict": "contradicted",
+      "confidence": 71,
+      "source": "system_strong"
+    },
+    "hybrid_match": false
+  },
+  {
+    "case_id": "E06",
+    "claim": "上海浦东新区张江高科技园区有专门的生物医药产业扶持政策",
+    "mode": "policy",
+    "category": "E_local",
+    "ground_truth": "supported",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 95,
+      "reasoning": "张江高科技园区作为上海生物医药产业核心区，确实有专项扶持政策，如《张江生物医药产业扶持政策》等，涵盖研发、人才、资金等方面。",
+      "tokens": 231,
+      "elapsed": 1.88
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "supported",
+      "confidence": 89,
+      "has_official": true,
+      "evidence_count": 3,
+      "tokens": 14553,
+      "elapsed": 36.92
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "supported",
+      "confidence": 89,
+      "source": "system_strong"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "F01",
+    "claim": "国务院2025年宣布对所有创业企业免征企业所得税3年",
+    "mode": "policy",
+    "category": "F_misinformation",
+    "ground_truth": "contradicted",
+    "bare": {
+      "verdict": "unverifiable",
+      "confidence": 10,
+      "reasoning": "截至2025年5月，我没有关于国务院宣布对所有创业企业免征企业所得税3年的可靠信息，此类大规模税收政策通常需要官方文件确认，且目前无公开记录支持该声明。",
+      "tokens": 233,
+      "elapsed": 2.06
+    },
+    "bare_match": false,
+    "system": {
+      "verdict": "unverifiable",
+      "confidence": 30,
+      "has_official": true,
+      "evidence_count": 4,
+      "tokens": 14915,
+      "elapsed": 33.57
+    },
+    "system_match": false,
+    "hybrid": {
+      "verdict": "unverifiable",
+      "confidence": 30,
+      "source": "system_conservative"
+    },
+    "hybrid_match": false
+  },
+  {
+    "case_id": "F02",
+    "claim": "国家统计局公布2023年中国新生儿数量达到1500万人",
+    "mode": "numeric",
+    "category": "F_misinformation",
+    "ground_truth": "contradicted",
+    "bare": {
+      "verdict": "contradicted",
+      "confidence": 95,
+      "reasoning": "根据国家统计局数据，2023年中国新生儿数量约为902万人，而非1500万人，声明严重高估了实际数字。",
+      "tokens": 220,
+      "elapsed": 1.8
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "contradicted",
+      "confidence": 21,
+      "has_official": false,
+      "evidence_count": 4,
+      "tokens": 22310,
+      "elapsed": 29.04
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "contradicted",
+      "confidence": 70,
+      "source": "bare_strong_negative"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "F03",
+    "claim": "2024年中国法定退休年龄已统一调整为65岁",
+    "mode": "policy",
+    "category": "F_misinformation",
+    "ground_truth": "contradicted",
+    "bare": {
+      "verdict": "outdated",
+      "confidence": 95,
+      "reasoning": "截至2024年，中国法定退休年龄尚未统一调整为65岁，仍为男性60岁、女干部55岁、女工人50岁，但2024年9月全国人大常委会通过了渐进式延迟退休方案，计划逐步延迟至65岁（男性）和60岁（女性），该方案尚未完全实施。",
+      "tokens": 258,
+      "elapsed": 1.99
+    },
+    "bare_match": false,
+    "system": {
+      "verdict": "contradicted",
+      "confidence": 28,
+      "has_official": false,
+      "evidence_count": 4,
+      "tokens": 16041,
+      "elapsed": 31.72
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "outdated",
+      "confidence": 70,
+      "source": "bare_strong_negative"
+    },
+    "hybrid_match": false
+  },
+  {
+    "case_id": "F04",
+    "claim": "国家医保目录2024年版调整后中成药品种数量增加了40余种",
+    "mode": "numeric",
+    "category": "F_misinformation",
+    "ground_truth": "contradicted",
+    "bare": {
+      "verdict": "supported",
+      "confidence": 90,
+      "reasoning": "根据公开信息，2024年国家医保目录调整新增了40余种中成药，与声明一致。",
+      "tokens": 218,
+      "elapsed": 1.49
+    },
+    "bare_match": false,
+    "system": {
+      "verdict": "contradicted",
+      "confidence": 55,
+      "has_official": true,
+      "evidence_count": 4,
+      "tokens": 15423,
+      "elapsed": 42.92
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "contradicted",
+      "confidence": 55,
+      "source": "system_conservative"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "G01",
+    "claim": "上海是中国最适合创业的城市",
+    "mode": "general",
+    "category": "G_subjective",
+    "ground_truth": "out_of_scope",
+    "bare": {
+      "verdict": "out_of_scope",
+      "confidence": 100,
+      "reasoning": "该声明是主观评价，缺乏客观可验证的标准，无法基于事实判断其可信度。",
+      "tokens": 207,
+      "elapsed": 1.6
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "out_of_scope",
+      "confidence": 0,
+      "has_official": false,
+      "evidence_count": 0,
+      "tokens": 0,
+      "elapsed": 0.0
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "out_of_scope",
+      "confidence": 0,
+      "source": "system_subjective"
+    },
+    "hybrid_match": true
+  },
+  {
+    "case_id": "G02",
+    "claim": "AI 创业项目比传统行业更有前景",
+    "mode": "general",
+    "category": "G_subjective",
+    "ground_truth": "out_of_scope",
+    "bare": {
+      "verdict": "out_of_scope",
+      "confidence": 100,
+      "reasoning": "该声明是主观评价，缺乏客观事实依据，无法通过事实核查判断。",
+      "tokens": 208,
+      "elapsed": 1.88
+    },
+    "bare_match": true,
+    "system": {
+      "verdict": "out_of_scope",
+      "confidence": 0,
+      "has_official": false,
+      "evidence_count": 0,
+      "tokens": 0,
+      "elapsed": 0.0
+    },
+    "system_match": true,
+    "hybrid": {
+      "verdict": "out_of_scope",
+      "confidence": 0,
+      "source": "system_subjective"
+    },
+    "hybrid_match": true
+  }
+]

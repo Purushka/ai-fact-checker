@@ -1,0 +1,5 @@
+{"case_id":"C3_01","claim":"2026年中央一号文件主题是加快建设农业强国","raw_verdict":"unverifiable","raw_confidence":25,"raw_reasoning":"2023中央一号是乡村振兴重点工作。2024/2025/2026我都不记得具体主题。'加快建设农业强国'是延续主题但具体到2026是否是主标题不知道。","raw_uncertainty":["2026具体主题表述","训练截止后"]}
+{"case_id":"C3_02","claim":"杭州未来科技城对引进的国家级海外人才提供最高1000万元安家费","raw_verdict":"unverifiable","raw_confidence":25,"raw_reasoning":"杭州人才政策有，但具体到未来科技城+国家级海外+1000万安家费三层细节不知道。","raw_uncertainty":["未来科技城具体政策","1000万具体金额","'国家级海外人才'定义"]}
+{"case_id":"C3_03","claim":"2024年中国进出口总值首次突破43万亿元创历史新高","raw_verdict":"supported","raw_confidence":80,"raw_reasoning":"海关总署2025年1月公布2024进出口约43.85万亿，确实创新高。","raw_uncertainty":["'首次突破'措辞"]}
+{"case_id":"C3_04","claim":"小米集团创始人雷军同时担任小米汽车CEO","raw_verdict":"supported","raw_confidence":70,"raw_reasoning":"雷军是小米创始人CEO，小米汽车成立后他亲自挂帅，应该兼任CEO。但2024-2025是否变动不确定。","raw_uncertainty":["最新是否仍兼任","或已交棒"]}
+{"case_id":"C3_05","claim":"财税〔2023〕12号文件涉及小微企业所得税优惠","raw_verdict":"unverifiable","raw_confidence":25,"raw_reasoning":"小微企业所得税优惠政策有，但具体到财税〔2023〕12号这个文号不记得。","raw_uncertainty":["具体文号是否真实","若真实内容是否相关"]}

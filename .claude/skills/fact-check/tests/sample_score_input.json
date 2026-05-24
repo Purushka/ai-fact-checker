@@ -1,0 +1,58 @@
+{
+  "claim": "2023年中国新能源汽车销量达到949.5万辆",
+  "mode": "numeric",
+  "weights": null,
+  "require_official_source": true,
+  "today": "2026-05-21",
+  "evidence": [
+    {
+      "url": "http://www.caam.org.cn/chn/4/cate_31/con_5238088.html",
+      "source_type": "industry_association",
+      "authority_weight": 0.85,
+      "support_level": "strong",
+      "published_at": "2024-01-11",
+      "is_independent": true,
+      "content_fingerprint": "fp_caam_949_5",
+      "claims_about": {
+        "metric_name": "中国新能源汽车销量",
+        "metric_value": "949.5",
+        "metric_unit": "万辆",
+        "time_period": "2023年",
+        "applicable_region": "中国",
+        "data_source": "中国汽车工业协会",
+        "publish_date": "2024-01-11"
+      }
+    },
+    {
+      "url": "http://www.gov.cn/yaowen/liebiao/202401/content_xxx.htm",
+      "source_type": "official",
+      "authority_weight": 1.0,
+      "support_level": "strong",
+      "published_at": "2024-01-12",
+      "is_independent": true,
+      "content_fingerprint": "fp_govcn_949_5",
+      "claims_about": {
+        "metric_name": "中国新能源汽车销量",
+        "metric_value": "949.5",
+        "metric_unit": "万辆",
+        "time_period": "2023年",
+        "data_source": "中国汽车工业协会"
+      }
+    },
+    {
+      "url": "https://www.xinhuanet.com/auto/2024-01/11/c_xxx.htm",
+      "source_type": "authoritative_media",
+      "authority_weight": 0.8,
+      "support_level": "strong",
+      "published_at": "2024-01-11",
+      "is_independent": false,
+      "content_fingerprint": "fp_caam_949_5",
+      "claims_about": {
+        "metric_value": "949.5",
+        "metric_unit": "万辆"
+      }
+    }
+  ],
+  "conflicts": [],
+  "policy_meta": {}
+}

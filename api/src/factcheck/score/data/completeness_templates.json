@@ -1,0 +1,72 @@
+{
+  "version": "1.0",
+  "note": "completeness 维度评分按对应 mode 的字段填充率计算；required=true 字段缺失加 penalty",
+  "templates": {
+    "policy": {
+      "description": "政策、规定、法规、补贴、税收优惠等",
+      "fields": [
+        { "key": "title",                "required": true,  "label": "政策标题",       "regex_hint": null },
+        { "key": "issuing_agency",       "required": true,  "label": "发文机关",       "regex_hint": "(国务院|.*?[部委厅局办])" },
+        { "key": "agency_level",         "required": false, "label": "机关层级",       "enum": ["national","province","city","district"] },
+        { "key": "document_number",      "required": true,  "label": "文号",           "regex_hint": "[国发|国办发|.*?字][〔【\\[]20\\d{2}[〕】\\]]\\s?第?\\s?\\d+号" },
+        { "key": "publish_date",         "required": true,  "label": "发布日期",       "regex_hint": "20\\d{2}[-年]\\d{1,2}[-月]\\d{1,2}" },
+        { "key": "effective_date",       "required": false, "label": "生效日期" },
+        { "key": "expire_date",          "required": false, "label": "失效日期" },
+        { "key": "applicable_region",    "required": true,  "label": "适用地区" },
+        { "key": "applicable_subjects",  "required": true,  "label": "适用对象" },
+        { "key": "benefit_amount",       "required": false, "label": "补贴金额",       "regex_hint": "\\d+(\\.\\d+)?[元万千百]" },
+        { "key": "application_conditions","required": false,"label": "申请条件" },
+        { "key": "required_materials",   "required": false, "label": "申请材料" },
+        { "key": "application_process",  "required": false, "label": "申请流程" },
+        { "key": "deadline",             "required": false, "label": "截止日期" },
+        { "key": "contact_info",         "required": false, "label": "联系方式" }
+      ]
+    },
+    "numeric": {
+      "description": "数字、统计数据、市场份额、销量、增长率等",
+      "fields": [
+        { "key": "metric_name",          "required": true,  "label": "指标名称" },
+        { "key": "metric_value",         "required": true,  "label": "指标数值" },
+        { "key": "metric_unit",          "required": true,  "label": "单位" },
+        { "key": "time_period",          "required": true,  "label": "时间区间" },
+        { "key": "applicable_region",    "required": false, "label": "地理范围" },
+        { "key": "data_source",          "required": true,  "label": "数据来源机构" },
+        { "key": "measurement_method",   "required": false, "label": "统计口径" },
+        { "key": "publish_date",         "required": false, "label": "公布日期" },
+        { "key": "yoy_change",           "required": false, "label": "同比" },
+        { "key": "qoq_change",           "required": false, "label": "环比" }
+      ]
+    },
+    "entity_status": {
+      "description": "企业、人物、产品的当前状态",
+      "fields": [
+        { "key": "entity_name",          "required": true,  "label": "实体名称" },
+        { "key": "entity_type",          "required": true,  "label": "实体类型",       "enum": ["company","person","product","brand"] },
+        { "key": "status_attribute",     "required": true,  "label": "状态属性" },
+        { "key": "status_value",         "required": true,  "label": "状态值" },
+        { "key": "as_of_date",           "required": true,  "label": "状态截止日期" },
+        { "key": "official_source",      "required": false, "label": "官方来源" }
+      ]
+    },
+    "event": {
+      "description": "已发生事件",
+      "fields": [
+        { "key": "event_name",           "required": true,  "label": "事件名称" },
+        { "key": "event_date",           "required": true,  "label": "发生日期" },
+        { "key": "event_location",       "required": false, "label": "发生地点" },
+        { "key": "participants",         "required": false, "label": "相关方" },
+        { "key": "outcome",              "required": false, "label": "结果" }
+      ]
+    },
+    "general": {
+      "description": "通用兜底模板",
+      "fields": [
+        { "key": "subject",              "required": true,  "label": "主体" },
+        { "key": "predicate",            "required": true,  "label": "谓语/属性" },
+        { "key": "value",                "required": true,  "label": "值" },
+        { "key": "time_anchor",          "required": false, "label": "时间锚点" },
+        { "key": "context",              "required": false, "label": "上下文" }
+      ]
+    }
+  }
+}

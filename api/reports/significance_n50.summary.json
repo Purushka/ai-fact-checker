@@ -1,0 +1,74 @@
+{
+  "n": 50,
+  "bare_accuracy": 0.72,
+  "system_accuracy": 0.7,
+  "bare_ci_95": [
+    0.6,
+    0.84
+  ],
+  "system_ci_95": [
+    0.56,
+    0.82
+  ],
+  "diff_pp": -2.0,
+  "mcnemar_chi2": 0.0,
+  "mcnemar_p": 1.0,
+  "significant_at_005": false,
+  "n11_both_correct": 28,
+  "n10_bare_only": 8,
+  "n01_system_only": 7,
+  "n00_both_wrong": 7,
+  "bare_overconfident_wrong": 10,
+  "system_overconfident_wrong": 0,
+  "by_category": {
+    "A_known": {
+      "n": 12,
+      "bare": 12,
+      "sys": 10,
+      "bare_acc": 1.0,
+      "sys_acc": 0.8333333333333334
+    },
+    "B_known_numeric": {
+      "n": 8,
+      "bare": 8,
+      "sys": 7,
+      "bare_acc": 1.0,
+      "sys_acc": 0.875
+    },
+    "C_outdated": {
+      "n": 10,
+      "bare": 6,
+      "sys": 5,
+      "bare_acc": 0.6,
+      "sys_acc": 0.5
+    },
+    "D_post_cutoff": {
+      "n": 8,
+      "bare": 3,
+      "sys": 7,
+      "bare_acc": 0.375,
+      "sys_acc": 0.875
+    },
+    "E_local": {
+      "n": 6,
+      "bare": 4,
+      "sys": 2,
+      "bare_acc": 0.6666666666666666,
+      "sys_acc": 0.3333333333333333
+    },
+    "F_misinformation": {
+      "n": 4,
+      "bare": 1,
+      "sys": 3,
+      "bare_acc": 0.25,
+      "sys_acc": 0.75
+    },
+    "G_subjective": {
+      "n": 2,
+      "bare": 2,
+      "sys": 1,
+      "bare_acc": 1.0,
+      "sys_acc": 0.5
+    }
+  }
+}

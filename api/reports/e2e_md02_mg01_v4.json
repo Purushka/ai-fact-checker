@@ -1,0 +1,102 @@
+[
+  {
+    "case_id": "MD02",
+    "claim": "中华人民共和国公司法当前生效版本是2018年修正版",
+    "mode": "policy",
+    "predicted": "outdated",
+    "verdict": "outdated",
+    "confidence": 11,
+    "confidence_level": "low",
+    "has_official_source": false,
+    "policy_status": "superseded",
+    "match": true,
+    "gating_applied": [
+      "policy_superseded",
+      "no_official_source_capped_40",
+      "policy_superseded_capped_30",
+      "policy_no_official_capped_35"
+    ],
+    "warnings": [
+      "evidence中未提供2023年修订版的具体施行日期，仅知修订日期为2023年12月29日",
+      "evidence中未提供document_number字段，无法确认具体文号"
+    ],
+    "evidence_count": 4,
+    "evidence_top": [
+      {
+        "url": "https://tyjrswj.beijing.gov.cn/fwzl/jycy/202604/t20260410_4578908.html",
+        "source_type": "official",
+        "authority": 0.644,
+        "support": "contradicted",
+        "agency": "北京市退役军人事务局",
+        "snippet": "（2023年12月29日第十四届全国人民代表大会常务委员会第七次会议第二次修订）"
+      },
+      {
+        "url": "http://rsj.panzhihua.gov.cn//pzhsldrszyzcy/zcwj/1056730.shtml",
+        "source_type": "official",
+        "authority": 0.595,
+        "support": "contradicted",
+        "agency": "市劳动人事争议仲裁院",
+        "snippet": "根据2012年12月28日第十二届全国人民代表大会常务委员会第六次会议通过《关于修改<中华人民共和国海洋环境保护法>等七部法律的决定》第三次修正 于2014年3月1日起实施"
+      },
+      {
+        "url": "http://gxs.yichang.gov.cn/content-55727-5358-1.html",
+        "source_type": "official",
+        "authority": 0.85,
+        "support": "contradicted",
+        "agency": "全国人民代表大会常务委员会",
+        "snippet": "根据2018年10月26日第十三届全国人民代表大会常务委员会第六次会议《关于修改〈中华人民共和国公司法〉的决定》第四次修正 2023年12月29日第十四届全国人民代表大会常务委员会第七次会议第二次修订"
+      }
+    ],
+    "conflicts_count": 1,
+    "reasoning": "[source_authority] 无支持型证据； [source_consistency] 0/4 相关源支持（0 neutral 已排除）； [freshness] 已被 2023年12月29日第十四届全国人民代表大会常务委员会第七次会议第二次修订 替代； [completeness] 6/15 字段填出； [completeness] 缺必填: ['applicable_subjects'",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 19923,
+      "completion_tokens": 1486,
+      "total_tokens": 21409,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 38.84
+  },
+  {
+    "case_id": "MG01",
+    "claim": "当前中国证监会主席是易会满",
+    "mode": "entity_status",
+    "predicted": "contradicted",
+    "verdict": "partially_supported",
+    "confidence": 43,
+    "confidence_level": "medium",
+    "has_official_source": false,
+    "policy_status": null,
+    "match": false,
+    "gating_applied": [],
+    "warnings": [
+      "仅有一条evidence，且为第三方媒体，缺乏官方源直接交叉验证，但该媒体引用了中央纪委国家监委网站，可信度较高。"
+    ],
+    "evidence_count": 1,
+    "evidence_top": [
+      {
+        "url": "http://finance.sina.com.cn/roll/2026-04-30/doc-inhwhraa6174260.shtml",
+        "source_type": "mainstream_media",
+        "authority": 0.35,
+        "support": "contradicted",
+        "agency": "新浪财经",
+        "snippet": "2024年2月7日，易会满被免去中国证监会党委书记职务、中国证监会主席职务。"
+      }
+    ],
+    "conflicts_count": 1,
+    "reasoning": "[source_authority] 无支持型证据； [source_consistency] 孤证不立； [freshness] 最新证据 2026-04-30（21 天前）； [completeness] 6/6 字段填出； [claim_clarity] 缺时间锚点",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 3520,
+      "completion_tokens": 589,
+      "total_tokens": 4109,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 28.96
+  }
+]

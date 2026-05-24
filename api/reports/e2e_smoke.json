@@ -1,0 +1,98 @@
+[
+  {
+    "case_id": "MZ01",
+    "claim": "中华人民共和国宪法最近一次修正是2018年3月11日",
+    "mode": "policy",
+    "predicted": "supported",
+    "actual_verdict": "partially_supported",
+    "actual_confidence": 63,
+    "confidence_level": "medium",
+    "policy_status": "active",
+    "has_official_source": true,
+    "match": false,
+    "gating_applied": [],
+    "evidence_summary": [
+      {
+        "url": "http://www.npc.gov.cn/zgrdw/npc/xinwen/2018-03/12/content_2049190.htm",
+        "source_type": "official",
+        "authority": 1.0,
+        "support": "strong",
+        "snippet": "中华人民共和国宪法修正案（2018年3月11日第十三届全国人民代表大会第一次会议通过）",
+        "claims_about_keys": [
+          "title",
+          "issuing_agency",
+          "agency_level",
+          "document_number",
+          "publish_date",
+          "effective_date",
+          "expire_date",
+          "applicable_region",
+          "applicable_subjects",
+          "benefit_amount"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "missing_fields": [
+      "applicable_subjects",
+      "application_conditions",
+      "application_process",
+      "benefit_amount",
+      "contact_info",
+      "deadline",
+      "document_number",
+      "expire_date",
+      "required_materials"
+    ],
+    "queries_generated": [
+      "中华人民共和国宪法 最近一次修正 2018年3月11日",
+      "宪法修正案 2018 年 3 月 11 日 通过",
+      "2018年宪法修正案 公布日期",
+      "site:gov.cn 宪法 修正 2018年3月11日"
+    ],
+    "fetch_summary": [
+      {
+        "url": "http://www.npc.gov.cn/zgrdw/npc/xinwen/2018-03/12/content_2049190.htm",
+        "status": "ok",
+        "content_len": 4617,
+        "title": "中华人民共和国宪法修正案_中国人大网"
+      }
+    ],
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 4314,
+      "completion_tokens": 593,
+      "total_tokens": 4907,
+      "search_calls": 0,
+      "fetch_calls": 0,
+      "breakdown": [
+        {
+          "label": "query_planner",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 278,
+          "completion": 168,
+          "total": 446
+        },
+        {
+          "label": "fact_extractor",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 3180,
+          "completion": 244,
+          "total": 3424
+        },
+        {
+          "label": "cross_validator",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 856,
+          "completion": 181,
+          "total": 1037
+        }
+      ]
+    },
+    "elapsed_sec": 10.69
+  }
+]

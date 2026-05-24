@@ -1,0 +1,52 @@
+# 测试集 v2 — memory-resistant cases，专门挑训练记忆模糊、过时、易被误导的 claim。
+# 字段：id, claim, mode, category, expected_difficulty, note
+# expected_difficulty: easy / medium / hard（hard = 训练知识大概率给不出准确答案）
+
+# === M-A: post-cutoff（2025下半年-2026 事件，训练数据大概率不覆盖）===
+{"id":"MA01","claim":"中华人民共和国民营经济促进法于2025年5月20日起施行","mode":"policy","category":"MA_post_cutoff","expected_difficulty":"hard"}
+{"id":"MA02","claim":"2025年中国新能源汽车销量超过1300万辆","mode":"numeric","category":"MA_post_cutoff","expected_difficulty":"hard"}
+{"id":"MA03","claim":"国务院2026年中央一号文件主题是加快建设农业强国","mode":"policy","category":"MA_post_cutoff","expected_difficulty":"hard"}
+{"id":"MA04","claim":"2025年中国GDP突破140万亿元","mode":"numeric","category":"MA_post_cutoff","expected_difficulty":"hard"}
+
+# === M-B: 极地方（区县/园区级，训练几乎肯定不覆盖）===
+{"id":"MB01","claim":"北京市海淀区对在中关村注册的AI初创企业提供最高100万元启动资金支持","mode":"policy","category":"MB_hyper_local","expected_difficulty":"hard"}
+{"id":"MB02","claim":"苏州工业园区2025年对集成电路设计企业给予300万元落户奖励","mode":"policy","category":"MB_hyper_local","expected_difficulty":"hard"}
+{"id":"MB03","claim":"深圳市南山区粤海街道对辖区内独角兽企业提供办公场地补贴每平米每月50元","mode":"policy","category":"MB_hyper_local","expected_difficulty":"hard"}
+{"id":"MB04","claim":"杭州未来科技城对引进的国家级海外人才提供最高1000万元安家费","mode":"policy","category":"MB_hyper_local","expected_difficulty":"hard"}
+
+# === M-C: 已被修订的数据（训练有旧数字，搜索揭示新数字）===
+{"id":"MC01","claim":"国家统计局核定2023年中国GDP最终数为126.06万亿元","mode":"numeric","category":"MC_revised_data","expected_difficulty":"hard","note":"训练里可能记 126.06，但 2024-12 已修订为约 129.4 万亿"}
+{"id":"MC02","claim":"2022年中国人口总量为14.12亿人","mode":"numeric","category":"MC_revised_data","expected_difficulty":"medium","note":"具体数字可能多次更新"}
+{"id":"MC03","claim":"2023年全国研发经费投入强度为2.65%","mode":"numeric","category":"MC_revised_data","expected_difficulty":"medium"}
+
+# === M-D: 已超替/已废止（训练可能仍当现行）===
+{"id":"MD01","claim":"《中华人民共和国民事诉讼法》最近一次修订是2017年","mode":"policy","category":"MD_superseded","expected_difficulty":"hard","note":"实际2021、2023等多次修订"}
+{"id":"MD02","claim":"《中华人民共和国公司法》当前生效版本是2018年修正版","mode":"policy","category":"MD_superseded","expected_difficulty":"hard","note":"2023-12 通过新修订，2024-07-01 施行"}
+{"id":"MD03","claim":"《中华人民共和国行政复议法》当前有效版本于2017年修订","mode":"policy","category":"MD_superseded","expected_difficulty":"hard","note":"2023-09 通过新修订，2024-01-01 施行"}
+{"id":"MD04","claim":"《中华人民共和国反垄断法》自2008年8月1日起施行至今未做修改","mode":"policy","category":"MD_superseded","expected_difficulty":"hard","note":"2022-06 通过修改，2022-08-01 施行修改版"}
+
+# === M-E: adversarial plausible（措辞专业但事实错）===
+{"id":"ME01","claim":"国务院国发〔2024〕35号文件明确将人工智能列为战略性新兴产业之首","mode":"policy","category":"ME_adversarial_plausible","expected_difficulty":"hard","note":"国发〔2017〕35号才是新一代人工智能发展规划。2024 年是否有 35 号文我不确定"}
+{"id":"ME02","claim":"国家税务总局2025年第8号公告规定研发费用加计扣除比例统一为100%","mode":"policy","category":"ME_adversarial_plausible","expected_difficulty":"hard","note":"研发费用加计扣除比例真实是 100%（部分行业），但'第8号公告'和'统一'两点存疑"}
+{"id":"ME03","claim":"2024年中国汽车出口量达到581万辆超过日本居世界第一","mode":"numeric","category":"ME_adversarial_plausible","expected_difficulty":"medium","note":"2023年中国就已超日本居世界第一，2024 年具体数字需查"}
+{"id":"ME04","claim":"《个人所得税法》规定居民个人综合所得专项附加扣除中3岁以下婴幼儿照护标准为每月1000元","mode":"policy","category":"ME_adversarial_plausible","expected_difficulty":"medium","note":"2023年8月调整为每月2000元（每孩），训练可能记旧的1000元"}
+
+# === M-F: adversarial implausible（听起来夸张但官方真有）===
+{"id":"MF01","claim":"中国央行已批准发行总额超过1万亿元的特别国债用于支持国家重大战略实施和重点领域安全能力建设","mode":"policy","category":"MF_adversarial_implausible","expected_difficulty":"hard","note":"听起来夸张但 2024 年确有 1 万亿超长期特别国债"}
+{"id":"MF02","claim":"国家对生育三孩家庭可享受每月最高2000元个税专项附加扣除","mode":"policy","category":"MF_adversarial_implausible","expected_difficulty":"medium","note":"2023年8月升至每孩2000元/月"}
+{"id":"MF03","claim":"2024年中国进出口总值首次突破43万亿元创历史新高","mode":"numeric","category":"MF_adversarial_implausible","expected_difficulty":"medium","note":"海关总署 2025-01 公布约 43.85 万亿"}
+
+# === M-G: 状态变更（机构负责人/CEO 2024-2026 变动）===
+{"id":"MG01","claim":"当前中国证监会主席是易会满","mode":"entity_status","category":"MG_state_change","expected_difficulty":"hard","note":"2024-02 易会满辞任，吴清接任"}
+{"id":"MG02","claim":"OpenAI 公司当前 CEO 是 Sam Altman","mode":"entity_status","category":"MG_state_change","expected_difficulty":"medium","note":"2023-11 短暂离任后回归，至今仍是 CEO"}
+{"id":"MG03","claim":"小米集团创始人雷军同时担任小米汽车CEO","mode":"entity_status","category":"MG_state_change","expected_difficulty":"medium"}
+
+# === M-H: 文号特异（编号细节）===
+{"id":"MH01","claim":"国发〔2017〕35号是《新一代人工智能发展规划》","mode":"policy","category":"MH_doc_number","expected_difficulty":"easy","note":"训练里应该有，但文号细节易混"}
+{"id":"MH02","claim":"国办发〔2022〕14号是《关于进一步释放消费潜力促进消费持续恢复的意见》","mode":"policy","category":"MH_doc_number","expected_difficulty":"hard"}
+{"id":"MH03","claim":"财税〔2023〕12号文件涉及小微企业所得税优惠","mode":"policy","category":"MH_doc_number","expected_difficulty":"hard"}
+
+# === 控制组：训练应该熟的（用作 raw 准确率基线）===
+{"id":"MZ01","claim":"《中华人民共和国宪法》最近一次修正是2018年3月11日","mode":"policy","category":"MZ_control","expected_difficulty":"easy"}
+{"id":"MZ02","claim":"国家统计局是国务院直属机构","mode":"entity_status","category":"MZ_control","expected_difficulty":"easy"}
+{"id":"MZ03","claim":"中华人民共和国增值税基本税率为13%","mode":"policy","category":"MZ_control","expected_difficulty":"easy"}

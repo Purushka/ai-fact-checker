@@ -1,0 +1,96 @@
+[
+  {
+    "case_id": "MA01",
+    "claim": "中华人民共和国民营经济促进法于2025年5月20日起施行",
+    "mode": "policy",
+    "predicted": "supported",
+    "verdict": "supported",
+    "confidence": 92,
+    "confidence_level": "high",
+    "has_official_source": true,
+    "policy_status": "active",
+    "match": true,
+    "gating_applied": [],
+    "warnings": [],
+    "evidence_count": 5,
+    "evidence_top": [
+      {
+        "url": "https://www.spp.gov.cn/spp/fl/202504/t20250430_694754.shtml",
+        "source_type": "official",
+        "authority": 1.0,
+        "support": "contradicted",
+        "agency": "最高人民检察院",
+        "snippet": "中华人民共和国民营经济促进法（2025年4月30日第十四届全国人民代表大会常务委员会第十五次会议通过）"
+      },
+      {
+        "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202505/t20250520_1397832.html",
+        "source_type": "regulator",
+        "authority": 0.97,
+        "support": "strong",
+        "agency": "国家发展改革委办公厅",
+        "snippet": "《中华人民共和国民营经济促进法》已由十四届全国人大常委会第十五次会议于2025年4月30日通过，自2025年5月20日起施行。"
+      },
+      {
+        "url": "https://myjj.ndrc.gov.cn/myjjcfzt/mtbd/202505/t20250522_1397919.html",
+        "source_type": "regulator",
+        "authority": 0.97,
+        "support": "strong",
+        "agency": "民营经济发展综合服务平台",
+        "snippet": "2025年5月20日起,《中华人民共和国民营经济促进法》施行。第一部专门关于民营经济发展的基础性法律……民营经济促进法的制定和实施,在我国民营经济发展史上具有里程碑意义。"
+      }
+    ],
+    "conflicts_count": 0,
+    "reasoning": "[source_authority] 2 个高权威源； [source_consistency] 4/5 相关源支持（0 neutral 已排除）； [freshness] 最新官方源 2025-05-22（12 月前，永久性法规（无过期/截止））； [completeness] 8/15 字段填出",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 20130,
+      "completion_tokens": 1663,
+      "total_tokens": 21793,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 32.32
+  },
+  {
+    "case_id": "MG01",
+    "claim": "当前中国证监会主席是易会满",
+    "mode": "entity_status",
+    "predicted": "contradicted",
+    "verdict": "unverifiable",
+    "confidence": 30,
+    "confidence_level": "low",
+    "has_official_source": false,
+    "policy_status": null,
+    "match": false,
+    "gating_applied": [
+      "low_confidence"
+    ],
+    "warnings": [
+      "claim中的'当前'时间点与evidence中的最新信息（2024年2月）不符，claim已过时。"
+    ],
+    "evidence_count": 1,
+    "evidence_top": [
+      {
+        "url": "http://renshi.people.com.cn/n1/2019/0128/c139617-30592631.html",
+        "source_type": "authoritative_media",
+        "authority": 0.8,
+        "support": "contradicted",
+        "agency": "人民网",
+        "snippet": "2019年1月，易会满同志为中国证监会主席、党委书记。当前中国证监会主席是易会满的说法与最新情况不符，因为易会满已于2024年2月离任，现任主席为吴清。"
+      }
+    ],
+    "conflicts_count": 1,
+    "reasoning": "[source_authority] 无支持型证据； [source_consistency] 孤证不立； [freshness] 最新证据 2019-01-28（2671 天前）； [completeness] 6/6 字段填出； [claim_clarity] 缺时间锚点",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 3495,
+      "completion_tokens": 596,
+      "total_tokens": 4091,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 27.78
+  }
+]

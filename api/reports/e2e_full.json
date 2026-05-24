@@ -1,0 +1,55 @@
+[
+  {
+    "case_id": "MZ01",
+    "claim": "中华人民共和国宪法最近一次修正是2018年3月11日",
+    "mode": "policy",
+    "predicted": "supported",
+    "verdict": "supported",
+    "confidence": 83,
+    "confidence_level": "high",
+    "has_official_source": true,
+    "policy_status": "active",
+    "match": true,
+    "gating_applied": [],
+    "warnings": [],
+    "evidence_count": 4,
+    "evidence_top": [
+      {
+        "url": "http://hrss.yn.gov.cn/NewsView.aspx?pid=971&nid=27817&cid=682&isZt=7",
+        "source_type": "official",
+        "authority": 0.92,
+        "support": "strong",
+        "agency": null,
+        "snippet": "中华人民共和国宪法（2018年3月11日修正）"
+      },
+      {
+        "url": "https://hrss.yn.gov.cn/NewsView.aspx?pid=971&nid=27817&cid=682&isZt=7",
+        "source_type": "official",
+        "authority": 0.644,
+        "support": "strong",
+        "agency": "云南省人力资源和社会保障厅",
+        "snippet": "中华人民共和国宪法（2018年3月11日修正）"
+      },
+      {
+        "url": "http://www.scspc.gov.cn/rdzt/xxxf/zcwj/201810/t20181012_34970.html",
+        "source_type": "official",
+        "authority": 0.85,
+        "support": "strong",
+        "agency": "中华人民共和国第十三届全国人民代表大会第一次会议主席团",
+        "snippet": "中华人民共和国宪法修正案已由中华人民共和国第十三届全国人民代表大会第一次会议于2018年3月11日通过，现予公布施行。"
+      }
+    ],
+    "conflicts_count": 0,
+    "reasoning": "[source_consistency] 3/3 相关源支持（0 neutral 已排除）； [freshness] 最新官方源 2018-04-11（99 月前，永久性法规（无过期/截止））； [completeness] 7/15 字段填出； [completeness] 缺必填: ['applicable_subjects']",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 7525,
+      "completion_tokens": 1327,
+      "total_tokens": 8852,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 23.93
+  }
+]

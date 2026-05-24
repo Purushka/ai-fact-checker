@@ -1,0 +1,11 @@
+# Cycle 2 raw judgments — 严格搜索前 commit
+{"case_id":"C2_01","claim":"2025年中国GDP突破140万亿元","raw_verdict":"partially_supported","raw_confidence":35,"raw_reasoning":"2023初核126，修订129.4。2024我估135左右。140万亿略高但有可能。","raw_uncertainty":["完全没有2025全年实际数"]}
+{"case_id":"C2_02","claim":"深圳南山区粤海街道对辖区独角兽企业提供办公场地补贴50元/平米/月","raw_verdict":"unverifiable","raw_confidence":20,"raw_reasoning":"完全不知道粤海街道具体补贴政策。","raw_uncertainty":["街道级政策训练完全不覆盖"]}
+{"case_id":"C2_03","claim":"2022年中国人口总量为14.12亿人","raw_verdict":"supported","raw_confidence":70,"raw_reasoning":"2022年末人口约14.12亿，记得是14.1175亿左右。","raw_uncertainty":["小数点后第二位"]}
+{"case_id":"C2_04","claim":"民事诉讼法最近一次修订是2017年","raw_verdict":"partially_supported","raw_confidence":40,"raw_reasoning":"民诉法2017修订有，但2021/2023是否又修订记不清。","raw_uncertainty":["是否有2021/2023修订"]}
+{"case_id":"C2_05","claim":"反垄断法自2008年8月1日起施行至今未做修改","raw_verdict":"contradicted","raw_confidence":60,"raw_reasoning":"反垄断法2008施行对。2022有修改我记得过。","raw_uncertainty":["2022修改具体施行日期"]}
+{"case_id":"C2_06","claim":"国家税务总局2025年第8号公告规定研发费用加计扣除比例统一为100%","raw_verdict":"unverifiable","raw_confidence":35,"raw_reasoning":"研发扣除100%部分行业是真的。2025第8号公告具体是什么不知道。'统一'存疑。","raw_uncertainty":["第8号公告是否真实","'统一'是否准确"]}
+{"case_id":"C2_07","claim":"2024年中国汽车出口量581万辆超过日本居世界第一","raw_verdict":"partially_supported","raw_confidence":60,"raw_reasoning":"2023起超日本。2024约585万。581略低于实际。","raw_uncertainty":["581还是585"]}
+{"case_id":"C2_08","claim":"OpenAI公司当前CEO是Sam Altman","raw_verdict":"supported","raw_confidence":90,"raw_reasoning":"是。2023-11短暂离任又回归。","raw_uncertainty":[]}
+{"case_id":"C2_09","claim":"国发〔2017〕35号是新一代人工智能发展规划","raw_verdict":"supported","raw_confidence":90,"raw_reasoning":"是的，国发〔2017〕35号是新一代AI发展规划。","raw_uncertainty":[]}
+{"case_id":"C2_10","claim":"中华人民共和国增值税基本税率为13%","raw_verdict":"supported","raw_confidence":85,"raw_reasoning":"2019-04起基本税率从16%降到13%。","raw_uncertainty":[]}

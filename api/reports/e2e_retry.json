@@ -1,0 +1,384 @@
+[
+  {
+    "case_id": "MA02",
+    "claim": "2025年中国新能源汽车销量超过1300万辆",
+    "mode": "numeric",
+    "predicted": "supported",
+    "actual_verdict": "unverifiable",
+    "actual_confidence": 30,
+    "confidence_level": "low",
+    "policy_status": null,
+    "has_official_source": false,
+    "match": false,
+    "gating_applied": [
+      "low_confidence"
+    ],
+    "evidence_summary": [
+      {
+        "url": "https://www.news.cn/fortune/20260114/cbbd861081c349d8ae238167ca418fa3/c.html",
+        "source_type": "authoritative_media",
+        "authority": 0.82,
+        "support": "contradicted",
+        "snippet": "2025年，我国汽车产销量均突破3400万辆，再创历史新高。新能源汽车产销量均超1600万辆。新能源汽车产销分别完成1662.6万辆和1649万辆。",
+        "claims_about_keys": [
+          "metric_name",
+          "metric_value",
+          "metric_unit",
+          "time_period",
+          "applicable_region",
+          "data_source",
+          "measurement_method",
+          "publish_date",
+          "yoy_change",
+          "qoq_change"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "field": "metric_value",
+        "values": [
+          "1300",
+          "1649"
+        ],
+        "level": "high",
+        "resolved": true,
+        "arbitration_note": "新华社（国家级权威媒体）引用中国汽车工业协会数据，2025年新能源汽车销量为1649万辆，与claim的1300万辆存在显著差异。根据冲突仲裁规则，新华社作为国家级权威媒体，其数据来源明确且发布时间为2026年1月14日（年度数据发布合理时间），应采信1649万辆。"
+      }
+    ],
+    "missing_fields": [
+      "measurement_method",
+      "qoq_change"
+    ],
+    "queries_generated": [
+      "2025年中国新能源汽车销量 1300万辆",
+      "2025年新能源汽车销量 中国 数据",
+      "中国汽车工业协会 2025年新能源汽车销量",
+      "2025年新能源汽车销量统计 1300万"
+    ],
+    "fetch_summary": [
+      {
+        "url": "https://www.news.cn/fortune/20260114/cbbd861081c349d8ae238167ca418fa3/c.html",
+        "status": "ok",
+        "content_len": 506,
+        "title": "2025年我国新能源汽车产销量双超1600万辆-新华网"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/3593800.html",
+        "status": "blocked",
+        "content_len": 0,
+        "title": ""
+      }
+    ],
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 2489,
+      "completion_tokens": 687,
+      "total_tokens": 3176,
+      "search_calls": 0,
+      "fetch_calls": 0,
+      "breakdown": [
+        {
+          "label": "query_planner",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 274,
+          "completion": 145,
+          "total": 419
+        },
+        {
+          "label": "fact_extractor",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 1262,
+          "completion": 228,
+          "total": 1490
+        },
+        {
+          "label": "cross_validator",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 953,
+          "completion": 314,
+          "total": 1267
+        }
+      ]
+    },
+    "elapsed_sec": 12.22
+  },
+  {
+    "case_id": "MD02",
+    "claim": "中华人民共和国公司法当前生效版本是2018年修正版",
+    "mode": "policy",
+    "predicted": "outdated",
+    "actual_verdict": "outdated",
+    "actual_confidence": 28,
+    "confidence_level": "low",
+    "policy_status": "superseded",
+    "has_official_source": false,
+    "match": true,
+    "gating_applied": [
+      "policy_superseded",
+      "no_official_source_capped_40",
+      "policy_superseded_capped_30",
+      "policy_no_official_capped_35"
+    ],
+    "evidence_summary": [
+      {
+        "url": "http://www.npc.gov.cn/npc/c2/c30834/202312/t20231229_433954.html",
+        "source_type": "official",
+        "authority": 1.0,
+        "support": "contradicted",
+        "snippet": "十四届全国人大常委会第七次会议12月29日表决通过新修订的公司法，于2024年7月1日起施行。",
+        "claims_about_keys": [
+          "title",
+          "issuing_agency",
+          "agency_level",
+          "document_number",
+          "publish_date",
+          "effective_date",
+          "expire_date",
+          "applicable_region",
+          "applicable_subjects",
+          "benefit_amount"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "field": "version",
+        "values": [
+          "2018年修正版",
+          "2023年修订版（2024年7月1日施行）"
+        ],
+        "level": "high",
+        "resolved": true,
+        "arbitration_note": "全国人大常委会官方发布新修订的公司法，2024年7月1日施行，表明2018年修正版已被取代。机关层级为national，发布时间2023-12-29晚于claim隐含的2018年，按冲突仲裁规则胜出。"
+      }
+    ],
+    "missing_fields": [
+      "application_conditions",
+      "application_process",
+      "benefit_amount",
+      "contact_info",
+      "deadline",
+      "document_number",
+      "expire_date",
+      "required_materials"
+    ],
+    "queries_generated": [
+      "中华人民共和国公司法 2018年修正版 生效",
+      "公司法 2018修正 现行有效",
+      "全国人大常委会 公司法 2018 修正 公告",
+      "site:gov.cn 公司法 2018 修正 版本"
+    ],
+    "fetch_summary": [
+      {
+        "url": "http://www.npc.gov.cn/npc/c2/c30834/202312/t20231229_433954.html",
+        "status": "ok",
+        "content_len": 423,
+        "title": "我国公司法完成修订于2024年7月1日起施行_中国人大网"
+      }
+    ],
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 2471,
+      "completion_tokens": 762,
+      "total_tokens": 3233,
+      "search_calls": 0,
+      "fetch_calls": 0,
+      "breakdown": [
+        {
+          "label": "query_planner",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 276,
+          "completion": 147,
+          "total": 423
+        },
+        {
+          "label": "fact_extractor",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 1217,
+          "completion": 258,
+          "total": 1475
+        },
+        {
+          "label": "cross_validator",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 978,
+          "completion": 357,
+          "total": 1335
+        }
+      ]
+    },
+    "elapsed_sec": 10.19
+  },
+  {
+    "case_id": "C2_06",
+    "claim": "国家税务总局2025年第8号公告规定研发费用加计扣除比例统一为100%",
+    "predicted": "contradicted",
+    "actual_verdict": "unverifiable",
+    "actual_confidence": 0,
+    "match": false,
+    "skipped_reason": "全部 URL 抓取失败",
+    "fetch_summary": [
+      {
+        "url": "https://fgk.chinatax.gov.cn/zcfgk/c102416/c5201978/content.html",
+        "status": "blocked",
+        "content_len": 0,
+        "title": ""
+      }
+    ],
+    "token_usage": {
+      "provider": "",
+      "model": "",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0,
+      "search_calls": 0,
+      "fetch_calls": 0,
+      "breakdown": []
+    },
+    "elapsed_sec": 0.86
+  },
+  {
+    "case_id": "CD01",
+    "claim": "国家医保目录2024年版调整后中成药品种数量增加了40余种",
+    "mode": "numeric",
+    "predicted": "contradicted",
+    "actual_verdict": "unverifiable",
+    "actual_confidence": 24,
+    "confidence_level": "low",
+    "policy_status": null,
+    "has_official_source": false,
+    "match": false,
+    "gating_applied": [
+      "low_confidence"
+    ],
+    "evidence_summary": [
+      {
+        "url": "https://www.nhsa.gov.cn/art/2024/11/28/art_14_14884.html",
+        "source_type": "official",
+        "authority": 0.85,
+        "support": "contradicted",
+        "snippet": "本轮调整后，国家医保药品目录内药品总数达到3159种，其中西药1765种、中成药1394种。",
+        "claims_about_keys": [
+          "metric_name",
+          "metric_value",
+          "metric_unit",
+          "time_period",
+          "applicable_region",
+          "data_source",
+          "measurement_method",
+          "publish_date",
+          "yoy_change",
+          "qoq_change"
+        ]
+      },
+      {
+        "url": "https://cn.chinadaily.com.cn/a/202411/28/WS6747e44fa310b59111da5f4a.html",
+        "source_type": "authoritative_media",
+        "authority": 0.72,
+        "support": "contradicted",
+        "snippet": "新增91种药品中，主要包括26种肿瘤用药（含4种罕见病）、15种糖尿病等慢性病用药（含2种罕见病）、13种罕见病用药、7种抗感染用药、11种中成药，以及精神类、其他领域用药。",
+        "claims_about_keys": [
+          "metric_name",
+          "metric_value",
+          "metric_unit",
+          "time_period",
+          "applicable_region",
+          "data_source",
+          "measurement_method",
+          "publish_date",
+          "yoy_change",
+          "qoq_change"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "field": "metric_value",
+        "values": [
+          "40余种",
+          "11种"
+        ],
+        "level": "high",
+        "resolved": true,
+        "arbitration_note": "官方来源（国家医疗保障局）明确2024年版调整新增中成药为11种，与claim的40余种严重不符。按机关层级（national）和时间新旧（2024-11-28）规则，官方数据胜出。"
+      }
+    ],
+    "missing_fields": [
+      "qoq_change",
+      "yoy_change"
+    ],
+    "queries_generated": [
+      "国家医保目录2024年版 中成药 品种 增加 40种",
+      "2024年国家医保目录 中成药 调整 新增 数量",
+      "国家医保局 2024 医保目录 中成药 品种 变化",
+      "2024版国家医保目录 中成药 增加 40余种 官方"
+    ],
+    "fetch_summary": [
+      {
+        "url": "https://www.nhsa.gov.cn/art/2024/11/28/art_14_14884.html",
+        "status": "ok",
+        "content_len": 1204,
+        "title": "国家医疗保障局 医保动态 国家医保局 人力资源社会保障部印发2024年版国家医保药品目录"
+      },
+      {
+        "url": "https://cn.chinadaily.com.cn/a/202411/28/WS6747e44fa310b59111da5f4a.html",
+        "status": "ok",
+        "content_len": 1940,
+        "title": "2024年版国家医保药品目录出炉，新增91种药品 - 中国日报网"
+      }
+    ],
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 5252,
+      "completion_tokens": 830,
+      "total_tokens": 6082,
+      "search_calls": 0,
+      "fetch_calls": 0,
+      "breakdown": [
+        {
+          "label": "query_planner",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 281,
+          "completion": 198,
+          "total": 479
+        },
+        {
+          "label": "fact_extractor",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 1645,
+          "completion": 213,
+          "total": 1858
+        },
+        {
+          "label": "fact_extractor",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 2092,
+          "completion": 244,
+          "total": 2336
+        },
+        {
+          "label": "cross_validator",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 1234,
+          "completion": 175,
+          "total": 1409
+        }
+      ]
+    },
+    "elapsed_sec": 11.04
+  }
+]

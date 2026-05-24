@@ -1,0 +1,77 @@
+version: "3.8"
+
+services:
+  api:
+    build: .
+    container_name: factcheck-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  worker:
+    build: .
+    container_name: factcheck-worker
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: celery -A factcheck.worker worker --concurrency=4 --loglevel=info
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  redis:
+    image: redis:7-alpine
+    container_name: factcheck-redis
+    restart: unless-stopped
+    command: ["redis-server", "--save", "60", "1000", "--loglevel", "warning"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: factcheck-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: factcheck
+      POSTGRES_USER: factcheck
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-CHANGEME}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "factcheck"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    ports:
+      - "5432:5432"
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: factcheck-prometheus
+    restart: unless-stopped
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9091:9090"
+    profiles: ["monitoring"]
+
+volumes:
+  redis-data:
+  postgres-data:

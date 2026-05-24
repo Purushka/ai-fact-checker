@@ -1,0 +1,558 @@
+[
+  {
+    "case_id": "MA01",
+    "claim": "中华人民共和国民营经济促进法于2025年5月20日起施行",
+    "mode": "policy",
+    "predicted": "supported",
+    "verdict": "contradicted",
+    "confidence": 76,
+    "confidence_level": "high",
+    "has_official_source": true,
+    "policy_status": "active",
+    "match": false,
+    "gating_applied": [
+      "authority_contradicted"
+    ],
+    "warnings": [
+      "部分官方来源（如最高人民检察院、国家发改委、中央人民政府）的摘要中未明确提及施行日期，仅列出通过日期，但未与claim矛盾。",
+      "大同市发改委的摘要明确支持claim的施行日期。"
+    ],
+    "evidence_count": 5,
+    "evidence_top": [
+      {
+        "url": "https://www.spp.gov.cn/spp/fl/202504/t20250430_694754.shtml",
+        "source_type": "official",
+        "authority": 0.7,
+        "support": "contradicted",
+        "agency": "最高人民检察院",
+        "snippet": "中华人民共和国民营经济促进法（2025年4月30日第十四届全国人民代表大会常务委员会第十五次会议通过）"
+      },
+      {
+        "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202505/t20250520_1397832.html",
+        "source_type": "regulator",
+        "authority": 0.97,
+        "support": "strong",
+        "agency": "国家发展改革委办公厅",
+        "snippet": "《中华人民共和国民营经济促进法》已由十四届全国人大常委会第十五次会议于2025年4月30日通过，自2025年5月20日起施行。"
+      },
+      {
+        "url": "https://new.tzxm.gov.cn/zckd/flfg/202505/t20250508_1397615.shtml",
+        "source_type": "official",
+        "authority": 0.85,
+        "support": "contradicted",
+        "agency": "国家发改委",
+        "snippet": "中华人民共和国民营经济促进法（2025年4月30日第十四届全国人民代表大会常务委员会第十五次会议通过）"
+      }
+    ],
+    "conflicts_count": 0,
+    "reasoning": "[source_consistency] 2/5 相关源支持（0 neutral 已排除）； [freshness] 最新官方源 2025-08-26（9 月前，永久性法规（无过期/截止））； [completeness] 7/15 字段填出； [completeness] 缺必填: ['document_number']",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 19514,
+      "completion_tokens": 1674,
+      "total_tokens": 21188,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 31.43
+  },
+  {
+    "case_id": "MA02",
+    "claim": "2025年中国新能源汽车销量超过1300万辆",
+    "mode": "numeric",
+    "predicted": "supported",
+    "verdict": "supported",
+    "confidence": 92,
+    "confidence_level": "high",
+    "has_official_source": true,
+    "policy_status": null,
+    "match": true,
+    "gating_applied": [],
+    "warnings": [
+      "新华网evidence中的1300万辆是针对2024年的预测，并非2025年实际销量，claim可能混淆了年份。",
+      "财新网evidence为预测值（1650万辆），与实际值（1649万辆）接近但非精确一致。"
+    ],
+    "evidence_count": 5,
+    "evidence_top": [
+      {
+        "url": "https://www.gov.cn/yaowen/liebiao/202601/content_7054738.htm",
+        "source_type": "official",
+        "authority": 1.0,
+        "support": "strong",
+        "agency": "中国政府网",
+        "snippet": "2025年我国新能源汽车产销量双超1600万辆。"
+      },
+      {
+        "url": "http://www.news.cn/auto/20250110/ba4f5455223f4f2c90a8f9a4686e697d/c.html",
+        "source_type": "authoritative_media",
+        "authority": 0.574,
+        "support": "contradicted",
+        "agency": "新华网",
+        "snippet": "中国汽车工业协会日前预计，2024年，中国汽车销量有望达到3100万辆，其中新能源汽车有望达到1300万辆。这是中国新能源汽车首次实现年度销量超1000万辆的里程碑。"
+      },
+      {
+        "url": "https://auto.cctv.com/2026/01/16/ARTIHiGCxfhjlDHdinYWaaz6260116.shtml",
+        "source_type": "authoritative_media",
+        "authority": 0.78,
+        "support": "strong",
+        "agency": "央视网",
+        "snippet": "2025年，我国新能源汽车产销量分别完成1662.6万辆和1649万辆，同比分别增长29%和28.2%。新能源汽车新车销量占汽车新车总销量的比例达到47.9%。"
+      }
+    ],
+    "conflicts_count": 1,
+    "reasoning": "[source_consistency] 4/5 相关源支持（0 neutral 已排除）； [freshness] 最新证据 2026-01-16（126 天前）； [completeness] 9/10 字段填出",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 14298,
+      "completion_tokens": 1578,
+      "total_tokens": 15876,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 36.92
+  },
+  {
+    "case_id": "MA04",
+    "claim": "2025年中国GDP突破140万亿元",
+    "mode": "numeric",
+    "predicted": "supported",
+    "verdict": "supported",
+    "confidence": 95,
+    "confidence_level": "high",
+    "has_official_source": true,
+    "policy_status": null,
+    "match": true,
+    "gating_applied": [],
+    "warnings": [
+      "证据1（2026-02-28统计公报）与证据2-5（2026-01-19/20初步核算）的GDP数值存在约3.11万亿元的差异，可能因核算口径或数据修正导致。",
+      "证据4（2025-07-09发改委预测）为预测值，与最终核算数据存在偏差，但属于正常预测范畴。"
+    ],
+    "evidence_count": 5,
+    "evidence_top": [
+      {
+        "url": "https://www.gov.cn/lianbo/202602/content_7059980.htm",
+        "source_type": "official",
+        "authority": 1.0,
+        "support": "strong",
+        "agency": "国家统计局",
+        "snippet": "初步核算，全年国内生产总值137.08万亿元，比上年增长5.0%。"
+      },
+      {
+        "url": "https://www.stats.gov.cn/sj/zxfb/202601/t20260120_1962349.html",
+        "source_type": "regulator",
+        "authority": 1.0,
+        "support": "strong",
+        "agency": "国家统计局",
+        "snippet": "根据有关基础资料和国内生产总值（GDP）核算方法，经初步核算，我国2025年四季度和全年GDP核算结果如下。表1 2025年四季度和全年GDP初步核算数据 ... GDP ... 全年 ... 1401879 ... 绝对额（亿元）"
+      },
+      {
+        "url": "https://www.qstheory.cn/20260120/cd692f8a96be4d3989250c56cfeeeb17/c.html",
+        "source_type": "authoritative_media",
+        "authority": 0.85,
+        "support": "strong",
+        "agency": "国家统计局",
+        "snippet": "国家统计局19日发布数据显示，2025年中国国内生产总值（GDP）1401879亿元，首次跃上140万亿元新台阶，按不变价格计算，比上年增长5.0%。"
+      }
+    ],
+    "conflicts_count": 1,
+    "reasoning": "[source_authority] 2 个高权威源； [source_consistency] 5/5 相关源支持（0 neutral 已排除）； [freshness] 最新证据 2026-02-28（83 天前）； [completeness] 9/10 字段填出",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 13384,
+      "completion_tokens": 1733,
+      "total_tokens": 15117,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 28.08
+  },
+  {
+    "case_id": "MC01",
+    "claim": "国家统计局核定2023年中国GDP最终数为126.06万亿元",
+    "mode": "numeric",
+    "predicted": "contradicted",
+    "verdict": "contradicted",
+    "confidence": 62,
+    "confidence_level": "medium",
+    "has_official_source": true,
+    "policy_status": null,
+    "match": true,
+    "gating_applied": [
+      "authority_contradicted"
+    ],
+    "warnings": [
+      "claim中称'最终数'，但evidence显示2024-12-27发布的修订数据才是最终核定数，初步核算数1260582亿元已被修订。"
+    ],
+    "evidence_count": 5,
+    "evidence_top": [
+      {
+        "url": "https://app.www.gov.cn/govdata/gov/202403/01/512478/article.html",
+        "source_type": "official",
+        "authority": 1.0,
+        "support": "contradicted",
+        "agency": "国家统计局",
+        "snippet": "初步核算，全年国内生产总值[2]1260582亿元，比上年增长5.2%。"
+      },
+      {
+        "url": "https://www.stats.gov.cn/sj/zxfb/202412/t20241227_1957915.html",
+        "source_type": "regulator",
+        "authority": 1.0,
+        "support": "contradicted",
+        "agency": "国家统计局",
+        "snippet": "修订后，2023年国内生产总值为1294272亿元，比初步核算数增加33690亿元，增幅为2.7%。2023年国内生产总值修订数据与初步核算数据对比表显示，现价总量修订数为1294272亿元，初步核算数为1260582亿元。"
+      },
+      {
+        "url": "https://www.stats.gov.cn/sj/zxfb/202402/t20240228_1947915.html",
+        "source_type": "regulator",
+        "authority": 1.0,
+        "support": "contradicted",
+        "agency": "国家统计局",
+        "snippet": "初步核算，全年国内生产总值[2]1260582亿元，比上年增长5.2%。"
+      }
+    ],
+    "conflicts_count": 1,
+    "reasoning": "[source_consistency] 1/5 相关源支持（0 neutral 已排除）； [freshness] 最新证据 2024-12-27（511 天前）； [completeness] 9/10 字段填出",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 20900,
+      "completion_tokens": 1659,
+      "total_tokens": 22559,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 37.5
+  },
+  {
+    "case_id": "MD02",
+    "claim": "中华人民共和国公司法当前生效版本是2018年修正版",
+    "mode": "policy",
+    "predicted": "outdated",
+    "verdict": "outdated",
+    "confidence": 15,
+    "confidence_level": "low",
+    "has_official_source": false,
+    "policy_status": "superseded",
+    "match": true,
+    "gating_applied": [
+      "policy_superseded",
+      "no_official_source_capped_40",
+      "policy_superseded_capped_30",
+      "policy_no_official_capped_35"
+    ],
+    "warnings": [
+      "claim中的版本信息已过时，当前有效版本为2023年12月29日第二次修订版，自2024年7月1日起施行。"
+    ],
+    "evidence_count": 3,
+    "evidence_top": [
+      {
+        "url": "https://www.court.gov.cn/fabu/xiangqing/436481.html",
+        "source_type": "official",
+        "authority": 1.0,
+        "support": "contradicted",
+        "agency": "最高人民法院",
+        "snippet": "2023年12月29日第十四届全国人大常委会第七次会议第二次修订的《中华人民共和国公司法》自2024年7月1日起施行。"
+      },
+      {
+        "url": "https://sfj.gz.gov.cn/ztlm/fzxc/xfks/content/post_10375514.html",
+        "source_type": "official",
+        "authority": 0.92,
+        "support": "contradicted",
+        "agency": "全国人民代表大会常务委员会",
+        "snippet": "中华人民共和国公司法（1993年12月29日第八届全国人民代表大会常务委员会第五次会议通过 ... 2023年12月29日第十四届全国人民代表大会常务委员会第七次会议第二次修订）"
+      },
+      {
+        "url": "https://scjgj.gz.gov.cn/ztzl/ygaflfgzczl/sczrgll/gd/content/post_9736861.html",
+        "source_type": "official",
+        "authority": 0.92,
+        "support": "contradicted",
+        "agency": "全国人民代表大会常务委员会",
+        "snippet": "根据2018年10月26日第十三届全国人民代表大会常务委员会第六次会议《关于修改〈中华人民共和国公司法〉的决定》第四次修正 2023年12月29日第十四届全国人民代表大会常务委员会第七次会议第二次修订"
+      }
+    ],
+    "conflicts_count": 1,
+    "reasoning": "[source_authority] 无支持型证据； [source_consistency] 0/3 相关源支持（0 neutral 已排除）； [freshness] 已被 2023年12月29日第十四届全国人大常委会第七次会议第二次修订的《中华人民共和国公司法》自2024年7月1日起施行 替代； [completeness] 8/15 字段填出",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 13740,
+      "completion_tokens": 1324,
+      "total_tokens": 15064,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 28.18
+  },
+  {
+    "case_id": "MG01",
+    "claim": "当前中国证监会主席是易会满",
+    "mode": "entity_status",
+    "predicted": "contradicted",
+    "verdict": "partially_supported",
+    "confidence": 44,
+    "confidence_level": "medium",
+    "has_official_source": false,
+    "policy_status": null,
+    "match": false,
+    "gating_applied": [],
+    "warnings": [
+      "证据2（YouTube）无有效内容，无法用于验证",
+      "claim未提供时间戳，'当前'一词模糊，可能已过时"
+    ],
+    "evidence_count": 2,
+    "evidence_top": [
+      {
+        "url": "http://renshi.people.com.cn/n1/2019/0128/c139617-30592631.html",
+        "source_type": "authoritative_media",
+        "authority": 0.8,
+        "support": "contradicted",
+        "agency": "人民网",
+        "snippet": "2019年1月28日，国务院决定，任命易会满同志为中国证监会主席。"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=L4u7wkhvLgY",
+        "source_type": "unknown",
+        "authority": 0.3,
+        "support": "neutral",
+        "agency": null,
+        "snippet": ""
+      }
+    ],
+    "conflicts_count": 1,
+    "reasoning": "[source_consistency] 孤证不立； [freshness] 最新证据 2019-01-28（2671 天前）； [completeness] 6/6 字段填出； [claim_clarity] 缺时间锚点",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 5724,
+      "completion_tokens": 708,
+      "total_tokens": 6432,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 30.22
+  },
+  {
+    "case_id": "MZ01",
+    "claim": "中华人民共和国宪法最近一次修正是2018年3月11日",
+    "mode": "policy",
+    "predicted": "supported",
+    "verdict": "supported",
+    "confidence": 87,
+    "confidence_level": "high",
+    "has_official_source": true,
+    "policy_status": "active",
+    "match": true,
+    "gating_applied": [],
+    "warnings": [],
+    "evidence_count": 4,
+    "evidence_top": [
+      {
+        "url": "https://www.gov.cn/xinwen/2018-03/11/content_5273207.htm",
+        "source_type": "official",
+        "authority": 1.0,
+        "support": "strong",
+        "agency": "中华人民共和国全国人民代表大会",
+        "snippet": "中华人民共和国全国人民代表大会公告（第一号）……《中华人民共和国宪法修正案》已由中华人民共和国第十三届全国人民代表大会第一次会议于2018年3月11日通过，现予公布施行。"
+      },
+      {
+        "url": "http://www.npc.gov.cn/zgrdw/npc/lfzt/rlyw/node_33714.htm",
+        "source_type": "official",
+        "authority": 1.0,
+        "support": "strong",
+        "agency": "第十三届全国人民代表大会",
+        "snippet": "十三届全国人大一次会议11日下午在人民大会堂举行第三次全体会议，表决通过了《中华人民共和国宪法修正案》。中华人民共和国宪法（2018年3月11日修正）"
+      },
+      {
+        "url": "https://www.spp.gov.cn/zdgz/201803/t20180313_370458.shtml",
+        "source_type": "official",
+        "authority": 0.7,
+        "support": "strong",
+        "agency": "中华人民共和国最高人民检察院",
+        "snippet": "2018年3月11日下午3时52分。北京，人民大会堂。《中华人民共和国宪法修正案》高票表决通过。"
+      }
+    ],
+    "conflicts_count": 0,
+    "reasoning": "[source_authority] 2 个高权威源； [source_consistency] 4/4 相关源支持（0 neutral 已排除）； [freshness] 最新官方源 2018-03-13（100 月前，永久性法规（无过期/截止））； [completeness] 7/15 字段填出； [completeness] 缺必填: ['applicable_subjects']",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 14730,
+      "completion_tokens": 1413,
+      "total_tokens": 16143,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 26.13
+  },
+  {
+    "case_id": "CD01",
+    "claim": "国家医保目录2024年版调整后中成药品种数量增加了40余种",
+    "mode": "numeric",
+    "predicted": "contradicted",
+    "verdict": "contradicted",
+    "confidence": 21,
+    "confidence_level": "low",
+    "has_official_source": false,
+    "policy_status": null,
+    "match": true,
+    "gating_applied": [
+      "authority_contradicted"
+    ],
+    "warnings": [
+      "claim中的'40余种'与所有evidence均不一致，且无任何evidence支持该数值。",
+      "evidence中2023年中成药为1390种，2024年为1394种，实际净增4种，与claim的40余种差距巨大。"
+    ],
+    "evidence_count": 4,
+    "evidence_top": [
+      {
+        "url": "https://www.nhsa.gov.cn/art/2024/11/28/art_14_14884.html",
+        "source_type": "regulator",
+        "authority": 0.95,
+        "support": "contradicted",
+        "agency": "国家医疗保障局",
+        "snippet": "本轮调整后，国家医保药品目录内药品总数达到3159种，其中西药1765种、中成药1394种。"
+      },
+      {
+        "url": "https://ylbz.yn.gov.cn/index.php?c=show&id=4521",
+        "source_type": "official",
+        "authority": 0.644,
+        "support": "contradicted",
+        "agency": "云南省医疗保障局",
+        "snippet": "2023年国家医保药品目录内药品总数已增至3088种，其中西药1698种、中成药1390种。"
+      },
+      {
+        "url": "https://rst.hubei.gov.cn/bmdt/rsyw/202412/t20241205_5438115.shtml",
+        "source_type": "official",
+        "authority": 0.92,
+        "support": "contradicted",
+        "agency": "国家医保局 人力资源社会保障部",
+        "snippet": "本轮调整后，目录内药品总数达到3159种，其中西药1765种、中成药1394种。"
+      }
+    ],
+    "conflicts_count": 1,
+    "reasoning": "[source_authority] 无支持型证据； [source_consistency] 0/4 相关源支持（0 neutral 已排除）； [freshness] 最新证据 2024-12-05（533 天前）； [completeness] 8/10 字段填出",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 10305,
+      "completion_tokens": 1372,
+      "total_tokens": 11677,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 29.62
+  },
+  {
+    "case_id": "CD06",
+    "claim": "国家金融监督管理总局是2023年新组建的金融监管机构",
+    "mode": "entity_status",
+    "predicted": "supported",
+    "verdict": "supported",
+    "confidence": 85,
+    "confidence_level": "high",
+    "has_official_source": true,
+    "policy_status": null,
+    "match": true,
+    "gating_applied": [],
+    "warnings": [],
+    "evidence_count": 4,
+    "evidence_top": [
+      {
+        "url": "https://www.gov.cn/yaowen/liebiao/202305/content_6874635.htm",
+        "source_type": "official",
+        "authority": 1.0,
+        "support": "strong",
+        "agency": "中国政府网",
+        "snippet": "国家金融监督管理总局18日揭牌。中共中央政治局委员、国务院副总理何立峰出席仪式并揭牌。"
+      },
+      {
+        "url": "http://zx.zxy.hunanzx.gov.cn/szxapp/1/180/content_949865.html",
+        "source_type": "official",
+        "authority": 0.85,
+        "support": "strong",
+        "agency": "新华社",
+        "snippet": "5月18日，国家金融监督管理总局正式挂牌。今年3月，我国金融监管迎来重磅改革，中共中央、国务院印发《党和国家机构改革方案》，其中涉及金融监管领域组建国家金融监督管理总局。"
+      },
+      {
+        "url": "https://www.news.cn/politics/2023-03/07/c_1129419104.htm",
+        "source_type": "authoritative_media",
+        "authority": 0.82,
+        "support": "strong",
+        "agency": "新华社",
+        "snippet": "根据国务院关于提请审议国务院机构改革方案的议案，组建国家金融监督管理总局。统一负责除证券业之外的金融业监管，强化机构监管、行为监管、功能监管、穿透式监管、持续监管，统筹负责金融消费者权益保护，加强风险管理和防范处置，依法查处违法违规行为，作"
+      }
+    ],
+    "conflicts_count": 0,
+    "reasoning": "[source_consistency] 4/4 相关源支持（0 neutral 已排除）； [freshness] 最新证据 2023-05-18（1100 天前）； [completeness] 6/6 字段填出",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 9959,
+      "completion_tokens": 1063,
+      "total_tokens": 11022,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 28.24
+  },
+  {
+    "case_id": "CD10",
+    "claim": "民营经济促进法于2025年5月20日施行，是改革开放以来首部专门规范民营经济的法律",
+    "mode": "policy",
+    "predicted": "supported",
+    "verdict": "supported",
+    "confidence": 83,
+    "confidence_level": "high",
+    "has_official_source": true,
+    "policy_status": "active",
+    "match": true,
+    "gating_applied": [],
+    "warnings": [
+      "claim 称该法为'改革开放以来首部专门规范民营经济的法律'，证据3（国家发改委）表述为'我国第一部专门关于民营经济发展的基础性法律'，证据4（贵州省市场监管局）表述为'第一部专门关于民营经济发展的基础性法律'，均与 claim 一致，无矛盾。",
+      "claim 称施行日期为2025年5月20日，与证据2、3、4一致，无矛盾。",
+      "claim 未提及具体 document_number 或版本号，无需进行 identifier 反证检测。"
+    ],
+    "evidence_count": 5,
+    "evidence_top": [
+      {
+        "url": "https://www.spp.gov.cn/spp/fl/202504/t20250430_694754.shtml",
+        "source_type": "official",
+        "authority": 1.0,
+        "support": "contradicted",
+        "agency": "全国人民代表大会常务委员会",
+        "snippet": "中华人民共和国民营经济促进法（2025年4月30日第十四届全国人民代表大会常务委员会第十五次会议通过）"
+      },
+      {
+        "url": "https://www.court.gov.cn/zixun/xiangqing/473191.html",
+        "source_type": "official",
+        "authority": 1.0,
+        "support": "strong",
+        "agency": "最高人民法院",
+        "snippet": "2025年5月20日正式施行的民营经济促进法将改革开放特别是新时代以来党中央关于促进民营经济发展工作的重大方针政策、重大制度成果、有效实践经验转化为法律规范固化下来，为促推民营经济发展提供了法律依据。"
+      },
+      {
+        "url": "https://www.ndrc.gov.cn/wsdwhfz/202505/t20250519_1397786.html",
+        "source_type": "regulator",
+        "authority": 0.97,
+        "support": "strong",
+        "agency": "国家发展和改革委员会",
+        "snippet": "近日，十四届全国人大常委会第十五次会议表决通过《中华人民共和国民营经济促进法》（以下简称“民营经济促进法”），将于今年5月20日起施行。这是我国第一部专门关于民营经济发展的基础性法律。"
+      }
+    ],
+    "conflicts_count": 1,
+    "reasoning": "[source_authority] 3 个高权威源； [source_consistency] 3/5 相关源支持（0 neutral 已排除）； [freshness] 最新官方源 2025-08-08（10 月前，永久性法规（无过期/截止））； [completeness] 7/15 字段填出； [completeness] 缺必填: ['document_number']",
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 22716,
+      "completion_tokens": 1959,
+      "total_tokens": 24675,
+      "search_calls": 8,
+      "fetch_calls": 5
+    },
+    "elapsed_sec": 33.87
+  }
+]

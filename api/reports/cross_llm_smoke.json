@@ -1,0 +1,62 @@
+[
+  {
+    "case_id": "MZ01",
+    "model": "deepseek-chat",
+    "model_id": "deepseek/deepseek-chat",
+    "predicted": "supported",
+    "verdict": "supported",
+    "confidence": 82,
+    "has_official_source": true,
+    "policy_status": "active",
+    "match": true,
+    "evidence_count": 3,
+    "tokens": 7298,
+    "elapsed": 61.09,
+    "reasoning": "[source_authority] 2 个高权威源； [source_consistency] 2/2 相关源支持（0 neutral 已排除）； [freshness] 最新官方源 2018-04-11（99 月前，永久性法规（无过期/截止））； [completeness] 2/15 字段填出"
+  },
+  {
+    "case_id": "MZ01",
+    "model": "qwen-2.5-72b",
+    "model_id": "qwen/qwen-2.5-72b-instruct",
+    "predicted": "supported",
+    "verdict": "unverifiable",
+    "confidence": 30,
+    "has_official_source": false,
+    "policy_status": null,
+    "match": false,
+    "evidence_count": 1,
+    "tokens": 3102,
+    "elapsed": 66.03,
+    "reasoning": "[source_consistency] 孤证不立； [freshness] 缺乏官方源时间锚定； [completeness] 5/15 字段填出； [completeness] 缺必填: ['applicable_region', 'applicable_subjects']"
+  },
+  {
+    "case_id": "MZ01",
+    "model": "kimi-k2",
+    "model_id": "moonshotai/kimi-k2",
+    "predicted": "supported",
+    "verdict": "outdated",
+    "confidence": 30,
+    "has_official_source": true,
+    "policy_status": "superseded",
+    "match": false,
+    "evidence_count": 3,
+    "tokens": 7208,
+    "elapsed": 62.45,
+    "reasoning": "[source_consistency] 2/2 相关源支持（0 neutral 已排除）； [freshness] 已被 中华人民共和国宪法修正案（2023年3月11日通过并施行） 替代； [completeness] 6/15 字段填出； [completeness] 缺必填: ['applic"
+  },
+  {
+    "case_id": "MZ01",
+    "model": "qwen3-235b",
+    "model_id": "qwen/qwen3-235b-a22b",
+    "predicted": "supported",
+    "verdict": "supported",
+    "confidence": 84,
+    "has_official_source": true,
+    "policy_status": "active",
+    "match": true,
+    "evidence_count": 3,
+    "tokens": 10087,
+    "elapsed": 61.99,
+    "reasoning": "[source_authority] 3 个高权威源； [source_consistency] 2/2 相关源支持（0 neutral 已排除）； [freshness] 最新官方源 2018-03-11（100 月前，永久性法规（无过期/截止））； [completeness] 6/15 字段填"
+  }
+]

@@ -1,0 +1,845 @@
+[
+  {
+    "case_id": "MA01",
+    "claim": "中华人民共和国民营经济促进法于2025年5月20日起施行",
+    "mode": "policy",
+    "predicted": "supported",
+    "actual_verdict": "supported",
+    "actual_confidence": 89,
+    "confidence_level": "high",
+    "policy_status": "active",
+    "has_official_source": true,
+    "match": true,
+    "gating_applied": [],
+    "evidence_summary": [
+      {
+        "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202505/t20250520_1397832.html",
+        "source_type": "regulator",
+        "authority": 0.97,
+        "support": "strong",
+        "snippet": "《中华人民共和国民营经济促进法》已由十四届全国人大常委会第十五次会议于2025年4月30日通过，自2025年5月20日起施行。",
+        "claims_about_keys": [
+          "title",
+          "issuing_agency",
+          "agency_level",
+          "document_number",
+          "publish_date",
+          "effective_date",
+          "expire_date",
+          "applicable_region",
+          "applicable_subjects",
+          "benefit_amount"
+        ]
+      },
+      {
+        "url": "https://www.cac.gov.cn/2025-04/30/c_1747719110261160.htm",
+        "source_type": "regulator",
+        "authority": 0.95,
+        "support": "strong",
+        "snippet": "4月30日，十四届全国人大常委会第十五次会议表决通过民营经济促进法，自2025年5月20日起施行。",
+        "claims_about_keys": [
+          "title",
+          "issuing_agency",
+          "agency_level",
+          "document_number",
+          "publish_date",
+          "effective_date",
+          "expire_date",
+          "applicable_region",
+          "applicable_subjects",
+          "benefit_amount"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "missing_fields": [
+      "application_conditions",
+      "application_process",
+      "benefit_amount",
+      "contact_info",
+      "deadline",
+      "document_number",
+      "expire_date",
+      "required_materials"
+    ],
+    "queries_generated": [
+      "中华人民共和国民营经济促进法 施行日期 2025年5月20日",
+      "民营经济促进法 2025年5月20日 生效",
+      "全国人大 民营经济促进法 施行 2025",
+      "民营经济促进法 实施时间 2025年5月20日"
+    ],
+    "fetch_summary": [
+      {
+        "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202505/t20250520_1397832.html",
+        "status": "ok",
+        "content_len": 1827,
+        "title": "【关于学习宣传和贯彻实施《中华人民共和国民营经济促进法》的通知(发改办民营〔2025〕486号)】-国家发展和改革委员会"
+      },
+      {
+        "url": "https://www.cac.gov.cn/2025-04/30/c_1747719110261160.htm",
+        "status": "ok",
+        "content_len": 486,
+        "title": "民营经济促进法出台！自今年5月20日起施行_中央网络安全和信息化委员会办公室"
+      }
+    ],
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 4499,
+      "completion_tokens": 889,
+      "total_tokens": 5388,
+      "search_calls": 0,
+      "fetch_calls": 0,
+      "breakdown": [
+        {
+          "label": "query_planner",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 280,
+          "completion": 175,
+          "total": 455
+        },
+        {
+          "label": "fact_extractor",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 1883,
+          "completion": 270,
+          "total": 2153
+        },
+        {
+          "label": "fact_extractor",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 1172,
+          "completion": 250,
+          "total": 1422
+        },
+        {
+          "label": "cross_validator",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 1164,
+          "completion": 194,
+          "total": 1358
+        }
+      ]
+    },
+    "elapsed_sec": 13.46
+  },
+  {
+    "case_id": "MA02",
+    "claim": "2025年中国新能源汽车销量超过1300万辆",
+    "mode": "numeric",
+    "predicted": "supported",
+    "actual_verdict": "unverifiable",
+    "actual_confidence": 30,
+    "confidence_level": "low",
+    "policy_status": null,
+    "has_official_source": false,
+    "match": false,
+    "gating_applied": [
+      "low_confidence"
+    ],
+    "evidence_summary": [
+      {
+        "url": "https://www.news.cn/fortune/20260114/cbbd861081c349d8ae238167ca418fa3/c.html",
+        "source_type": "authoritative_media",
+        "authority": 0.82,
+        "support": "contradicted",
+        "snippet": "2025年，我国汽车产销量均突破3400万辆，再创历史新高。新能源汽车产销量均超1600万辆，新能源汽车国内新车销量占比突破50%。新能源汽车产销分别完成1662.6万辆和1649万辆。",
+        "claims_about_keys": [
+          "metric_name",
+          "metric_value",
+          "metric_unit",
+          "time_period",
+          "applicable_region",
+          "data_source",
+          "measurement_method",
+          "publish_date",
+          "yoy_change",
+          "qoq_change"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "field": "metric_value",
+        "values": [
+          "1300",
+          "1649"
+        ],
+        "level": "high",
+        "resolved": true,
+        "arbitration_note": "新华社引用中国汽车工业协会数据，2025年新能源汽车销量为1649万辆，与claim的1300万辆不符。新华社为国家级权威媒体，数据来源明确，且发布时间晚于claim，故以1649万辆为准。"
+      }
+    ],
+    "missing_fields": [
+      "qoq_change"
+    ],
+    "queries_generated": [
+      "2025年中国新能源汽车销量 1300万辆",
+      "2025年新能源汽车销量 中国 数据",
+      "中国汽车工业协会 2025年新能源汽车销量",
+      "2025年新能源汽车销量统计 1300万"
+    ],
+    "fetch_summary": [
+      {
+        "url": "https://www.news.cn/fortune/20260114/cbbd861081c349d8ae238167ca418fa3/c.html",
+        "status": "ok",
+        "content_len": 506,
+        "title": "2025年我国新能源汽车产销量双超1600万辆-新华网"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/3593800.html",
+        "status": "blocked",
+        "content_len": 0,
+        "title": ""
+      }
+    ],
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 2316,
+      "completion_tokens": 541,
+      "total_tokens": 2857,
+      "search_calls": 0,
+      "fetch_calls": 0,
+      "breakdown": [
+        {
+          "label": "query_planner",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 274,
+          "completion": 145,
+          "total": 419
+        },
+        {
+          "label": "fact_extractor",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 1192,
+          "completion": 238,
+          "total": 1430
+        },
+        {
+          "label": "cross_validator",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 850,
+          "completion": 158,
+          "total": 1008
+        }
+      ]
+    },
+    "elapsed_sec": 10.02
+  },
+  {
+    "case_id": "MC01",
+    "claim": "国家统计局核定2023年中国GDP最终数为126.06万亿元",
+    "mode": "numeric",
+    "predicted": "contradicted",
+    "actual_verdict": "contradicted",
+    "actual_confidence": 24,
+    "confidence_level": "low",
+    "policy_status": null,
+    "has_official_source": false,
+    "match": true,
+    "gating_applied": [
+      "authority_contradicted"
+    ],
+    "evidence_summary": [
+      {
+        "url": "https://www.stats.gov.cn/sj/zxfb/202412/t20241227_1957915.html",
+        "source_type": "regulator",
+        "authority": 1.0,
+        "support": "contradicted",
+        "snippet": "修订后，2023年国内生产总值为1294272亿元，比初步核算数增加33690亿元，增幅为2.7%。",
+        "claims_about_keys": [
+          "metric_name",
+          "metric_value",
+          "metric_unit",
+          "time_period",
+          "applicable_region",
+          "data_source",
+          "measurement_method",
+          "publish_date",
+          "yoy_change",
+          "qoq_change"
+        ]
+      },
+      {
+        "url": "https://www.stats.gov.cn/sj/sjjd/202412/t20241227_1957914.html",
+        "source_type": "regulator",
+        "authority": 1.0,
+        "support": "contradicted",
+        "snippet": "修订后，2023年GDP为1294272亿元，比初步核算数增加33690亿元，增幅为2.7%。",
+        "claims_about_keys": [
+          "metric_name",
+          "metric_value",
+          "metric_unit",
+          "time_period",
+          "applicable_region",
+          "data_source",
+          "measurement_method",
+          "publish_date",
+          "yoy_change",
+          "qoq_change"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "field": "metric_value",
+        "values": [
+          "126.06万亿元",
+          "129.4272万亿元"
+        ],
+        "level": "high",
+        "resolved": true,
+        "arbitration_note": "国家统计局2024-12-27发布修订后数据为129.4272万亿元，原始claim的126.06万亿元为初步核算数，已被官方修订取代。"
+      }
+    ],
+    "missing_fields": [
+      "qoq_change",
+      "yoy_change"
+    ],
+    "queries_generated": [
+      "国家统计局 2023年 GDP 最终核实 126.06万亿元",
+      "2023年中国GDP最终核实数 国家统计局",
+      "国家统计局 2023年GDP最终数 126.06万亿",
+      "2023年GDP最终核实 126.06万亿元 国家统计局"
+    ],
+    "fetch_summary": [
+      {
+        "url": "https://www.stats.gov.cn/sj/zxfb/202412/t20241227_1957915.html",
+        "status": "ok",
+        "content_len": 583,
+        "title": "国家统计局关于修订2023年国内生产总值数据的公告 - 国家统计局"
+      },
+      {
+        "url": "https://www.stats.gov.cn/sj/sjjd/202412/t20241227_1957914.html",
+        "status": "ok",
+        "content_len": 2200,
+        "title": "国家统计局核算司负责人就2023年GDP数据修订问题答记者问 - 国家统计局"
+      }
+    ],
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 4688,
+      "completion_tokens": 840,
+      "total_tokens": 5528,
+      "search_calls": 0,
+      "fetch_calls": 0,
+      "breakdown": [
+        {
+          "label": "query_planner",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 278,
+          "completion": 172,
+          "total": 450
+        },
+        {
+          "label": "fact_extractor",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 2050,
+          "completion": 230,
+          "total": 2280
+        },
+        {
+          "label": "fact_extractor",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 1197,
+          "completion": 283,
+          "total": 1480
+        },
+        {
+          "label": "cross_validator",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 1163,
+          "completion": 155,
+          "total": 1318
+        }
+      ]
+    },
+    "elapsed_sec": 12.09
+  },
+  {
+    "case_id": "MD02",
+    "claim": "中华人民共和国公司法当前生效版本是2018年修正版",
+    "mode": "policy",
+    "predicted": "outdated",
+    "actual_verdict": "contradicted",
+    "actual_confidence": 35,
+    "confidence_level": "low",
+    "policy_status": "active",
+    "has_official_source": false,
+    "match": false,
+    "gating_applied": [
+      "authority_contradicted",
+      "no_official_source_capped_40",
+      "policy_no_official_capped_35"
+    ],
+    "evidence_summary": [
+      {
+        "url": "http://www.npc.gov.cn/npc/c2/c30834/202312/t20231229_433954.html",
+        "source_type": "official",
+        "authority": 1.0,
+        "support": "contradicted",
+        "snippet": "十四届全国人大常委会第七次会议12月29日表决通过新修订的公司法，于2024年7月1日起施行。",
+        "claims_about_keys": [
+          "title",
+          "issuing_agency",
+          "agency_level",
+          "document_number",
+          "publish_date",
+          "effective_date",
+          "expire_date",
+          "applicable_region",
+          "applicable_subjects",
+          "benefit_amount"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "field": "effective_date",
+        "values": [
+          "2018年修正版（claim）",
+          "2024年7月1日（evidence）"
+        ],
+        "level": "high",
+        "resolved": true,
+        "arbitration_note": "全国人大常委会官方发布新修订公司法于2024年7月1日施行，表明2018年修正版已被取代，claim中的版本已过时。"
+      }
+    ],
+    "missing_fields": [
+      "application_conditions",
+      "application_process",
+      "benefit_amount",
+      "contact_info",
+      "deadline",
+      "document_number",
+      "expire_date",
+      "required_materials"
+    ],
+    "queries_generated": [
+      "中华人民共和国公司法 2018年修正版 生效",
+      "公司法 2018修正 现行有效",
+      "全国人大常委会 公司法 2018 修正 公告",
+      "site:gov.cn 公司法 2018 修正 版本"
+    ],
+    "fetch_summary": [
+      {
+        "url": "http://www.npc.gov.cn/npc/c2/c30834/202312/t20231229_433954.html",
+        "status": "ok",
+        "content_len": 423,
+        "title": "我国公司法完成修订于2024年7月1日起施行_中国人大网"
+      }
+    ],
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 2288,
+      "completion_tokens": 716,
+      "total_tokens": 3004,
+      "search_calls": 0,
+      "fetch_calls": 0,
+      "breakdown": [
+        {
+          "label": "query_planner",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 276,
+          "completion": 147,
+          "total": 423
+        },
+        {
+          "label": "fact_extractor",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 1147,
+          "completion": 258,
+          "total": 1405
+        },
+        {
+          "label": "cross_validator",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 865,
+          "completion": 311,
+          "total": 1176
+        }
+      ]
+    },
+    "elapsed_sec": 9.75
+  },
+  {
+    "case_id": "C2_05",
+    "claim": "中华人民共和国反垄断法自2008年8月1日起施行至今未做修改",
+    "mode": "policy",
+    "predicted": "contradicted",
+    "actual_verdict": "contradicted",
+    "actual_confidence": 35,
+    "confidence_level": "low",
+    "policy_status": "active",
+    "has_official_source": false,
+    "match": true,
+    "gating_applied": [
+      "authority_contradicted",
+      "no_official_source_capped_40",
+      "policy_no_official_capped_35"
+    ],
+    "evidence_summary": [
+      {
+        "url": "http://www.npc.gov.cn/npc/c2/c30834/202206/t20220624_318276.html",
+        "source_type": "official",
+        "authority": 1.0,
+        "support": "contradicted",
+        "snippet": "《全国人民代表大会常务委员会关于修改<中华人民共和国反垄断法>的决定》已由中华人民共和国第十三届全国人民代表大会常务委员会第三十五次会议于2022年6月24日通过，现予公布，自2022年8月1日起施行。",
+        "claims_about_keys": [
+          "title",
+          "issuing_agency",
+          "agency_level",
+          "document_number",
+          "publish_date",
+          "effective_date",
+          "expire_date",
+          "applicable_region",
+          "applicable_subjects",
+          "benefit_amount"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "field": "effective_date",
+        "values": [
+          "2008-08-01 (原始施行)",
+          "2022-08-01 (修改后施行)"
+        ],
+        "level": "high",
+        "resolved": true,
+        "arbitration_note": "官方证据显示2022年6月24日通过修改决定，2022年8月1日起施行修改版，直接反驳claim'至今未做修改'。"
+      }
+    ],
+    "missing_fields": [
+      "applicable_region",
+      "applicable_subjects",
+      "application_conditions",
+      "application_process",
+      "benefit_amount",
+      "contact_info",
+      "deadline",
+      "expire_date",
+      "required_materials"
+    ],
+    "queries_generated": [
+      "中华人民共和国反垄断法 施行日期 2008年8月1日",
+      "反垄断法 2008年8月1日 施行",
+      "全国人大常委会 反垄断法 修改 记录",
+      "反垄断法 修正案 2020 2021 2022"
+    ],
+    "fetch_summary": [
+      {
+        "url": "http://www.npc.gov.cn/npc/c2/c30834/202206/t20220624_318276.html",
+        "status": "ok",
+        "content_len": 143,
+        "title": "中华人民共和国主席令_中国人大网"
+      }
+    ],
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 2149,
+      "completion_tokens": 782,
+      "total_tokens": 2931,
+      "search_calls": 0,
+      "fetch_calls": 0,
+      "breakdown": [
+        {
+          "label": "query_planner",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 282,
+          "completion": 189,
+          "total": 471
+        },
+        {
+          "label": "fact_extractor",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 986,
+          "completion": 272,
+          "total": 1258
+        },
+        {
+          "label": "cross_validator",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 881,
+          "completion": 321,
+          "total": 1202
+        }
+      ]
+    },
+    "elapsed_sec": 13.18
+  },
+  {
+    "case_id": "C2_06",
+    "claim": "国家税务总局2025年第8号公告规定研发费用加计扣除比例统一为100%",
+    "predicted": "contradicted",
+    "actual_verdict": "unverifiable",
+    "actual_confidence": 0,
+    "skipped_reason": "全部 URL 抓取失败",
+    "fetch_summary": [
+      {
+        "url": "https://fgk.chinatax.gov.cn/zcfgk/c102416/c5201978/content.html",
+        "status": "blocked",
+        "content_len": 0,
+        "title": ""
+      }
+    ],
+    "elapsed_sec": 0.96
+  },
+  {
+    "case_id": "C2_06",
+    "error": "'token_usage'"
+  },
+  {
+    "case_id": "MZ01",
+    "claim": "中华人民共和国宪法最近一次修正是2018年3月11日",
+    "mode": "policy",
+    "predicted": "supported",
+    "actual_verdict": "supported",
+    "actual_confidence": 78,
+    "confidence_level": "high",
+    "policy_status": "active",
+    "has_official_source": true,
+    "match": true,
+    "gating_applied": [],
+    "evidence_summary": [
+      {
+        "url": "http://www.npc.gov.cn/zgrdw/npc/xinwen/2018-03/12/content_2049190.htm",
+        "source_type": "official",
+        "authority": 1.0,
+        "support": "strong",
+        "snippet": "中华人民共和国宪法修正案（2018年3月11日第十三届全国人民代表大会第一次会议通过）",
+        "claims_about_keys": [
+          "title",
+          "issuing_agency",
+          "agency_level",
+          "document_number",
+          "publish_date",
+          "effective_date",
+          "expire_date",
+          "applicable_region",
+          "applicable_subjects",
+          "benefit_amount"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "missing_fields": [
+      "applicable_subjects",
+      "application_conditions",
+      "application_process",
+      "benefit_amount",
+      "contact_info",
+      "deadline",
+      "document_number",
+      "expire_date",
+      "required_materials"
+    ],
+    "queries_generated": [
+      "中华人民共和国宪法 最近一次修正 2018年3月11日",
+      "宪法修正案 2018 年 3 月 11 日 通过",
+      "2018年宪法修正案 全国人大 表决 日期",
+      "site:gov.cn 宪法 修正 2018 年 3 月 11 日"
+    ],
+    "fetch_summary": [
+      {
+        "url": "http://www.npc.gov.cn/zgrdw/npc/xinwen/2018-03/12/content_2049190.htm",
+        "status": "ok",
+        "content_len": 4617,
+        "title": "中华人民共和国宪法修正案_中国人大网"
+      }
+    ],
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 4314,
+      "completion_tokens": 591,
+      "total_tokens": 4905,
+      "search_calls": 0,
+      "fetch_calls": 0,
+      "breakdown": [
+        {
+          "label": "query_planner",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 278,
+          "completion": 177,
+          "total": 455
+        },
+        {
+          "label": "fact_extractor",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 3180,
+          "completion": 244,
+          "total": 3424
+        },
+        {
+          "label": "cross_validator",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 856,
+          "completion": 170,
+          "total": 1026
+        }
+      ]
+    },
+    "elapsed_sec": 8.79
+  },
+  {
+    "case_id": "CD01",
+    "claim": "国家医保目录2024年版调整后中成药品种数量增加了40余种",
+    "mode": "numeric",
+    "predicted": "contradicted",
+    "actual_verdict": "unverifiable",
+    "actual_confidence": 24,
+    "confidence_level": "low",
+    "policy_status": null,
+    "has_official_source": false,
+    "match": false,
+    "gating_applied": [
+      "low_confidence"
+    ],
+    "evidence_summary": [
+      {
+        "url": "https://www.nhsa.gov.cn/art/2024/11/28/art_14_14884.html",
+        "source_type": "official",
+        "authority": 0.85,
+        "support": "contradicted",
+        "snippet": "本轮调整后，国家医保药品目录内药品总数达到3159种，其中西药1765种、中成药1394种。",
+        "claims_about_keys": [
+          "metric_name",
+          "metric_value",
+          "metric_unit",
+          "time_period",
+          "applicable_region",
+          "data_source",
+          "measurement_method",
+          "publish_date",
+          "yoy_change",
+          "qoq_change"
+        ]
+      },
+      {
+        "url": "https://cn.chinadaily.com.cn/a/202411/28/WS6747e44fa310b59111da5f4a.html",
+        "source_type": "authoritative_media",
+        "authority": 0.72,
+        "support": "contradicted",
+        "snippet": "在今年的调整中，有91种药品新增进入国家医保药品目录，其中89种以谈判/竞价方式纳入，另有2种国家集采中选药品直接纳入，同时43种临床已被替代或长期未生产供应的药品被调出。新增91种药品中，主要包括26种肿瘤用药（含4种罕见病）、15种糖尿",
+        "claims_about_keys": [
+          "metric_name",
+          "metric_value",
+          "metric_unit",
+          "time_period",
+          "applicable_region",
+          "data_source",
+          "measurement_method",
+          "publish_date",
+          "yoy_change",
+          "qoq_change"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "field": "中成药品种数量增加",
+        "values": [
+          "40余种",
+          "11种"
+        ],
+        "level": "high",
+        "resolved": true,
+        "arbitration_note": "官方来源（国家医疗保障局）未直接给出增加数量，但给出了2024年版中成药总数1394种；中国日报网报道新增中成药11种。根据机关层级（national）和时间（均为2024-11-28），官方数据优先。官方总数1394种与claim的'增加40余种'无法直接对应，且第三方报道明确新增仅11种，故认定claim contradicted。"
+      }
+    ],
+    "missing_fields": [
+      "qoq_change",
+      "yoy_change"
+    ],
+    "queries_generated": [
+      "国家医保目录2024年版调整中成药品种数量增加40余种",
+      "国家医保局 2024年 医保目录 中成药 新增 品种 数量",
+      "医保发〔2024〕 中成药 品种 增加 40",
+      "2024年 国家医保目录 中成药 品种 变化 官方 通知"
+    ],
+    "fetch_summary": [
+      {
+        "url": "https://www.nhsa.gov.cn/art/2024/11/28/art_14_14884.html",
+        "status": "ok",
+        "content_len": 1204,
+        "title": "国家医疗保障局 医保动态 国家医保局 人力资源社会保障部印发2024年版国家医保药品目录"
+      },
+      {
+        "url": "https://cn.chinadaily.com.cn/a/202411/28/WS6747e44fa310b59111da5f4a.html",
+        "status": "ok",
+        "content_len": 1940,
+        "title": "2024年版国家医保药品目录出炉，新增91种药品 - 中国日报网"
+      }
+    ],
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 5056,
+      "completion_tokens": 943,
+      "total_tokens": 5999,
+      "search_calls": 0,
+      "fetch_calls": 0,
+      "breakdown": [
+        {
+          "label": "query_planner",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 281,
+          "completion": 208,
+          "total": 489
+        },
+        {
+          "label": "fact_extractor",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 1575,
+          "completion": 217,
+          "total": 1792
+        },
+        {
+          "label": "fact_extractor",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 2022,
+          "completion": 300,
+          "total": 2322
+        },
+        {
+          "label": "cross_validator",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 1178,
+          "completion": 218,
+          "total": 1396
+        }
+      ]
+    },
+    "elapsed_sec": 13.34
+  }
+]

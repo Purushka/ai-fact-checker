@@ -1,0 +1,74 @@
+# 50 case 平衡测试集 — 用于 bare vs system 配对显著性实验
+# 分布：
+#   A 训练应该熟（裸应对）: 12
+#   B 训练有但需 search 验证: 8
+#   C 训练已过期/被替代: 10
+#   D 训练截止后事件: 8
+#   E 地方/园区具体: 6
+#   F adversarial: 4
+#   G 主观/无效: 2
+# 总: 50
+
+# === A: 训练应该熟（裸 DeepSeek 高概率正确）===
+{"id":"A01","claim":"中华人民共和国宪法最近一次修正是2018年3月11日","mode":"policy","ground_truth":"supported","category":"A_known"}
+{"id":"A02","claim":"中华人民共和国增值税基本税率为13%","mode":"policy","ground_truth":"supported","category":"A_known"}
+{"id":"A03","claim":"国家统计局是国务院直属机构","mode":"entity_status","ground_truth":"supported","category":"A_known"}
+{"id":"A04","claim":"中华人民共和国民法典自2021年1月1日起施行","mode":"policy","ground_truth":"supported","category":"A_known"}
+{"id":"A05","claim":"国务院新一代人工智能发展规划文号为国发〔2017〕35号","mode":"policy","ground_truth":"supported","category":"A_known"}
+{"id":"A06","claim":"个人所得税法规定居民个人综合所得适用百分之三至百分之四十五的超额累进税率","mode":"policy","ground_truth":"supported","category":"A_known"}
+{"id":"A07","claim":"中国人民银行是国务院组成部门，承担中央银行职责","mode":"entity_status","ground_truth":"supported","category":"A_known"}
+{"id":"A08","claim":"中华人民共和国劳动法规定标准工时为每日不超过八小时","mode":"policy","ground_truth":"supported","category":"A_known"}
+{"id":"A09","claim":"中华人民共和国刑法是1979年制定、1997年大幅修订的","mode":"policy","ground_truth":"supported","category":"A_known"}
+{"id":"A10","claim":"OpenAI 公司创始 CEO 是 Sam Altman","mode":"entity_status","ground_truth":"supported","category":"A_known"}
+{"id":"A11","claim":"全国人大是中国最高国家权力机关","mode":"entity_status","ground_truth":"supported","category":"A_known"}
+{"id":"A12","claim":"国家发改委是国务院组成部门","mode":"entity_status","ground_truth":"supported","category":"A_known"}
+
+# === B: 训练数据有但需 search 验证具体数字 ===
+{"id":"B01","claim":"2023年中国新能源汽车销量达到949.5万辆","mode":"numeric","ground_truth":"supported","category":"B_known_numeric"}
+{"id":"B02","claim":"2023年中国新生儿数量为902万人","mode":"numeric","ground_truth":"supported","category":"B_known_numeric"}
+{"id":"B03","claim":"2024年中国汽车出口585万辆居世界第一","mode":"numeric","ground_truth":"supported","category":"B_known_numeric"}
+{"id":"B04","claim":"2024年中国进出口总值达到43.85万亿元","mode":"numeric","ground_truth":"supported","category":"B_known_numeric"}
+{"id":"B05","claim":"2022年末中国总人口为14.12亿人","mode":"numeric","ground_truth":"supported","category":"B_known_numeric"}
+{"id":"B06","claim":"2023年中国GDP同比增长5.2%","mode":"numeric","ground_truth":"supported","category":"B_known_numeric"}
+{"id":"B07","claim":"国务院2024年发行1万亿元超长期特别国债","mode":"policy","ground_truth":"supported","category":"B_known_numeric"}
+{"id":"B08","claim":"2024年中央一号文件聚焦学习运用千万工程经验","mode":"policy","ground_truth":"supported","category":"B_known_numeric"}
+
+# === C: 训练已过期/被替代（裸大概率 confidently 错）===
+{"id":"C01","claim":"中华人民共和国公司法当前生效版本是2018年修正版","mode":"policy","ground_truth":"outdated","category":"C_outdated"}
+{"id":"C02","claim":"中华人民共和国行政复议法当前有效版本于2017年修订","mode":"policy","ground_truth":"outdated","category":"C_outdated"}
+{"id":"C03","claim":"中华人民共和国民事诉讼法最近一次修订是2017年","mode":"policy","ground_truth":"outdated","category":"C_outdated"}
+{"id":"C04","claim":"反垄断法自2008年8月1日起施行至今未做修改","mode":"policy","ground_truth":"outdated","category":"C_outdated"}
+{"id":"C05","claim":"中华人民共和国合同法是当前调整合同关系的基本法律","mode":"policy","ground_truth":"outdated","category":"C_outdated"}
+{"id":"C06","claim":"当前中国证监会主席是易会满","mode":"entity_status","ground_truth":"contradicted","category":"C_outdated"}
+{"id":"C07","claim":"个人所得税法规定3岁以下婴幼儿照护专项附加扣除为每月1000元","mode":"policy","ground_truth":"contradicted","category":"C_outdated"}
+{"id":"C08","claim":"2023年中国GDP最终核定数为126.06万亿元","mode":"numeric","ground_truth":"contradicted","category":"C_outdated"}
+{"id":"C09","claim":"中国银行保险监督管理委员会是当前主要金融监管机构","mode":"entity_status","ground_truth":"outdated","category":"C_outdated"}
+{"id":"C10","claim":"《国家中长期人才发展规划纲要(2010—2020年)》是当前人才工作的主要依据","mode":"policy","ground_truth":"outdated","category":"C_outdated"}
+
+# === D: 训练截止后事件（2024 末-2026）===
+{"id":"D01","claim":"中华人民共和国民营经济促进法于2025年5月20日起施行","mode":"policy","ground_truth":"supported","category":"D_post_cutoff"}
+{"id":"D02","claim":"2025年中国GDP突破140万亿元","mode":"numeric","ground_truth":"supported","category":"D_post_cutoff"}
+{"id":"D03","claim":"2025年中国新能源汽车销量达到1649万辆","mode":"numeric","ground_truth":"supported","category":"D_post_cutoff"}
+{"id":"D04","claim":"国家金融监督管理总局于2023年5月18日揭牌","mode":"entity_status","ground_truth":"supported","category":"D_post_cutoff"}
+{"id":"D05","claim":"2026年中央一号文件主题是扎实推进乡村全面振兴","mode":"policy","ground_truth":"supported","category":"D_post_cutoff"}
+{"id":"D06","claim":"国务院2025年发布《关于深入实施人工智能+行动的意见》(国发〔2025〕11号)","mode":"policy","ground_truth":"supported","category":"D_post_cutoff"}
+{"id":"D07","claim":"2024年版国家医保目录新增91种药品其中中成药11种","mode":"numeric","ground_truth":"supported","category":"D_post_cutoff"}
+{"id":"D08","claim":"全国人大常委会2024年9月通过渐进式延迟法定退休年龄决定","mode":"policy","ground_truth":"supported","category":"D_post_cutoff"}
+
+# === E: 地方/园区具体 ===
+{"id":"E01","claim":"深圳市对登记失业人员实施一次性创业补贴每人1万元","mode":"policy","ground_truth":"partially_supported","category":"E_local"}
+{"id":"E02","claim":"苏州工业园区集成电路设计企业IP购买补贴最高300万元","mode":"policy","ground_truth":"supported","category":"E_local"}
+{"id":"E03","claim":"杭州未来科技城是国家级海外高层次人才创新创业基地","mode":"entity_status","ground_truth":"supported","category":"E_local"}
+{"id":"E04","claim":"北京市海淀区中关村科学城对AI产业每年支持总额超过10亿元","mode":"policy","ground_truth":"supported","category":"E_local"}
+{"id":"E05","claim":"青岛市2025年对首次创业的高校毕业生发放5000元一次性创业补贴","mode":"policy","ground_truth":"partially_supported","category":"E_local"}
+{"id":"E06","claim":"上海浦东新区张江高科技园区有专门的生物医药产业扶持政策","mode":"policy","ground_truth":"supported","category":"E_local"}
+
+# === F: 数字 misinformation（adversarial）===
+{"id":"F01","claim":"国务院2025年宣布对所有创业企业免征企业所得税3年","mode":"policy","ground_truth":"contradicted","category":"F_misinformation"}
+{"id":"F02","claim":"国家统计局公布2023年中国新生儿数量达到1500万人","mode":"numeric","ground_truth":"contradicted","category":"F_misinformation"}
+{"id":"F03","claim":"2024年中国法定退休年龄已统一调整为65岁","mode":"policy","ground_truth":"contradicted","category":"F_misinformation"}
+{"id":"F04","claim":"国家医保目录2024年版调整后中成药品种数量增加了40余种","mode":"numeric","ground_truth":"contradicted","category":"F_misinformation"}
+
+# === G: 主观/无效 ===
+{"id":"G01","claim":"上海是中国最适合创业的城市","mode":"general","ground_truth":"out_of_scope","category":"G_subjective"}
+{"id":"G02","claim":"AI 创业项目比传统行业更有前景","mode":"general","ground_truth":"out_of_scope","category":"G_subjective"}

@@ -1,0 +1,243 @@
+[
+  {
+    "case_id": "MA02",
+    "claim": "2025年中国新能源汽车销量超过1300万辆",
+    "mode": "numeric",
+    "predicted": "supported",
+    "actual_verdict": "partially_supported",
+    "actual_confidence": 71,
+    "confidence_level": "medium",
+    "policy_status": null,
+    "has_official_source": false,
+    "match": false,
+    "gating_applied": [],
+    "evidence_summary": [
+      {
+        "url": "https://www.news.cn/fortune/20260114/cbbd861081c349d8ae238167ca418fa3/c.html",
+        "source_type": "authoritative_media",
+        "authority": 0.82,
+        "support": "strong",
+        "snippet": "2025年，我国汽车产销量均突破3400万辆，再创历史新高。新能源汽车产销量均超1600万辆，新能源汽车国内新车销量占比突破50%。新能源汽车产销分别完成1662.6万辆和1649万辆，同比分别增长29%和28.2%，连续11年位居全球第一",
+        "claims_about_keys": [
+          "metric_name",
+          "metric_value",
+          "metric_unit",
+          "time_period",
+          "applicable_region",
+          "data_source",
+          "measurement_method",
+          "publish_date",
+          "yoy_change",
+          "qoq_change"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "field": "metric_value",
+        "values": [
+          "1300",
+          "1649"
+        ],
+        "level": "high",
+        "resolved": true,
+        "arbitration_note": "新华社（国家级权威媒体）引用中国汽车工业协会数据，明确2025年新能源汽车销量为1649万辆。claim中的1300万辆与权威数据严重不符，差值达349万辆，远超合理误差范围。"
+      }
+    ],
+    "missing_fields": [
+      "measurement_method",
+      "qoq_change"
+    ],
+    "queries_generated": [
+      "2025年中国新能源汽车销量 1300万辆",
+      "2025年新能源汽车销量 中国 数据",
+      "中国汽车工业协会 2025年新能源汽车销量",
+      "2025年新能源汽车销量统计 1300万"
+    ],
+    "fetch_summary": [
+      {
+        "url": "https://www.news.cn/fortune/20260114/cbbd861081c349d8ae238167ca418fa3/c.html",
+        "status": "ok",
+        "content_len": 506,
+        "title": "2025年我国新能源汽车产销量双超1600万辆-新华网"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/3593800.html",
+        "status": "blocked",
+        "content_len": 0,
+        "title": ""
+      }
+    ],
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 2724,
+      "completion_tokens": 694,
+      "total_tokens": 3418,
+      "search_calls": 0,
+      "fetch_calls": 0,
+      "breakdown": [
+        {
+          "label": "query_planner",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 274,
+          "completion": 145,
+          "total": 419
+        },
+        {
+          "label": "fact_extractor",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 1475,
+          "completion": 250,
+          "total": 1725
+        },
+        {
+          "label": "cross_validator",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 975,
+          "completion": 299,
+          "total": 1274
+        }
+      ]
+    },
+    "elapsed_sec": 13.74
+  },
+  {
+    "case_id": "CD01",
+    "claim": "国家医保目录2024年版调整后中成药品种数量增加了40余种",
+    "mode": "numeric",
+    "predicted": "contradicted",
+    "actual_verdict": "contradicted",
+    "actual_confidence": 24,
+    "confidence_level": "low",
+    "policy_status": null,
+    "has_official_source": false,
+    "match": true,
+    "gating_applied": [
+      "authority_contradicted"
+    ],
+    "evidence_summary": [
+      {
+        "url": "https://www.nhsa.gov.cn/art/2024/11/28/art_14_14884.html",
+        "source_type": "regulator",
+        "authority": 0.95,
+        "support": "contradicted",
+        "snippet": "本轮调整后，国家医保药品目录内药品总数达到3159种，其中西药1765种、中成药1394种。",
+        "claims_about_keys": [
+          "metric_name",
+          "metric_value",
+          "metric_unit",
+          "time_period",
+          "applicable_region",
+          "data_source",
+          "measurement_method",
+          "publish_date",
+          "yoy_change",
+          "qoq_change"
+        ]
+      },
+      {
+        "url": "https://cn.chinadaily.com.cn/a/202411/28/WS6747e44fa310b59111da5f4a.html",
+        "source_type": "authoritative_media",
+        "authority": 0.72,
+        "support": "contradicted",
+        "snippet": "新增91种药品中，主要包括26种肿瘤用药（含4种罕见病）、15种糖尿病等慢性病用药（含2种罕见病）、13种罕见病用药、7种抗感染用药、11种中成药，以及精神类、其他领域用药。",
+        "claims_about_keys": [
+          "metric_name",
+          "metric_value",
+          "metric_unit",
+          "time_period",
+          "applicable_region",
+          "data_source",
+          "measurement_method",
+          "publish_date",
+          "yoy_change",
+          "qoq_change"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "field": "metric_value",
+        "values": [
+          "40余种",
+          "11种"
+        ],
+        "level": "high",
+        "resolved": true,
+        "arbitration_note": "官方来源（国家医保局）显示2024年版目录中成药总数为1394种，但未直接给出增加数量；中国日报网报道新增中成药为11种，与claim的40余种严重不符。根据机关层级（national）和时间新旧（均为2024-11-28），优先采信官方数据，但官方未提供增加数量，故以第三方报道的11种为准，claim的40余种被证伪。"
+      }
+    ],
+    "missing_fields": [
+      "qoq_change",
+      "yoy_change"
+    ],
+    "queries_generated": [
+      "国家医保目录2024年版 中成药 品种 增加 40余种",
+      "2024年国家医保目录 中成药 调整 新增 数量",
+      "国家医保局 2024 医保目录 中成药 品种 变化",
+      "2024版国家医保目录 中成药 增加 40种"
+    ],
+    "fetch_summary": [
+      {
+        "url": "https://www.nhsa.gov.cn/art/2024/11/28/art_14_14884.html",
+        "status": "ok",
+        "content_len": 1204,
+        "title": "国家医疗保障局 医保动态 国家医保局 人力资源社会保障部印发2024年版国家医保药品目录"
+      },
+      {
+        "url": "https://cn.chinadaily.com.cn/a/202411/28/WS6747e44fa310b59111da5f4a.html",
+        "status": "ok",
+        "content_len": 1940,
+        "title": "2024年版国家医保药品目录出炉，新增91种药品 - 中国日报网"
+      }
+    ],
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 5679,
+      "completion_tokens": 970,
+      "total_tokens": 6649,
+      "search_calls": 0,
+      "fetch_calls": 0,
+      "breakdown": [
+        {
+          "label": "query_planner",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 281,
+          "completion": 177,
+          "total": 458
+        },
+        {
+          "label": "fact_extractor",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 1858,
+          "completion": 217,
+          "total": 2075
+        },
+        {
+          "label": "fact_extractor",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 2305,
+          "completion": 243,
+          "total": 2548
+        },
+        {
+          "label": "cross_validator",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "prompt": 1235,
+          "completion": 333,
+          "total": 1568
+        }
+      ]
+    },
+    "elapsed_sec": 12.1
+  }
+]
