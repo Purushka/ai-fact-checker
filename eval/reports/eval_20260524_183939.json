@@ -1,0 +1,80 @@
+{
+  "run_id": "20260524_183939",
+  "mode": "mock",
+  "bench_path": "eval\\data\\benchmark_cn.jsonl",
+  "generated_at": "2026-05-24T18:39:39",
+  "metrics": {
+    "n_total": 55,
+    "n_correct": 2,
+    "accuracy": 0.036,
+    "macro_f1": 0.035,
+    "per_class": {
+      "supported": {
+        "support": 20,
+        "precision": 0.667,
+        "recall": 0.1,
+        "f1": 0.174
+      },
+      "contradicted": {
+        "support": 25,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "outdated": {
+        "support": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "unverifiable": {
+        "support": 10,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "partially_supported": {
+        "support": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    "avg_latency_sec": 2.52,
+    "avg_tokens": 1404,
+    "avg_cost_yuan": 0.047
+  },
+  "by_category": {
+    "safety": {
+      "n": 13,
+      "correct": 0,
+      "accuracy": 0.0
+    },
+    "tech": {
+      "n": 9,
+      "correct": 0,
+      "accuracy": 0.0
+    },
+    "social": {
+      "n": 3,
+      "correct": 0,
+      "accuracy": 0.0
+    },
+    "health": {
+      "n": 5,
+      "correct": 0,
+      "accuracy": 0.0
+    },
+    "policy": {
+      "n": 19,
+      "correct": 2,
+      "accuracy": 0.105
+    },
+    "finance": {
+      "n": 6,
+      "correct": 0,
+      "accuracy": 0.0
+    }
+  },
+  "results": null
+}
