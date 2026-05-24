@@ -10,6 +10,7 @@ from __future__ import annotations
 import asyncio
 import re
 from contextlib import asynccontextmanager
+from typing import Literal
 
 from .base import FetchedPage, Fetcher
 
@@ -92,7 +93,7 @@ class PlaywrightFetcher(Fetcher):
         if not title and m:
             title = m.group(1).strip()
 
-        status = "ok" if content.strip() else "empty"
+        status: Literal["ok", "empty"] = "ok" if content.strip() else "empty"
         return FetchedPage(
             url=url,
             final_url=url,

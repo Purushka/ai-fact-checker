@@ -31,7 +31,12 @@ class BingProvider(SearchProvider):
             query = query + " " + " ".join(f"-site:{d}" for d in exclude_domains)
 
         headers = {"Ocp-Apim-Subscription-Key": self.api_key}
-        params = {"q": query, "count": limit, "mkt": "zh-CN", "responseFilter": "Webpages"}
+        params: dict[str, str | int] = {
+            "q": query,
+            "count": limit,
+            "mkt": "zh-CN",
+            "responseFilter": "Webpages",
+        }
 
         async with httpx.AsyncClient(timeout=timeout) as client:
             resp = await client.get(f"{self.base_url}/search", params=params, headers=headers)

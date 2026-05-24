@@ -349,7 +349,7 @@ class ErrorResponse(BaseModel):
 
 
 def make_error(code: str, message: str, details: dict | None = None) -> ErrorResponse:
-    err = {"code": code, "message": message}
+    err: dict[str, Any] = {"code": code, "message": message}
     if details:
         err["details"] = details
     return ErrorResponse(error=err)
