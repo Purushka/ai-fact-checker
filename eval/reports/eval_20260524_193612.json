@@ -1,0 +1,1091 @@
+{
+  "run_id": "20260524_193612",
+  "mode": "live",
+  "bench_path": "eval\\data\\benchmark_cn.jsonl",
+  "generated_at": "2026-05-24T19:36:12",
+  "metrics": {
+    "n_total": 55,
+    "n_correct": 27,
+    "accuracy": 0.491,
+    "macro_f1": 0.276,
+    "per_class": {
+      "supported": {
+        "support": 20,
+        "precision": 0.655,
+        "recall": 0.95,
+        "f1": 0.776
+      },
+      "contradicted": {
+        "support": 25,
+        "precision": 0.625,
+        "recall": 0.2,
+        "f1": 0.303
+      },
+      "outdated": {
+        "support": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "unverifiable": {
+        "support": 10,
+        "precision": 0.3,
+        "recall": 0.3,
+        "f1": 0.3
+      },
+      "partially_supported": {
+        "support": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    "avg_latency_sec": 26.4,
+    "avg_tokens": 12174,
+    "avg_cost_yuan": 0.1009
+  },
+  "by_category": {
+    "safety": {
+      "n": 13,
+      "correct": 3,
+      "accuracy": 0.231
+    },
+    "tech": {
+      "n": 9,
+      "correct": 5,
+      "accuracy": 0.556
+    },
+    "social": {
+      "n": 3,
+      "correct": 0,
+      "accuracy": 0.0
+    },
+    "health": {
+      "n": 5,
+      "correct": 2,
+      "accuracy": 0.4
+    },
+    "policy": {
+      "n": 19,
+      "correct": 13,
+      "accuracy": 0.684
+    },
+    "finance": {
+      "n": 6,
+      "correct": 4,
+      "accuracy": 0.667
+    }
+  },
+  "results": [
+    {
+      "id": "P001",
+      "claim": "油锅起火时可以用水、汽水等方式进行灭火",
+      "ground_truth": "contradicted",
+      "category": "safety",
+      "source_url": "https://www.piyao.org.cn/20231109/9fe3516f69dd4f1483e58f7b032be95a/c.html",
+      "evidence_summary": "实验表明，水遇高温油品会形成剧烈反应导致爆燃，增加火灾风险，正确方法是用锅盖或湿毛巾覆盖灭火。",
+      "truth": "油锅起火时用水、汽水灭火会加剧火势，应使用锅盖覆盖或湿毛巾覆盖",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "unverifiable",
+      "predicted_confidence": 30,
+      "predicted_ci": [
+        30,
+        39
+      ],
+      "elapsed": 20.71,
+      "tokens": 4549,
+      "search_calls": 8
+    },
+    {
+      "id": "P002",
+      "claim": "取暖器能烤万物，洋芋地瓜臭豆腐，橘子糍粑火草粑，鸡蛋烤肉火腿肠，也都统统安排。煮米线，烫火锅，炒花生，原本平平无奇的取暖器顿时成了可以一物多用的‘美食神器’。",
+      "ground_truth": "contradicted",
+      "category": "safety",
+      "source_url": "https://www.piyao.org.cn/20241226/50758faa717b4360bcc95ae3e35b3a3c/c.html",
+      "evidence_summary": "消防测试显示取暖器温度极高，烤肉时油脂接触发热管会产生明火，且覆盖毛巾仅需3分钟即可引燃。",
+      "truth": "取暖器用于烧烤或烘干衣物极易引发火灾，其发热管中心温度可达500℃至600℃，远超油类燃点。",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "contradicted",
+      "predicted_confidence": 71,
+      "predicted_ci": [
+        67,
+        75
+      ],
+      "elapsed": 43.06,
+      "tokens": 12164,
+      "search_calls": 8
+    },
+    {
+      "id": "P003",
+      "claim": "幼儿园突发大火！火光冲天，3分钟吞噬整栋楼！后门通道被临时堆放的教具堵死，32名孩子被迫原地躲避，直到消防员破拆窗户才脱险，该园未通过最新消防验收",
+      "ground_truth": "contradicted",
+      "category": "safety",
+      "source_url": "https://www.piyao.org.cn/20250418/9589cb97c6024bdf8a6d6c9b6527158e/c.html",
+      "evidence_summary": "山东滕州公安网安部门查实该信息为虚假编造，并对造谣者刘某某依法作出行政处罚",
+      "truth": "该信息是网民刘某某使用AI工具编造的虚假信息，毫无事实依据",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 77,
+      "predicted_ci": [
+        73,
+        81
+      ],
+      "elapsed": 25.76,
+      "tokens": 10597,
+      "search_calls": 8
+    },
+    {
+      "id": "P004",
+      "claim": "磁吸充电宝更安全",
+      "ground_truth": "contradicted",
+      "category": "safety",
+      "source_url": "https://www.piyao.org.cn/20250815/2eb5040431d74b7c8743ec5f78b58df2/c.html",
+      "evidence_summary": "浙江台州王女士的私家车因磁吸无线充电宝故障起火，消防人员提示磁吸无线充电宝对电路稳定性要求更高，购买时需确认是否通过3C认证，并避免长时间置于高温环境",
+      "truth": "磁吸充电宝并不一定安全，近期发生了一起磁吸充电宝故障起火事件",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "unverifiable",
+      "predicted_confidence": 30,
+      "predicted_ci": [
+        30,
+        43
+      ],
+      "elapsed": 26.11,
+      "tokens": 17287,
+      "search_calls": 6
+    },
+    {
+      "id": "P005",
+      "claim": "发生火灾要往高处跑",
+      "ground_truth": "contradicted",
+      "category": "safety",
+      "source_url": "https://www.piyao.org.cn/20250825/720fd615a6b643208612eb38865623af/c.html",
+      "evidence_summary": "火灾产生的烟雾和有毒气体向上扩散，高处烟雾浓度更高；高层建筑顶部逃生设施不足；火灾热量上升，高处温度更高",
+      "truth": "火灾时往高处跑是错误的，会增加窒息、中毒和烧伤的风险",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "contradicted",
+      "predicted_confidence": 31,
+      "predicted_ci": [
+        29,
+        33
+      ],
+      "elapsed": 34.2,
+      "tokens": 7234,
+      "search_calls": 8
+    },
+    {
+      "id": "P006",
+      "claim": "AI换脸技术可以突破互联网平台的人脸识别认证机制，窃取公民个人隐私数据",
+      "ground_truth": "contradicted",
+      "category": "tech",
+      "source_url": "https://www.piyao.org.cn/20250924/0629507c8c1b4683816838dfa0f6b5c6/c.html",
+      "evidence_summary": "杭州警方破获一起利用AI换脸技术突破平台认证机制的案件，犯罪团伙涉嫌非法获取计算机信息系统数据罪和侵犯公民个人信息罪，将面临刑事处罚",
+      "truth": "AI换脸技术确实存在被用于突破人脸识别认证机制的风险，但相关犯罪行为将受到法律严惩",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 93,
+      "predicted_ci": [
+        88,
+        96
+      ],
+      "elapsed": 22.38,
+      "tokens": 12302,
+      "search_calls": 8
+    },
+    {
+      "id": "P007",
+      "claim": "聚能环可聚火节能",
+      "ground_truth": "contradicted",
+      "category": "safety",
+      "source_url": "https://www.piyao.org.cn/20250925/c97f975e309146458c6385fed6d52081/c.html",
+      "evidence_summary": "国家法规明令禁止用户私自加装非原厂燃气装置，《城镇燃气管理条例》和《燃气工程项目规范》均明确禁止擅自改装燃气设施，聚能环即属此类违规产品。",
+      "truth": "聚能环不仅不节能，还易引发爆炸、中毒等事故",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "contradicted",
+      "predicted_confidence": 41,
+      "predicted_ci": [
+        39,
+        44
+      ],
+      "elapsed": 22.62,
+      "tokens": 7365,
+      "search_calls": 6
+    },
+    {
+      "id": "P008",
+      "claim": "电动车上的锂电池进入电梯更容易自燃",
+      "ground_truth": "contradicted",
+      "category": "safety",
+      "source_url": "https://www.piyao.org.cn/20250930/86698b5450eb4566a250beb3b2b40657/c.html",
+      "evidence_summary": "专家指出锂电池自燃由热失控引发，与电梯环境无直接关联，但电梯密闭空间会加剧事故后果",
+      "truth": "电梯运行中产生的轻微超重或失重不会导致锂电池自燃，自燃的根本原因是热失控",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 73,
+      "predicted_ci": [
+        69,
+        77
+      ],
+      "elapsed": 29.55,
+      "tokens": 8636,
+      "search_calls": 8
+    },
+    {
+      "id": "P009",
+      "claim": "70岁以上老人坐火车半价",
+      "ground_truth": "contradicted",
+      "category": "social",
+      "source_url": "https://www.piyao.org.cn/20251029/57a4a48efeab4ff383432b999ea934a5/c.html",
+      "evidence_summary": "中国互联网联合辟谣平台指出，AI仿真主播编造的虚假政策，如‘70岁以上老人坐火车半价’，是子虚乌有的，旨在误导老年人。",
+      "truth": "该政策是虚假的，不存在70岁以上老人坐火车半价的官方政策",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "unverifiable",
+      "predicted_confidence": 30,
+      "predicted_ci": [
+        30,
+        34
+      ],
+      "elapsed": 28.84,
+      "tokens": 15992,
+      "search_calls": 8
+    },
+    {
+      "id": "P010",
+      "claim": "用AI工具生成高度逼真的‘流浪汉卧坐餐厅’图片发给家人",
+      "ground_truth": "contradicted",
+      "category": "safety",
+      "source_url": "https://www.piyao.org.cn/20251029/6cbade801d3c4e3a9dff3584ea072c57/c.html",
+      "evidence_summary": "安徽一女子用AI生成图片引发警方出警，民警确认是虚惊后对其行为进行了批评和提醒，指出此类行为浪费公共资源，可能触犯法律。",
+      "truth": "此类行为若造成严重后果，可能触犯法律红线，面临拘留罚款甚至刑事责任",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "partially_supported",
+      "predicted_confidence": 73,
+      "predicted_ci": [
+        69,
+        77
+      ],
+      "elapsed": 22.93,
+      "tokens": 10942,
+      "search_calls": 8
+    },
+    {
+      "id": "P011",
+      "claim": "某品牌新能源汽车充'劣质电'，引发一起车辆自燃",
+      "ground_truth": "contradicted",
+      "category": "safety",
+      "source_url": "https://www.piyao.org.cn/20251106/3e6d83a2fe1b451d981b30cdb5b7e1d1/c.html",
+      "evidence_summary": "北京顺义警方通报证实，陈某为恶搞利用网传图片杜撰事实，已被刑事强制措施。",
+      "truth": "该消息系陈某为博眼球编造的谣言，实际车辆自燃与充电无关",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "partially_supported",
+      "predicted_confidence": 45,
+      "predicted_ci": [
+        43,
+        48
+      ],
+      "elapsed": 24.82,
+      "tokens": 10806,
+      "search_calls": 8
+    },
+    {
+      "id": "P012",
+      "claim": "芜湖又发生特大爆炸火灾",
+      "ground_truth": "contradicted",
+      "category": "safety",
+      "source_url": "https://www.piyao.org.cn/20251110/db72aac67abd44e3a382ab9475bdc779/c.html",
+      "evidence_summary": "芜湖市公安局经开分局核实，该时段芜湖未发生火灾，视频实为外地火灾现场，发布者已被警方依法处理。",
+      "truth": "芜湖该时段未发生火灾，视频为外地火灾现场",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "partially_supported",
+      "predicted_confidence": 53,
+      "predicted_ci": [
+        50,
+        56
+      ],
+      "elapsed": 21.8,
+      "tokens": 9898,
+      "search_calls": 6
+    },
+    {
+      "id": "P013",
+      "claim": "消费者利用AI伪造商品有问题的图片申请‘仅退款’",
+      "ground_truth": "contradicted",
+      "category": "social",
+      "source_url": "https://www.piyao.org.cn/20251117/f617f0c54b0d42b2ad65931ea650d368/c.html",
+      "evidence_summary": "律师指出该行为违反《民法典》及《治安管理处罚法》，可能面临民事赔偿或行政处罚，金额较大时构成刑事诈骗。",
+      "truth": "使用AI伪造商品问题图片申请退款涉嫌民事欺诈及违法犯罪",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 86,
+      "predicted_ci": [
+        82,
+        91
+      ],
+      "elapsed": 35.06,
+      "tokens": 12865,
+      "search_calls": 8
+    },
+    {
+      "id": "P014",
+      "claim": "新能源汽车充‘劣质电’自燃",
+      "ground_truth": "contradicted",
+      "category": "safety",
+      "source_url": "https://www.piyao.org.cn/20251118/b6a755296c46442ab8e4d0e3389bf825/c.html",
+      "evidence_summary": "北京顺义警方查处了陈某利用网传图片杜撰谣言并发布在短视频平台的行为，陈某已被采取刑事强制措施。",
+      "truth": "该说法是网民陈某凭空杜撰的谣言，已被警方依法处理",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "partially_supported",
+      "predicted_confidence": 50,
+      "predicted_ci": [
+        47,
+        52
+      ],
+      "elapsed": 24.45,
+      "tokens": 9918,
+      "search_calls": 8
+    },
+    {
+      "id": "P015",
+      "claim": "喝纯净水容易缺乏微量元素",
+      "ground_truth": "contradicted",
+      "category": "health",
+      "source_url": "https://www.piyao.org.cn/20251126/578be70a8e4642b8a1fc77cd9de810e1/c.html",
+      "evidence_summary": "科信食品与健康信息交流中心专家指出，人体微量元素主要通过饮食摄取，符合国家标准的纯净水不会导致缺乏",
+      "truth": "饮用纯净水并不会影响人体对微量元素的吸收，主要吸收途径是饮食而非饮水",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "contradicted",
+      "predicted_confidence": 68,
+      "predicted_ci": [
+        64,
+        72
+      ],
+      "elapsed": 24.79,
+      "tokens": 12648,
+      "search_calls": 8
+    },
+    {
+      "id": "P016",
+      "claim": "珠峰安装电梯",
+      "ground_truth": "contradicted",
+      "category": "tech",
+      "source_url": "https://www.piyao.org.cn/20251127/e390d614de9a4cd6bd8daee62b23f96d/c.html",
+      "evidence_summary": "西藏举报官方确认相关图文视频为AI生成，提醒公众通过查源头、看细节、验逻辑等方式辨别AI谣言",
+      "truth": "珠峰装电梯的图文视频是AI生成的虚假信息",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "unverifiable",
+      "predicted_confidence": 30,
+      "predicted_ci": [
+        30,
+        36
+      ],
+      "elapsed": 26.35,
+      "tokens": 10575,
+      "search_calls": 6
+    },
+    {
+      "id": "P017",
+      "claim": "长期食用‘激素鸡蛋’致癌，双黄蛋就是激素蛋",
+      "ground_truth": "contradicted",
+      "category": "health",
+      "source_url": "https://www.piyao.org.cn/20251201/d728fc0fadd342deb023e2055992cf1f/c.html",
+      "evidence_summary": "专家指出，法律法规禁止在饲料中添加激素，且喂食激素无法提升产蛋量，反而增加蛋鸡患病风险。双黄蛋等特征是饲养过程中的自然现象，与激素无关。",
+      "truth": "‘激素鸡蛋’说法无科学依据，双黄蛋等特征是饲养过程中的自然现象",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "partially_supported",
+      "predicted_confidence": 53,
+      "predicted_ci": [
+        50,
+        56
+      ],
+      "elapsed": 34.69,
+      "tokens": 12269,
+      "search_calls": 8
+    },
+    {
+      "id": "P018",
+      "claim": "有买家用AI工具‘动手脚’，对着商品拍照后输入一句指令，比如‘让水果发霉’‘让衬衫染上污渍’‘让杯子有裂纹’，短短十几秒就能造出以假乱真的瑕疵图，转头就拿着去申请退款。",
+      "ground_truth": "contradicted",
+      "category": "safety",
+      "source_url": "https://www.piyao.org.cn/20251202/a71e50d3c73342ff93a724fdf238211e/c.html",
+      "evidence_summary": "根据法律规定，使用AI工具伪造商品瑕疵图骗取退款的行为已构成违法，可能面临民事赔偿、行政处罚甚至刑事责任。",
+      "truth": "这种行为已经触碰法律红线，虚构事实骗取退款轻则需承担赔偿的民事责任，重则可能面临治安拘留、罚款的行政处罚，若涉案金额达标，还可能涉嫌诈骗犯罪，依法承担刑事责任。",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 88,
+      "predicted_ci": [
+        83,
+        92
+      ],
+      "elapsed": 25.03,
+      "tokens": 9060,
+      "search_calls": 8
+    },
+    {
+      "id": "P019",
+      "claim": "新标准要求电动自行车安装金属鞍座。",
+      "ground_truth": "contradicted",
+      "category": "safety",
+      "source_url": "https://www.piyao.org.cn/20251204/fa4811499ff84d40ac50ffa08cbc5bbf/c.html",
+      "evidence_summary": "新标准第6.4.1条款b）规定座椅材料应符合防火阻燃要求，目前大多数新标准车型使用发泡材料座椅，满足标准。",
+      "truth": "新标准并未要求电动自行车安装金属鞍座，而是要求座椅材料符合防火阻燃要求。",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 77,
+      "predicted_ci": [
+        73,
+        81
+      ],
+      "elapsed": 21.31,
+      "tokens": 9714,
+      "search_calls": 8
+    },
+    {
+      "id": "P020",
+      "claim": "奥司他韦、玛巴洛沙韦已出现耐药情况",
+      "ground_truth": "contradicted",
+      "category": "health",
+      "source_url": "https://www.piyao.org.cn/20251205/5895253a7aa24fa4a46a077720a699d0/c.html",
+      "evidence_summary": "中国疾控中心发布的流感监测周报显示，当前流行的甲型H3N2亚型流感病毒对我国上市的抗流感病毒药物敏感，药物有效。",
+      "truth": "临床上未出现普遍的奥司他韦、玛巴洛沙韦耐药情况",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "unverifiable",
+      "predicted_confidence": 30,
+      "predicted_ci": [
+        30,
+        36
+      ],
+      "elapsed": 24.09,
+      "tokens": 13117,
+      "search_calls": 8
+    },
+    {
+      "id": "P021",
+      "claim": "广州街头草皮被人工‘染绿’",
+      "ground_truth": "contradicted",
+      "category": "social",
+      "source_url": "https://www.piyao.org.cn/20251205/6774450795b346ddbc1618efd78298f3/c.html",
+      "evidence_summary": "白云区城管部门确认该药剂为常规园林养护产品，不影响草坪生长且安全，但因易引发误解已停止使用。",
+      "truth": "喷洒的是园林养护药剂‘莱恩坪安坪绿美’，对人体和动物无危害，用于草坪景观优化和促进生长。",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 84,
+      "predicted_ci": [
+        79,
+        88
+      ],
+      "elapsed": 23.31,
+      "tokens": 11512,
+      "search_calls": 6
+    },
+    {
+      "id": "P022",
+      "claim": "不法商家仿冒全红婵形象带货土特产，售出发霉、结块蜂蜜",
+      "ground_truth": "contradicted",
+      "category": "tech",
+      "source_url": "https://www.piyao.org.cn/20251208/41da9921cdbf41a9b7e489499bc74023/c.html",
+      "evidence_summary": "文章列举多个实例（如全红婵、李梓萌等被仿冒案例），指出AI深度伪造技术滥用导致虚假宣传和侵权问题，监管部门已处置大量仿冒账号并开出罚单。",
+      "truth": "AI仿冒公众人物直播带货属于侵权行为，产品宣传与实际不符",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "partially_supported",
+      "predicted_confidence": 68,
+      "predicted_ci": [
+        65,
+        72
+      ],
+      "elapsed": 34.62,
+      "tokens": 11004,
+      "search_calls": 8
+    },
+    {
+      "id": "P023",
+      "claim": "穿聚酯纤维会使微塑料进入血液。",
+      "ground_truth": "contradicted",
+      "category": "health",
+      "source_url": "https://www.piyao.org.cn/20251209/089c16a7702840b39cbe96da62998dd4/c.html",
+      "evidence_summary": "东华大学纺织学院教授黄晨指出，聚酯纤维纺织品在使用寿命内基本不释放微塑料，健康皮肤能有效阻挡微塑料吸收，目前无证据表明微塑料会通过穿着进入血液循环。",
+      "truth": "科学证据表明正常穿着聚酯纤维几乎不会导致微塑料透过皮肤进入血液。",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "unverifiable",
+      "predicted_confidence": 30,
+      "predicted_ci": [
+        30,
+        66
+      ],
+      "elapsed": 22.2,
+      "tokens": 10703,
+      "search_calls": 8
+    },
+    {
+      "id": "P024",
+      "claim": "把手机放进电饭锅内胆，狂点屏幕，抢票成功率就能直线上升",
+      "ground_truth": "contradicted",
+      "category": "tech",
+      "source_url": "https://www.piyao.org.cn/20251219/44be0633c1b641d7b8efe36eac9e65de/c.html",
+      "evidence_summary": "电饭锅的金属内胆会反射和吸收无线电波，导致手机信号衰减，增加网络延迟和掉线风险，从而降低抢票成功率。",
+      "truth": "将手机放进电饭锅会显著降低抢票成功率，因为电饭锅的金属结构会屏蔽电磁波，导致手机信号更弱、延迟更高",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "unverifiable",
+      "predicted_confidence": 30,
+      "predicted_ci": [
+        30,
+        37
+      ],
+      "elapsed": 20.18,
+      "tokens": 8523,
+      "search_calls": 6
+    },
+    {
+      "id": "P025",
+      "claim": "锂电池必须完全放电再充电，否则会‘钝化’",
+      "ground_truth": "contradicted",
+      "category": "tech",
+      "source_url": "https://www.piyao.org.cn/20251219/9bf78efc1ecc458abcda28c295ad6bd1/c.html",
+      "evidence_summary": "锂电池工作原理与早期镍镉、镍氢电池不同，几乎没有记忆效应，深度放电会对电池内部化学物质造成压力，加速老化",
+      "truth": "锂电池没有记忆效应，完全放电再充电反而会加速电池老化",
+      "source": "piyao.org.cn",
+      "scraped_at": "2026-05-24",
+      "predicted_verdict": "contradicted",
+      "predicted_confidence": 32,
+      "predicted_ci": [
+        30,
+        34
+      ],
+      "elapsed": 23.68,
+      "tokens": 10436,
+      "search_calls": 8
+    },
+    {
+      "id": "M001",
+      "claim": "中华人民共和国民营经济促进法于2025年5月20日起施行",
+      "ground_truth": "supported",
+      "category": "policy",
+      "source_url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202505/t20250520_1397832.html",
+      "evidence_summary": "国家发改委办公厅发改办民营〔2025〕486号通知确认民营经济促进法自2025-05-20施行",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 91,
+      "predicted_ci": [
+        86,
+        94
+      ],
+      "elapsed": 28.42,
+      "tokens": 23269,
+      "search_calls": 8
+    },
+    {
+      "id": "M002",
+      "claim": "2024年中国进出口总值达到43.85万亿元创历史新高",
+      "ground_truth": "supported",
+      "category": "finance",
+      "source_url": "http://www.gov.cn/lianbo/bumen/202501/content_6996193.htm",
+      "evidence_summary": "海关总署2025-01-13发布2024年进出口数据，全年43.85万亿",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 91,
+      "predicted_ci": [
+        86,
+        94
+      ],
+      "elapsed": 25.07,
+      "tokens": 11531,
+      "search_calls": 8
+    },
+    {
+      "id": "M003",
+      "claim": "中华人民共和国宪法最近一次修正是2018年3月11日",
+      "ground_truth": "supported",
+      "category": "policy",
+      "source_url": "http://www.npc.gov.cn/zgrdw/npc/xinwen/2018-03/12/content_2049190.htm",
+      "evidence_summary": "第十三届全国人大第一次会议通过宪法修正案，2018-03-11",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 88,
+      "predicted_ci": [
+        83,
+        91
+      ],
+      "elapsed": 29.41,
+      "tokens": 7976,
+      "search_calls": 8
+    },
+    {
+      "id": "M004",
+      "claim": "国家金融监督管理总局是2023年新组建的金融监管机构",
+      "ground_truth": "supported",
+      "category": "finance",
+      "source_url": "http://finance.ce.cn/money/202401/29/t20240129_38885237.shtml",
+      "evidence_summary": "2023-03机构改革方案通过，2023-05-18揭牌",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 84,
+      "predicted_ci": [
+        80,
+        88
+      ],
+      "elapsed": 24.61,
+      "tokens": 9895,
+      "search_calls": 8
+    },
+    {
+      "id": "M005",
+      "claim": "2023年中国新能源汽车销量达到949.5万辆",
+      "ground_truth": "supported",
+      "category": "tech",
+      "source_url": "http://www.caam.org.cn/chn/4/cate_31/con_5238088.html",
+      "evidence_summary": "中汽协2024-01发布2023全年NEV销量949.5万辆",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 85,
+      "predicted_ci": [
+        80,
+        89
+      ],
+      "elapsed": 23.7,
+      "tokens": 14328,
+      "search_calls": 8
+    },
+    {
+      "id": "M006",
+      "claim": "个人所得税法规定居民个人综合所得适用百分之三至百分之四十五的超额累进税率",
+      "ground_truth": "supported",
+      "category": "policy",
+      "source_url": "https://www.chinatax.gov.cn/chinatax/n810341/n810755/c5044668/content.html",
+      "evidence_summary": "个人所得税法第三条规定综合所得适用3%-45%七级超额累进税率",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 88,
+      "predicted_ci": [
+        83,
+        91
+      ],
+      "elapsed": 26.11,
+      "tokens": 15150,
+      "search_calls": 8
+    },
+    {
+      "id": "M007",
+      "claim": "中华人民共和国公司法已于2023年12月29日修订通过，自2024年7月1日起施行",
+      "ground_truth": "supported",
+      "category": "policy",
+      "source_url": "http://www.npc.gov.cn/npc/c2/c30834/202312/t20231229_433954.html",
+      "evidence_summary": "十四届全国人大常委会第七次会议表决通过新修订公司法",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 90,
+      "predicted_ci": [
+        85,
+        93
+      ],
+      "elapsed": 25.96,
+      "tokens": 15708,
+      "search_calls": 10
+    },
+    {
+      "id": "M008",
+      "claim": "中华人民共和国反垄断法2022年6月24日修订通过，自2022年8月1日起施行",
+      "ground_truth": "supported",
+      "category": "policy",
+      "source_url": "http://www.npc.gov.cn/npc/c2/c30834/202206/t20220624_318276.html",
+      "evidence_summary": "十三届全国人大常委会第三十五次会议通过反垄断法修改决定",
+      "predicted_verdict": "partially_supported",
+      "predicted_confidence": 35,
+      "predicted_ci": [
+        35,
+        35
+      ],
+      "elapsed": 26.18,
+      "tokens": 4792,
+      "search_calls": 8
+    },
+    {
+      "id": "M009",
+      "claim": "中华人民共和国行政复议法2023年9月通过新修订，2024年1月1日施行",
+      "ground_truth": "supported",
+      "category": "policy",
+      "source_url": "https://www.gov.cn/yaowen/liebiao/202309/content_6901550.htm",
+      "evidence_summary": "国家主席令第九号公布行政复议法修订，2024-01-01施行",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 85,
+      "predicted_ci": [
+        80,
+        89
+      ],
+      "elapsed": 20.9,
+      "tokens": 18422,
+      "search_calls": 8
+    },
+    {
+      "id": "M010",
+      "claim": "国家发改委等部门2025年5月发出贯彻实施民营经济促进法的通知，文号为发改办民营〔2025〕486号",
+      "ground_truth": "supported",
+      "category": "policy",
+      "source_url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202505/t20250520_1397832.html",
+      "evidence_summary": "ndrc.gov.cn官网公布该文件",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 92,
+      "predicted_ci": [
+        87,
+        95
+      ],
+      "elapsed": 24.21,
+      "tokens": 17741,
+      "search_calls": 8
+    },
+    {
+      "id": "M011",
+      "claim": "国家医保目录2024年版新增91种药品",
+      "ground_truth": "supported",
+      "category": "health",
+      "source_url": "https://www.nhsa.gov.cn/art/2024/11/28/art_14_14884.html",
+      "evidence_summary": "国家医保局2024-11-28发布，新增91种药品",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 91,
+      "predicted_ci": [
+        86,
+        94
+      ],
+      "elapsed": 29.32,
+      "tokens": 9771,
+      "search_calls": 8
+    },
+    {
+      "id": "M012",
+      "claim": "2024年9月13日第十四届全国人大常委会第十一次会议通过《关于实施渐进式延迟法定退休年龄的决定》",
+      "ground_truth": "supported",
+      "category": "policy",
+      "source_url": "http://www.npc.gov.cn/npc/c2/kgfb/202409/t20240913_439534.html",
+      "evidence_summary": "npc.gov.cn全文公布该决定",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 91,
+      "predicted_ci": [
+        86,
+        94
+      ],
+      "elapsed": 22.98,
+      "tokens": 16888,
+      "search_calls": 8
+    },
+    {
+      "id": "M013",
+      "claim": "国务院《新一代人工智能发展规划》于2017年7月由国务院印发，文号为国发〔2017〕35号",
+      "ground_truth": "supported",
+      "category": "policy",
+      "source_url": "https://www.gov.cn/zhengce/content/2017-07/20/content_5211996.htm",
+      "evidence_summary": "gov.cn公布该文件，国发〔2017〕35号",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 85,
+      "predicted_ci": [
+        80,
+        88
+      ],
+      "elapsed": 21.68,
+      "tokens": 8384,
+      "search_calls": 8
+    },
+    {
+      "id": "M014",
+      "claim": "中华人民共和国增值税基本税率自2019年4月1日起从16%调整为13%",
+      "ground_truth": "supported",
+      "category": "finance",
+      "source_url": "https://www.gov.cn/guowuyuan/2019-03/21/content_5375751.htm",
+      "evidence_summary": "财政部税务总局海关总署2019年第39号公告",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 91,
+      "predicted_ci": [
+        86,
+        93
+      ],
+      "elapsed": 33.21,
+      "tokens": 8075,
+      "search_calls": 8
+    },
+    {
+      "id": "M015",
+      "claim": "个人所得税法规定3岁以下婴幼儿照护专项附加扣除标准为每孩每月2000元",
+      "ground_truth": "supported",
+      "category": "policy",
+      "source_url": "http://szs.mof.gov.cn/zhengcejiedu/202308/t20230830_3904904.htm",
+      "evidence_summary": "国务院2023-08-31发布国发〔2023〕13号文件提高至2000元/月",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 94,
+      "predicted_ci": [
+        89,
+        96
+      ],
+      "elapsed": 23.05,
+      "tokens": 10829,
+      "search_calls": 8
+    },
+    {
+      "id": "M016",
+      "claim": "中国互联网络信息中心(CNNIC)第54次报告显示截至2024年6月中国网民规模近11亿人，互联网普及率达78%",
+      "ground_truth": "supported",
+      "category": "tech",
+      "source_url": "https://www.cnnic.cn/n4/2024/0829/c88-11065.html",
+      "evidence_summary": "CNNIC 第54次报告原文",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 80,
+      "predicted_ci": [
+        76,
+        84
+      ],
+      "elapsed": 21.92,
+      "tokens": 15053,
+      "search_calls": 8
+    },
+    {
+      "id": "M017",
+      "claim": "国家统计局2024年12月公布修订后的2023年中国GDP为129.4万亿元",
+      "ground_truth": "supported",
+      "category": "finance",
+      "source_url": "https://www.stats.gov.cn/sj/zxfb/202412/t20241227_1957915.html",
+      "evidence_summary": "stats.gov.cn 2024-12-27修订公告",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 92,
+      "predicted_ci": [
+        86,
+        94
+      ],
+      "elapsed": 22.74,
+      "tokens": 13112,
+      "search_calls": 8
+    },
+    {
+      "id": "M018",
+      "claim": "民营经济促进法是改革开放以来首部专门规范民营经济的法律",
+      "ground_truth": "supported",
+      "category": "policy",
+      "source_url": "https://www.ndrc.gov.cn/wsdwhfz/202505/t20250519_1397786.html",
+      "evidence_summary": "ndrc.gov.cn明确表述首部民营经济专门法",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 91,
+      "predicted_ci": [
+        86,
+        94
+      ],
+      "elapsed": 22.31,
+      "tokens": 19837,
+      "search_calls": 8
+    },
+    {
+      "id": "M019",
+      "claim": "中华人民共和国数据安全法自2021年9月1日起施行",
+      "ground_truth": "supported",
+      "category": "tech",
+      "source_url": "http://www.npc.gov.cn/npc/c30834/202106/7c9af12f51334a73b56d7938f99a788a.shtml",
+      "evidence_summary": "npc.gov.cn 主席令第八十四号公布",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 91,
+      "predicted_ci": [
+        86,
+        94
+      ],
+      "elapsed": 18.74,
+      "tokens": 14756,
+      "search_calls": 8
+    },
+    {
+      "id": "M020",
+      "claim": "中华人民共和国个人信息保护法2021年8月20日第十三届全国人大常委会第三十次会议通过",
+      "ground_truth": "supported",
+      "category": "tech",
+      "source_url": "http://www.npc.gov.cn/npc/c30834/202108/a8c4e3672c74491a80b53a172bb753fe.shtml",
+      "evidence_summary": "npc.gov.cn 主席令第九十一号公布",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 92,
+      "predicted_ci": [
+        86,
+        94
+      ],
+      "elapsed": 25.34,
+      "tokens": 20214,
+      "search_calls": 8
+    },
+    {
+      "id": "U001",
+      "claim": "国家发改委2025年发布关于促进民营经济发展的若干意见",
+      "ground_truth": "unverifiable",
+      "category": "policy",
+      "source_url": "",
+      "evidence_summary": "具体文件名'若干意见'在 ndrc.gov.cn 检索未直接命中，但 2025 有同主题《民营经济促进法》通过；claim 措辞不准但方向相近，归 unverifiable",
+      "predicted_verdict": "unverifiable",
+      "predicted_confidence": 30,
+      "predicted_ci": [
+        30,
+        75
+      ],
+      "elapsed": 37.59,
+      "tokens": 16616,
+      "search_calls": 8
+    },
+    {
+      "id": "U002",
+      "claim": "国务院2026年中央一号文件首次将AI农业作为独立章节",
+      "ground_truth": "unverifiable",
+      "category": "policy",
+      "source_url": "",
+      "evidence_summary": "2026 中央一号文件主题为'扎实推进乡村全面振兴'，但 AI 农业是否作为'独立章节'需详读全文，目前难以独立 verify",
+      "predicted_verdict": "contradicted",
+      "predicted_confidence": 65,
+      "predicted_ci": [
+        61,
+        68
+      ],
+      "elapsed": 28.73,
+      "tokens": 11060,
+      "search_calls": 8
+    },
+    {
+      "id": "U003",
+      "claim": "苏州工业园区对入驻的人工智能企业一次性给予500万元落户奖励",
+      "ground_truth": "unverifiable",
+      "category": "policy",
+      "source_url": "",
+      "evidence_summary": "苏州工业园区有产业扶持但'500万元 AI 落户奖励'具体文件未命中",
+      "predicted_verdict": "unverifiable",
+      "predicted_confidence": 30,
+      "predicted_ci": [
+        30,
+        75
+      ],
+      "elapsed": 27.68,
+      "tokens": 12400,
+      "search_calls": 8
+    },
+    {
+      "id": "U004",
+      "claim": "上海浦东新区张江高科技园区有专门的生物医药产业扶持政策",
+      "ground_truth": "unverifiable",
+      "category": "policy",
+      "source_url": "",
+      "evidence_summary": "张江有生物医药产业但'专门扶持政策'具体文件不易在公开搜索召回",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 84,
+      "predicted_ci": [
+        80,
+        89
+      ],
+      "elapsed": 31.84,
+      "tokens": 14856,
+      "search_calls": 8
+    },
+    {
+      "id": "U005",
+      "claim": "北京市海淀区中关村科学城对AI产业每年支持总额超过10亿元",
+      "ground_truth": "unverifiable",
+      "category": "policy",
+      "source_url": "",
+      "evidence_summary": "海淀有 AI 算力补贴/数据奖励等分项政策，但'每年超过10亿总额'此具体数字非单一文件可 verify",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 90,
+      "predicted_ci": [
+        85,
+        94
+      ],
+      "elapsed": 26.01,
+      "tokens": 12594,
+      "search_calls": 8
+    },
+    {
+      "id": "U006",
+      "claim": "2024年中国研发经费投入强度首次突破3%",
+      "ground_truth": "unverifiable",
+      "category": "finance",
+      "source_url": "",
+      "evidence_summary": "2023 R&D 强度 2.65%（修订后 2.58%）。2024 是否突破 3% 需查最新公报，搜索常不直接命中",
+      "predicted_verdict": "contradicted",
+      "predicted_confidence": 87,
+      "predicted_ci": [
+        82,
+        91
+      ],
+      "elapsed": 29.45,
+      "tokens": 10427,
+      "search_calls": 8
+    },
+    {
+      "id": "U007",
+      "claim": "国家中长期人才发展规划纲要（2010-2020年）是当前人才工作的主要依据",
+      "ground_truth": "unverifiable",
+      "category": "policy",
+      "source_url": "",
+      "evidence_summary": "纲要时间范围已过，但'当前主要依据'是否被新规取代不易在公开渠道一次性 verify",
+      "predicted_verdict": "supported",
+      "predicted_confidence": 77,
+      "predicted_ci": [
+        73,
+        80
+      ],
+      "elapsed": 23.14,
+      "tokens": 9639,
+      "search_calls": 8
+    },
+    {
+      "id": "U008",
+      "claim": "国家税务总局2025年第8号公告规定研发费用加计扣除比例统一为100%",
+      "ground_truth": "unverifiable",
+      "category": "finance",
+      "source_url": "",
+      "evidence_summary": "研发费用加计扣除政策真实但'2025 年第 8 号公告''统一100%'此具体文号+表述未在 chinatax.gov.cn 检索直接命中",
+      "predicted_verdict": "contradicted",
+      "predicted_confidence": 64,
+      "predicted_ci": [
+        61,
+        68
+      ],
+      "elapsed": 34.44,
+      "tokens": 14146,
+      "search_calls": 8
+    },
+    {
+      "id": "U009",
+      "claim": "杭州未来科技城对引进的国家级海外人才提供最高1000万元安家费",
+      "ground_truth": "unverifiable",
+      "category": "policy",
+      "source_url": "",
+      "evidence_summary": "未来科技城有海外人才安家费但'国家级'+'1000 万元'具体档位未在公开搜索一次性命中",
+      "predicted_verdict": "partially_supported",
+      "predicted_confidence": 35,
+      "predicted_ci": [
+        35,
+        35
+      ],
+      "elapsed": 32.31,
+      "tokens": 16020,
+      "search_calls": 8
+    },
+    {
+      "id": "U010",
+      "claim": "深圳市南山区粤海街道对辖区内独角兽企业提供办公场地补贴每平米每月50元",
+      "ground_truth": "unverifiable",
+      "category": "policy",
+      "source_url": "",
+      "evidence_summary": "南山区有专精特新办公补贴但'粤海街道独角兽专门 50 元/平米/月'此具体描述未直接命中",
+      "predicted_verdict": "unverifiable",
+      "predicted_confidence": 30,
+      "predicted_ci": [
+        30,
+        55
+      ],
+      "elapsed": 22.58,
+      "tokens": 5992,
+      "search_calls": 8
+    }
+  ]
+}
