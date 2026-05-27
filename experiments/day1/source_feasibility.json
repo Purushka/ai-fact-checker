@@ -1,0 +1,179 @@
+{
+  "bilibili": {
+    "name": "bilibili_search_api",
+    "endpoint": "api.bilibili.com/x/web-interface/search/all/v2",
+    "auth_required": false,
+    "queries_tested": 3,
+    "successes": 3,
+    "errors": [],
+    "avg_latency_s": 1.63,
+    "has_publish_date": true,
+    "publish_date_format": "unix_timestamp",
+    "sample_results": [
+      {
+        "query": "纯净水危害",
+        "title": "纯净水不能长期喝？",
+        "bvid": "BV1GW4y1t7Zc",
+        "pubdate_ts": 1661677477,
+        "play": 1358576
+      },
+      {
+        "query": "电动自行车新国标",
+        "title": "电动自行车25km/h，国标为啥更新？",
+        "bvid": "BV1PB5r6bEgp",
+        "pubdate_ts": 1778904555,
+        "play": 134820
+      },
+      {
+        "query": "草皮染绿",
+        "title": "海缸草皮珊瑚。海缸不是非得铺沙，铺草皮一样漂亮",
+        "bvid": "BV1Vh411U7Gc",
+        "pubdate_ts": 1620606198,
+        "play": 76769
+      }
+    ],
+    "verdict": "USABLE",
+    "notes": "需要 Referer header 否则被反爬；公开 API 无需 token；返回含 pubdate(unix ts)、play(播放数)、author"
+  },
+  "rss_feeds": {
+    "name": "rss_feeds",
+    "n_tested": 10,
+    "n_alive": 5,
+    "n_dead": 5,
+    "details": [
+      {
+        "name": "新华社",
+        "url": "http://www.xinhuanet.com/politics/news_politics.xml",
+        "http_status": 200,
+        "latency_s": 0.82,
+        "n_items_sampled": 5,
+        "content_type": "text/xml; charset=utf-8",
+        "verdict": "ok"
+      },
+      {
+        "name": "人民日报",
+        "url": "http://www.people.com.cn/rss/politics.xml",
+        "http_status": 200,
+        "latency_s": 0.59,
+        "n_items_sampled": 1,
+        "content_type": "text/xml",
+        "verdict": "ok"
+      },
+      {
+        "name": "光明网",
+        "url": "https://www.gmw.cn/rss/news.xml",
+        "http_status": 404,
+        "latency_s": 0.72,
+        "n_items_sampled": 0,
+        "content_type": "text/html",
+        "verdict": "no_items"
+      },
+      {
+        "name": "中国新闻网",
+        "url": "http://www.chinanews.com/rss/scroll-news.xml",
+        "http_status": 200,
+        "latency_s": 1.15,
+        "n_items_sampled": 6,
+        "content_type": "text/xml",
+        "verdict": "ok"
+      },
+      {
+        "name": "财新网",
+        "url": "https://www.caixin.com/rss/economy.xml",
+        "http_status": 200,
+        "latency_s": 1.46,
+        "n_items_sampled": 0,
+        "content_type": "text/html; charset=UTF-8",
+        "verdict": "no_items"
+      },
+      {
+        "name": "第一财经",
+        "url": "https://www.yicai.com/rss/feed/9.xml",
+        "http_status": 404,
+        "latency_s": 1.98,
+        "n_items_sampled": 0,
+        "content_type": "text/html; charset=utf-8",
+        "verdict": "no_items"
+      },
+      {
+        "name": "36氪",
+        "url": "https://36kr.com/feed",
+        "http_status": 200,
+        "latency_s": 1.99,
+        "n_items_sampled": 1,
+        "content_type": "application/rss+xml; charset=utf-8",
+        "verdict": "ok"
+      },
+      {
+        "name": "少数派",
+        "url": "https://sspai.com/feed",
+        "http_status": 200,
+        "latency_s": 0.63,
+        "n_items_sampled": 4,
+        "content_type": "application/xml; charset=UTF-8",
+        "verdict": "ok"
+      },
+      {
+        "name": "界面新闻",
+        "url": "https://www.jiemian.com/lists/95.html.rss",
+        "http_status": 404,
+        "latency_s": 1.1,
+        "n_items_sampled": 0,
+        "content_type": "text/html",
+        "verdict": "no_items"
+      },
+      {
+        "name": "澎湃新闻",
+        "url": "https://www.thepaper.cn/rss_chnId_25.jsp",
+        "http_status": 404,
+        "latency_s": 1.55,
+        "n_items_sampled": 0,
+        "content_type": "text/html; charset=utf-8",
+        "verdict": "no_items"
+      }
+    ],
+    "verdict": "PARTIAL",
+    "notes": "RSS 是被动订阅，无法做事件触发的搜索；适合主流媒体 inflow 监控，不适合定点核查"
+  },
+  "web_search": {
+    "name": "web_search_providers",
+    "providers": {
+      "bocha": {
+        "queries": 3,
+        "avg_n_results": 8,
+        "avg_n_with_date": 7.7,
+        "avg_latency_s": 1.44,
+        "errors": [],
+        "verdict": "USABLE"
+      },
+      "metaso": {
+        "queries": 3,
+        "avg_n_results": 8,
+        "avg_n_with_date": 7.7,
+        "avg_latency_s": 4.66,
+        "errors": [],
+        "verdict": "USABLE"
+      },
+      "anysearch": {
+        "queries": 3,
+        "avg_n_results": 8,
+        "avg_n_with_date": 0,
+        "avg_latency_s": 6.85,
+        "errors": [],
+        "verdict": "USABLE"
+      }
+    }
+  },
+  "piyao": {
+    "name": "piyao_org_cn",
+    "url": "https://www.piyao.org.cn/",
+    "auth_required": false,
+    "n_attempts": 5,
+    "n_success": 5,
+    "avg_latency_s": 0.48,
+    "avg_page_size_kb": 64.6,
+    "errors": [],
+    "verdict": "USABLE",
+    "notes": "已有 eval/scraper/piyao_scraper.py 完整爬虫，含 LLM 提取 ground truth；无强反爬"
+  }
+}
