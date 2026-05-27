@@ -1,0 +1,166 @@
+{
+  "claim": "新标准要求电动自行车安装金属鞍座",
+  "total_latency_s": 31.81,
+  "verdict": "partially_supported",
+  "confidence": 40,
+  "evidence_count": 1,
+  "token_usage": {
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "prompt_tokens": 4736,
+    "completion_tokens": 693,
+    "total_tokens": 5429,
+    "search_calls": 8,
+    "fetch_calls": 8
+  },
+  "response": {
+    "request_id": "ef537c3d-fafb-4b6f-9288-13fe3e53e400",
+    "input": "新标准要求电动自行车安装金属鞍座",
+    "mode": "entity_status",
+    "verdict": "partially_supported",
+    "confidence": 40,
+    "confidence_level": "medium",
+    "confidence_interval": {
+      "lo": 37,
+      "hi": 42,
+      "method": "bootstrap_5dim_n200",
+      "note": "宽度 5; 越窄越稳健"
+    },
+    "has_official_source": false,
+    "policy_status": null,
+    "policy": {
+      "title": null,
+      "issuing_agency": null,
+      "agency_level": null,
+      "document_number": null,
+      "publish_date": null,
+      "effective_date": null,
+      "expire_date": null,
+      "last_updated": null,
+      "applicable_region": [],
+      "applicable_subjects": [],
+      "benefit_amount": null,
+      "application_conditions": [],
+      "required_materials": [],
+      "application_process": null,
+      "deadline": null,
+      "contact_info": null,
+      "current_version": null,
+      "previous_versions": [],
+      "superseded_by": null
+    },
+    "missing_fields": [
+      "document_number",
+      "publish_date",
+      "effective_date",
+      "expire_date",
+      "applicable_region",
+      "applicable_subjects",
+      "benefit_amount",
+      "deadline"
+    ],
+    "warnings": [
+      "仅有一条 evidence，且为权威媒体转述行业组织澄清，缺乏官方标准文件直接佐证。"
+    ],
+    "facts": [],
+    "evidence": [
+      {
+        "source_url": "http://www.ce.cn/xwzx/gnsz/gdxw/202512/t20251205_2624507.shtml",
+        "source_name": "经济日报",
+        "source_type": "authoritative_media",
+        "authority_weight": 0.72,
+        "agency": "中国自行车协会",
+        "agency_level": "national",
+        "published_at": "2025-12-05",
+        "snippet": "针对网络上的具体疑问，中国自行车协会逐一作出澄清：当前主流车型均采用高密度发泡材料座椅，“铁皮座椅”仅为极个别企业的设计个案。",
+        "support_level": "contradicted",
+        "is_primary": true,
+        "is_independent": true,
+        "content_fingerprint": "6fb6343ce21562a9",
+        "claims_about": {
+          "entity_name": "电动自行车",
+          "entity_type": "产品",
+          "status_attribute": "座椅材质要求",
+          "status_value": "主流车型采用高密度发泡材料座椅，铁皮座椅仅为极个别企业设计个案",
+          "as_of_date": "2025-12-05",
+          "official_source": "中国自行车协会"
+        },
+        "evidence_score": null
+      }
+    ],
+    "conflicts": [
+      {
+        "field": "座椅材质要求",
+        "values": [
+          "新标准要求电动自行车安装金属鞍座",
+          "主流车型采用高密度发泡材料座椅，铁皮座椅仅为极个别企业设计个案"
+        ],
+        "level": "high",
+        "resolved": true,
+        "arbitration_note": "中国自行车协会（国家级行业组织）明确澄清，主流车型采用高密度发泡材料座椅，金属鞍座（铁皮座椅）仅为极个别企业设计个案，并非新标准要求。"
+      }
+    ],
+    "score_breakdown": {
+      "source_authority": {
+        "score": 0.0,
+        "weight": 0.4,
+        "weighted": 0.0
+      },
+      "source_consistency": {
+        "score": 50.0,
+        "weight": 0.3,
+        "weighted": 15.0
+      },
+      "freshness": {
+        "score": 75.0,
+        "weight": 0.2,
+        "weighted": 15.0
+      },
+      "completeness": {
+        "score": 100.0,
+        "weight": 0.1,
+        "weighted": 10.0
+      },
+      "claim_clarity": {
+        "score": 70.0,
+        "weight": 0.0,
+        "weighted": 0.0
+      }
+    },
+    "formula": "confidence = Σ(score_i × weight_i)，gating rules 后封顶/降级",
+    "gating_applied": [],
+    "reasoning_summary": "[source_authority] 无支持型证据； [source_consistency] 孤证不立； [freshness] 最新证据 2025-12-05（173 天前）； [completeness] 6/6 字段填出； [claim_clarity] 缺时间锚点",
+    "answer": null,
+    "propagation_timeline": {
+      "earliest_date": "2025-12-05",
+      "latest_date": "2025-12-05",
+      "n_stops": 1,
+      "stops": [
+        {
+          "source_url": "http://www.ce.cn/xwzx/gnsz/gdxw/202512/t20251205_2624507.shtml",
+          "source_name": "中国自行车协会",
+          "source_category": "local_official_media",
+          "earliest_seen": "2025-12-05",
+          "is_likely_origin": false,
+          "is_likely_amplifier": false,
+          "snippet": "针对网络上的具体疑问，中国自行车协会逐一作出澄清：当前主流车型均采用高密度发泡材料座椅，“铁皮座椅”仅为极个别企业的设计个案。"
+        }
+      ],
+      "pattern": "insufficient_data",
+      "confidence": 20,
+      "note": "时间数据不足 2 个，无法判断模式"
+    },
+    "suspected_viral_claim": false,
+    "collected_at": "2026-05-27T10:50:00Z",
+    "cache_hit": false,
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 4736,
+      "completion_tokens": 693,
+      "total_tokens": 5429,
+      "search_calls": 8,
+      "fetch_calls": 8
+    }
+  }
+}
