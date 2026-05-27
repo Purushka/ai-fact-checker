@@ -1,0 +1,26 @@
+{
+  "test_1_timestamp_ordering": {
+    "chain": {
+      "mean_kendall_tau": 1.0,
+      "monotone_rate": 1.0
+    },
+    "star": {
+      "mean_kendall_tau": 1.0,
+      "monotone_rate": 1.0
+    },
+    "balanced": {
+      "mean_kendall_tau": 0.916,
+      "monotone_rate": 0.0
+    },
+    "viral": {
+      "mean_kendall_tau": 1.0,
+      "monotone_rate": 1.0
+    }
+  },
+  "test_2_feature_extraction": {
+    "mean_abs_depth_err": 0,
+    "mean_abs_breadth_err": 1.65,
+    "perfect_depth_rate": 1.0,
+    "perfect_breadth_rate": 0.75
+  }
+}
