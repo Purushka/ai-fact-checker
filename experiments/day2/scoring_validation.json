@@ -1,0 +1,87 @@
+[
+  {
+    "case_id": "P019",
+    "claim": "新标准要求电动自行车安装金属鞍座",
+    "human_verdict": "contradicted",
+    "human_note": "实际新标准只要求座椅防火阻燃，未要求金属",
+    "system_verdict": "unverifiable",
+    "system_confidence": 30,
+    "system_confidence_level": "low",
+    "match": "PARTIAL",
+    "evidence_count": 2,
+    "has_official_source": false,
+    "reasoning_summary": "[source_authority] 无支持型证据； [source_consistency] 0/2 相关源支持（0 neutral 已排除）； [freshness] 最新证据 2025-12-03（175 天前）； [completeness] 6/6 字段填出； [claim_clarity] 缺时间锚点",
+    "warnings": [
+      "所有证据均来自主流媒体转载，缺乏原始官方发布站点的一手证据，建议补充官方标准原文。"
+    ],
+    "latency_s": 33.01,
+    "propagation_pattern": "insufficient_data",
+    "propagation_confidence": 40,
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 7659,
+      "completion_tokens": 891,
+      "total_tokens": 8550,
+      "search_calls": 8,
+      "fetch_calls": 8
+    }
+  },
+  {
+    "case_id": "P015",
+    "claim": "喝纯净水容易缺乏微量元素",
+    "human_verdict": "contradicted",
+    "human_note": "人体微量元素主要来自饮食，纯净水不影响吸收",
+    "system_verdict": "partially_supported",
+    "system_confidence": 55,
+    "system_confidence_level": "medium",
+    "match": "PARTIAL",
+    "evidence_count": 4,
+    "has_official_source": false,
+    "reasoning_summary": "[source_consistency] 1/4 相关源支持（0 neutral 已排除）； [freshness] 最新证据 2024-07-28（668 天前）； [completeness] 6/6 字段填出； [claim_clarity] 缺时间锚点",
+    "warnings": [
+      "evidence 中关于长期饮用纯净水的影响存在不同专家观点，但均不直接支持 claim '喝纯净水容易缺乏微量元素'，且多数证据明确反驳该 claim。"
+    ],
+    "latency_s": 35.57,
+    "propagation_pattern": "official_dissemination",
+    "propagation_confidence": 70,
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 13885,
+      "completion_tokens": 1280,
+      "total_tokens": 15165,
+      "search_calls": 8,
+      "fetch_calls": 8
+    }
+  },
+  {
+    "case_id": "P021",
+    "claim": "广州街头草皮被人工染绿",
+    "human_verdict": "contradicted",
+    "human_note": "实际是常规园林养护药剂，非染色",
+    "system_verdict": "partially_supported",
+    "system_confidence": 63,
+    "system_confidence_level": "medium",
+    "match": "PARTIAL",
+    "evidence_count": 8,
+    "has_official_source": false,
+    "reasoning_summary": "[source_consistency] 1/5 相关源支持（3 neutral 已排除）； [freshness] 最新证据 2025-12-25（153 天前）； [completeness] 6/6 字段填出； [claim_clarity] 缺时间锚点",
+    "warnings": [
+      "证据2（羊城晚报金羊网）和证据5（白云区城管部门）均提到使用了草坪增色剂，但证据3（新京报）称‘非染剂’，存在表述差异，但实质均为养护药剂。",
+      "证据6、7、8与广州街头草皮无关，已排除。"
+    ],
+    "latency_s": 37.71,
+    "propagation_pattern": "fact_check_corrected",
+    "propagation_confidence": 85,
+    "token_usage": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "prompt_tokens": 28647,
+      "completion_tokens": 2198,
+      "total_tokens": 30845,
+      "search_calls": 8,
+      "fetch_calls": 8
+    }
+  }
+]
