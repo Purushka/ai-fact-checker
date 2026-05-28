@@ -91,6 +91,7 @@ class CheckOptions(BaseModel):
     return_answer: bool = False
     timeout_sec: int | None = None
     use_cache: bool = True
+    use_inference_chain: bool = False  # 启用 bge-large-zh embedding 推演链（首调用加载 ~1.3GB 模型）
 
 
 class CheckRequest(BaseModel):
@@ -303,6 +304,62 @@ class PropagationTimeline(BaseModel):
     note: str | None = None
 
 
+class ChainNode(BaseModel):
+    """InferenceChain 中的单个节点 — 一份 evidence 在传播链中的位置 + embedding 相似度。"""
+
+    model_config = ConfigDict(extra="allow")
+    source_url: str
+    source_name: str | None = None
+    source_category: Literal[
+        "social_media",
+        "self_media",
+        "aggregator",
+        "mainstream_media",
+        "local_official_media",
+        "central_official_media",
+        "encyclopedia",
+        "official",
+        "fact_check_platform",
+        "other",
+    ] = "other"
+    published_at: str | None = None  # ISO date / datetime
+    snippet_preview: str | None = None  # 截断到 200 字
+    tier: float | None = None  # authority_weight 0-1
+    role: Literal["origin", "propagator", "debunker", "amplifier"] = "propagator"
+    likely_source: str | None = None  # 前置节点中相似度最高的 URL（可能的"来源"）
+    similarity_to_source: float | None = None  # 与 likely_source 的 cosine 相似度
+    all_similarities: list[dict[str, Any]] = Field(
+        default_factory=list
+    )  # [{"from": url, "similarity": 0.92}] 与所有前置节点的相似度
+
+
+class InferenceChain(BaseModel):
+    """从 evidence embedding + 时间排序推演出的信息传播链。
+
+    与 PropagationTimeline 区别：
+      - PropagationTimeline 用 URL 域名分类启发式判定 pattern，不计算 embedding
+      - InferenceChain 用 bge-large-zh embedding 计算每个节点和前置节点的 cosine
+        相似度，定位"最可能的信息来源"
+    """
+
+    model_config = ConfigDict(extra="allow")
+    nodes: list[ChainNode] = Field(default_factory=list)  # 按时间正序
+    origin: ChainNode | None = None  # 时间最早 + 优先非权威源
+    chain_length: int = 0
+    avg_similarity: float = 0.0  # 非 origin 节点的 similarity_to_source 均值
+    pattern: Literal[
+        "grassroots_viral",
+        "official_dissemination",
+        "narrative_distortion",
+        "coordinated",
+        "fact_check_corrected",
+        "insufficient_data",
+    ] = "insufficient_data"
+    timeline_hours: float | None = None  # origin 到 latest 的小时差
+    embedding_model: str = "BAAI/bge-large-zh-v1.5"
+    note: str | None = None
+
+
 class ConfidenceInterval(BaseModel):
     """置信度区间 — bootstrap on 5 dim scores 得出 [lo, hi]，反映点估计的不确定性。
 
@@ -341,6 +398,7 @@ class CheckResponse(BaseModel):
     reasoning_summary: str = ""
     answer: str | None = None
     propagation_timeline: PropagationTimeline | None = None
+    inference_chain: InferenceChain | None = None
     suspected_viral_claim: bool = False
     collected_at: str
     cache_hit: bool = False

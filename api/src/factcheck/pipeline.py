@@ -8,7 +8,7 @@ from datetime import UTC, datetime
 
 from .cache import RedisCache, build_cache
 from .config import get_settings
-from .extract import FactExtractor, QueryPlanner, TimelineBuilder
+from .extract import FactExtractor, InferenceChainBuilder, QueryPlanner, TimelineBuilder
 from .fetch import FetchOrchestrator
 from .llm import LLMMessage, get_provider
 from .schemas import (
@@ -205,6 +205,7 @@ class FactCheckPipeline:
 
         # 信息传播时间线 — 从 evidence 域名 + 时间戳反推传播路径
         timeline = None
+        inference_chain = None
         if evidences:
             ev_for_timeline = [
                 {
@@ -212,12 +213,22 @@ class FactCheckPipeline:
                     "source_name": e.source_name,
                     "source_type": e.source_type,
                     "agency": e.agency,
+                    "authority_weight": e.authority_weight,
                     "published_at": e.published_at,
                     "snippet": e.snippet,
                 }
                 for e in evidences
             ]
             timeline = TimelineBuilder().build(ev_for_timeline)
+
+            # InferenceChain（bge-large-zh embedding 推演）— 仅当显式启用，避免 1.3GB 模型常驻
+            if getattr(req.options, "use_inference_chain", False):
+                try:
+                    inference_chain = InferenceChainBuilder().build(ev_for_timeline)
+                except Exception as exc:
+                    logger.warning(
+                        "inference_chain_failed", request_id=request_id, error=str(exc)
+                    )
 
         # 传播性谣言启发式：query planner 标记的 viral claim flag
         suspected_viral = bool(getattr(plan, "suspected_viral_claim", False))
@@ -231,6 +242,7 @@ class FactCheckPipeline:
             answer=answer,
             token_acc=token_acc,
             propagation_timeline=timeline,
+            inference_chain=inference_chain,
             suspected_viral_claim=suspected_viral,
         )
 
@@ -397,6 +409,7 @@ class FactCheckPipeline:
         answer: str | None,
         token_acc: TokenAccumulator,
         propagation_timeline=None,
+        inference_chain=None,
         suspected_viral_claim: bool = False,
     ) -> CheckResponse:
         ev_models = [
@@ -482,6 +495,7 @@ class FactCheckPipeline:
             collected_at=datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z"),
             cache_hit=False,
             propagation_timeline=propagation_timeline,
+            inference_chain=inference_chain,
             suspected_viral_claim=suspected_viral_claim,
             token_usage=TokenUsage(
                 provider=token_acc.provider,
