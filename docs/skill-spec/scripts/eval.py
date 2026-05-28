@@ -3,8 +3,8 @@
 用法：
     python eval.py --cases ../tests/test_cases.jsonl --out ../reports/run_{timestamp}.json
 
-但实际「跑 Skill」需要 Claude（运行环境）来执行。本脚本生成模板报告框架，
-Claude 在 skill 调用中填入每个 case 的 actual 结果，最后用 compare.py 汇总。
+但实际「跑 Skill」需要 LLM agent（运行环境）来执行。本脚本生成模板报告框架，
+agent 在 skill 调用中填入每个 case 的 actual 结果，最后用 compare.py 汇总。
 """
 from __future__ import annotations
 
@@ -48,9 +48,9 @@ def init_report(cases: list[dict]) -> dict:
                 "ground_truth_note": c.get("ground_truth_note"),
                 "category": c.get("category"),
                 "skill_actual": None,
-                "claude_raw_actual": None,
+                "bare_llm_actual": None,
                 "matched": None,
-                "claude_raw_matched": None,
+                "bare_llm_matched": None,
                 "comments": None,
             }
             for c in cases

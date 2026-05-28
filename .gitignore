@@ -46,8 +46,9 @@ ENV/
 .idea/
 *.swp
 *.swo
+.idea_modules/
 
-# Docker
+# Docker / logs
 *.log
 
 # OS
@@ -55,10 +56,10 @@ ENV/
 Thumbs.db
 desktop.ini
 
-# Local reports (但保留 run_initial_executed.json 作为基线)
-.claude/skills/fact-check/reports/run_*.json
-!.claude/skills/fact-check/reports/run_initial_executed.json
+# Local eval reports (keep curated baselines under eval/reports/)
+eval/reports/run_*.json
+!eval/reports/run_initial_executed.json
 
-# Claude Code local settings
-.claude/settings.local.json
-
+# IDE / agent local config (user-specific)
+.cursor/
+.aider*

@@ -38,7 +38,7 @@ async def lifespan(app: FastAPI):
 def create_app() -> FastAPI:
     app = FastAPI(
         title="AI Fact Checker",
-        description="OpenClaw 创业平台准确性基础设施。提供事实核查、政策核查、行业方案审计 API。",
+        description="中文事实核查 API — 多源搜索、5 维评分、传播链推演、bge embedding 信息源定位。",
         version="0.1.0",
         default_response_class=ORJSONResponse,
         lifespan=lifespan,

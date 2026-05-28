@@ -85,7 +85,7 @@ async def main():
     fetcher = HttpFetcher()
     classifier = SourceClassifier()
 
-    out = ROOT / ".." / ".claude" / "skills" / "fact-check" / "tests" / "test_cases_v5_extra.jsonl"
+    out = ROOT / ".." / "eval" / "data" / "test_cases_v5_extra.jsonl"
     out = out.resolve()
     all_cases = []
     base_idx = 1000  # 避免与 v5_generated 的 ID 冲突

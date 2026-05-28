@@ -1,7 +1,7 @@
 [project]
 name = "factcheck"
 version = "0.1.0"
-description = "AI 事实核查 API 服务（OpenClaw 创业平台准确性基础设施）"
+description = "AI 事实核查 API 服务 — 中文政策 / 事实 / 信息溯源核查"
 requires-python = ">=3.11"
 dependencies = [
     "fastapi>=0.110",

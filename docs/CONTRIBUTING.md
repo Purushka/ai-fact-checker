@@ -1,15 +1,13 @@
-# 项目说明（给 Claude 接手用）
+# Contributing
 
-## 项目本质
+感谢有兴趣参与这个项目。下面是开发者需要知道的核心信息。
 
-AI 事实核查基础设施，服务父项目 OpenClaw 创业解决方案平台。父项目按 token 向本服务报销。无多租户，无独立备案（依附父项目）。
+## 项目两层结构
 
-## 两份等价实现
+1. **`docs/skill-spec/`** — 评分逻辑、权威源库、内容农场黑名单、字段模板等**核心配置 + 设计文档**
+2. **`api/`** — FastAPI 主服务，生产部署形态
 
-1. **Claude Skill**（`docs/skill-spec/`）：Claude 直接调用，验证用
-2. **FastAPI 服务**（`api/`）：生产部署用，部署到腾讯云与父项目同 VPC
-
-两者**共用同一份**：权威源库 / 黑名单 / 模板 / 评分逻辑。Skill 的 `scripts/` 是 standalone 版，API 的 `src/factcheck/score/` 是类化版，逻辑一一对应。**修改评分规则时两边都要改**。
+`docs/skill-spec/scripts/` 是 standalone 版评分脚本，`api/src/factcheck/score/` 是类化版，**逻辑一一对应**。修改评分规则时**两边都要改**，保持一致。
 
 ## 关键设计原则
 
@@ -17,43 +15,64 @@ AI 事实核查基础设施，服务父项目 OpenClaw 创业解决方案平台�
 2. **5 维评分 + gating**：5 维加权和不能掩盖致命缺陷，必须过 gating（如无官方源封顶 40）
 3. **返回必须可解释**：所有 confidence 都伴随 `score_breakdown` + `gating_applied` + `reasoning_summary`
 4. **内容指纹去重**：N 家媒体转载同一稿件按 1 条计入 consistency
-5. **二手引用降权 0.7**：通过 LLM 在 fact_extractor 阶段识别
+5. **二手引用降权 0.7**：通过 LLM 在 `fact_extractor` 阶段识别
+6. **LLM 调用与评分逻辑分离**：`score.py` 纯规则，`verify.py` / `extract.py` 才用 LLM
 
 ## 重要路径
 
-- `docs/skill-spec/SKILL.md` — skill 入口、当 product spec 看
-- `docs/skill-spec/pipeline.md` — 7 步执行细则
-- `docs/skill-spec/scoring.md` — 评分公式（必读）
-- `api/src/factcheck/pipeline.py` — pipeline 编排主代码
-- `api/src/factcheck/score/engine.py` — 评分引擎
-- `api/src/factcheck/score/data/source_authority.json` — 210+ 权威源（修改时注意 tier 一致性）
-- `api/src/factcheck/utils/prompts.py` — 所有 LLM prompt（这里改，逻辑就改）
-- `api/tests/test_score_engine.py` — 评分引擎 8 个 case，先跑这个再改评分逻辑
+| 路径 | 作用 |
+|---|---|
+| `docs/skill-spec/SKILL.md` | Skill 入口，等价于 product spec |
+| `docs/skill-spec/pipeline.md` | 7 步执行细则 |
+| `docs/skill-spec/scoring.md` | 评分公式（必读） |
+| `api/src/factcheck/pipeline.py` | Pipeline 主编排 |
+| `api/src/factcheck/score/engine.py` | 评分引擎 |
+| `api/src/factcheck/score/data/source_authority.json` | 210+ 权威源（修改时注意 tier 一致性） |
+| `api/src/factcheck/utils/prompts.py` | 所有 LLM prompt |
+| `api/tests/test_score_engine.py` | 评分引擎专项测试，改逻辑前先跑 |
 
-## 我已知的限制（接手前请读）
-
-详见 `PROCESS_LOG.md` 阶段三的"实测发现"和 `api/README.md` 的"已知限制"。
-
-主要：
-- Skill 阶段实测 10/22 case，准确率 80%，A 错 B 对（回归）1 个
-- A02 GDP case 暴露真实业务边界：数据修订场景预设外
-- H01 case 暴露：claim 措辞不精确时 partial vs unverifiable 边界过松，需要调 prompt
-
-## 如何运行测试
+## 开发流程
 
 ```bash
 cd api
 pip install -e ".[dev]"
-pytest                       # 所有单元测试
+pre-commit install              # 装 hook
+pytest                          # 跑所有单元测试（应 150 passed）
 pytest tests/test_score_engine.py -v   # 评分引擎专项
 ```
 
-## 如何加新权威源
+## 加新权威源
 
-编辑 `api/src/factcheck/score/data/source_authority.json` + `docs/skill-spec/data/source_authority.json`（两边都要改）。然后跑 `test_source_classify.py` 确认没回归。
+编辑两份 JSON 保持一致：
+- `api/src/factcheck/score/data/source_authority.json`
+- `docs/skill-spec/data/source_authority.json`
 
-## 不要做什么
+然后跑 `pytest tests/test_source_classify.py` 确认没回归。
 
-- 不要在 main 流程里加多租户、API Key、计费——父项目按 token 报销已经覆盖
-- 不要做"评分模型 ML 化"——评分必须确定性、可解释，规则即代码
-- 不要把 LLM 调用埋在评分引擎里——score.py 纯规则，verify.py / extract.py 才用 LLM
+## 加新 search provider
+
+参考 `api/src/factcheck/search/bocha.py` 实现 `SearchProvider` 协议，并在 `orchestrator.py` 注册。
+
+## 加新 LLM provider
+
+参考 `api/src/factcheck/llm/deepseek.py` 实现 `LLMProvider` 协议，并在 `get_provider()` 中注册。
+
+## 已知限制
+
+- 单条调用 LLM tokens ~5k，搜索 calls ~8 次，**搜索成本占总成本 97%**
+- Fetch 成功率约 50-60%（trafilatura），部分 JS 渲染的政府门户抓不到
+- 地方/最新政策搜索覆盖差（参考 `experiments/day1/source_feasibility.md`）
+- benchmark 准确率 ~50%（55 case live eval），存在改进空间
+
+## Pull Request 规范
+
+- 单一职责：一个 PR 只做一件事
+- 必须带测试：新功能需配套单元测试 + 集成测试
+- 代码格式：`ruff format` + `ruff check`，提交前自动跑 pre-commit
+- 提交信息使用 conventional commits 风格：`feat:` / `fix:` / `refactor:` / `docs:` / `test:`
+
+## 不建议做的方向
+
+- **不要把多租户 / API key / 计费埋进 main pipeline**：这些应该在 gateway 层
+- **不要做"评分模型 ML 化"**：评分必须确定性、可解释，规则即代码
+- **不要在 score.py 里调 LLM**：评分纯规则，verify.py / extract.py 才用 LLM

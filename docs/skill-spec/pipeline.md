@@ -37,7 +37,7 @@
 }
 ```
 
-**工具**：纯 Claude 推理，无外部调用。
+**工具**：纯 LLM 推理，无外部调用。
 
 ---
 
@@ -111,7 +111,7 @@
 
 **输出**：每个 URL 一个 evidence 对象（完整 evidence 结构见 SKILL.md）
 
-**工具**：纯 Claude 推理 + Bash 调 `scripts/source_classify.py`
+**工具**：纯 LLM 推理 + Bash 调 `scripts/source_classify.py`
 
 ---
 
@@ -119,7 +119,7 @@
 
 **输入**：所有 evidence + 原始 claim
 
-**操作**（4 个 phase 并行执行，全部用 Claude 推理）：
+**操作**（4 个 phase 并行执行，全部用 LLM 推理）：
 
 ### Phase A — 官方一致性
 - 筛 `source_type ∈ {official, regulator}` 的 evidence
@@ -198,7 +198,7 @@
 - 搜索调用次数：每 claim 上限 5
 - Fetch 并发：8
 - 单 URL fetch 超时：8 秒
-- LLM 推理（即 Claude 自己）每步上限不强制，但应力求简短
+- LLM 推理（即 LLM 本体）每步上限不强制，但应力求简短
 
 ## 退出条件
 

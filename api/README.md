@@ -1,19 +1,19 @@
 # AI Fact Checker API
 
-OpenClaw 创业平台的事实核查基础设施。提供事实核查、政策核查、行业方案审计 API；对父项目按 token 报销，不做多租户，不做独立备案。
+中文事实核查 API 服务 — FastAPI 主服务，提供 claim 核查、政策核查、批量审计能力。
 
 ## 关键能力
 
 - `POST /v1/check`：通用事实核查，接受 `claim` 或 `question`
-- `POST /v1/policy-check`：政策专用，强制官方源、返回结构化政策字段（适用对象/金额/条件/截止日期）
-- `POST /v1/solution-audit`：行业方案批量审计（适合 OpenClaw 行业方案知识库入库前审核）
+- `POST /v1/policy-check`：政策专用，强制官方源、返回结构化政策字段（适用对象 / 金额 / 条件 / 截止日期）
+- `POST /v1/solution-audit`：行业方案批量审计（知识库入库前的批量核查）
 - `POST /v1/check/async`：长任务异步
 - `GET  /v1/source-profiles`：内置 210+ 中文权威源
 - `GET  /v1/source-profiles/classify?url=...`：URL → 权威分
 
 ## 评分逻辑（透明、可解释）
 
-5 维加权（默认对齐父项目原 brief）：
+5 维加权（默认）：
 
 | 维度 | 默认权重 | 含义 |
 |---|---:|---|
@@ -40,7 +40,7 @@ OpenClaw 创业平台的事实核查基础设施。提供事实核查、政策�
 ```bash
 cd api
 cp .env.example .env
-# 填写至少一个 LLM key（推荐 DEEPSEEK_API_KEY）和一个 SEARCH key（推荐 TAVILY_API_KEY）
+# 填写至少一个 LLM key（推荐 DEEPSEEK_API_KEY）和一个 SEARCH key（推荐 BOCHA_API_KEY）
 
 pip install -e ".[dev]"
 uvicorn factcheck.main:app --reload
@@ -57,18 +57,17 @@ docker compose up -d
 docker compose logs -f api
 ```
 
-### 腾讯云生产部署
+### 云上部署参考
 
-推荐：与父项目同 VPC，走内网调用。
+任意支持 Docker 的云（腾讯云 CVM / 阿里云 ECS / AWS EC2 等）均可。建议配置：
 
-| 资源 | 选型 | 备注 |
+| 资源 | 推荐 | 备注 |
 |---|---|---|
-| 计算 | CVM 标准型 4C8G × 2 + Auto Scaling | api + worker 各一台起步 |
-| 网络 | 与父项目 VPC Peering | 内网调用 0 公网流量费 |
-| Redis | TencentDB for Redis 1G 单机版 | 缓存 + Celery broker |
-| PostgreSQL | TencentDB for PostgreSQL 5.x | 4C8G 标准版 |
-| LLM | 腾讯云 DeepSeek V3 serverless | 同云内网，无 egress |
-| 监控 | 腾讯云监控 + CLS | CLS 满足日志 6 个月留存 |
+| 计算 | 4C8G × 2，可水平扩展 | api + worker 各一台起步 |
+| Redis | 1G 单机版 | 缓存 + Celery broker |
+| PostgreSQL | 标准 4C8G | 历史记录持久化 |
+| LLM | DeepSeek 直连或同云内网 | 减少 egress |
+| 日志 | 任意集中式日志（CLS / Loki / ELK） | 至少 30 天保留 |
 
 ## 最小可用配置
 
@@ -77,7 +76,7 @@ docker compose logs -f api
 ```
 SHARED_SECRET=<长随机串>
 DEEPSEEK_API_KEY=<your key>
-TAVILY_API_KEY=<your key>
+BOCHA_API_KEY=<your key>
 REDIS_URL=redis://localhost:6379/0
 ```
 
@@ -126,7 +125,7 @@ curl -X POST http://localhost:8000/v1/policy-check \
 }
 ```
 
-`token_usage` 字段直接对应向父项目报销的口径。
+`token_usage` 字段直接对应运营成本核算口径（用于按调用量计费 / 摊销）。
 
 ## 项目结构
 
@@ -164,14 +163,14 @@ api/
     └── test_json_parse.py         # 容错 JSON
 ```
 
-## 与父项目的集成场景
+## 典型集成场景
 
-| 父项目业务点 | 调用方式 | 入口 |
+| 上游业务 | 调用方式 | 入口 |
 |---|---|---|
-| 8.2 地区政策入库流 | AI 抓取的政策原始页面 → 调本服务做先验核查 → 生成报告供人工审核 | `/v1/policy-check` |
-| 8.3 行业方案知识库 | AI 初稿生成后，提取 N 条事实声明批量核查 | `/v1/solution-audit` |
-| 5.5 / 9.2 对话流政策查询 | 用户问 "青岛创业补贴 2025"，对话流调本服务取证据后再生成答案 | `/v1/policy-check` 带 `question` |
-| 数字员工 Agent 输出审核 | Agent 高风险事实陈述 → 本服务核查 → 不通过则改写 | `/v1/check` |
+| 政策入库流 | AI 抓取的政策原始页面 → 先验核查 → 生成报告供人工审核 | `/v1/policy-check` |
+| 知识库内容审计 | LLM 初稿生成后，提取 N 条事实声明批量核查 | `/v1/solution-audit` |
+| 对话流政策查询 | 用户问 "青岛创业补贴 2025"，对话流调本服务取证据后再生成答案 | `/v1/policy-check` 带 `question` |
+| Agent 输出审核 | Agent 高风险事实陈述 → 本服务核查 → 不通过则改写 | `/v1/check` |
 | 大批量入库 | 一次性 100+ claim | `/v1/check/async` + Celery worker |
 
 ## 已知限制
@@ -183,4 +182,4 @@ api/
 
 ## License
 
-内部项目。
+[MIT](../LICENSE)

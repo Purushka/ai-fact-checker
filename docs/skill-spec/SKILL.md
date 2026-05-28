@@ -13,7 +13,7 @@ description: 对单条事实声明或自然语言问题进行联网核查，返�
 - 涉及 2024 年之后的事件、数据、规章
 - 涉及具体企业、人物、产品的当前状态
 - 涉及数字、比例、排名、市场份额的精确数值
-- 上游系统（OpenClaw 父项目）传入需入库的政策文本或行业方案声明
+- 上游系统传入需入库的政策文本或行业方案声明
 
 ## 何时不使用
 
@@ -153,7 +153,7 @@ description: 对单条事实声明或自然语言问题进行联网核查，返�
 - `scripts/source_classify.py` — URL → source_type + authority_weight
 - `scripts/score.py` — 评分引擎（纯规则、确定性）
 - `scripts/eval.py` — 跑测试集
-- `scripts/compare.py` — skill 判断 vs Claude 裸判断的双盲对比
+- `scripts/compare.py` — skill 判断 vs 裸 LLM 判断的双盲对比
 - `tests/test_cases.jsonl` — 测试集
 - `reports/` — 测试报告输出目录
 
