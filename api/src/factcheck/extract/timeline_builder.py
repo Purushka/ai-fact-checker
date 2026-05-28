@@ -23,7 +23,19 @@ def _domain_to_category(domain: str, source_type: str | None = None) -> str:
     if "piyao.org.cn" in d or "/piyao/" in d or "辟谣" in d:
         return "fact_check_platform"
     # 央媒
-    if any(x in d for x in ["xinhuanet.com", "news.cn", "people.cn", "people.com.cn", "cctv.com", "cctv.cn", "cnr.cn", "qstheory.cn"]):
+    if any(
+        x in d
+        for x in [
+            "xinhuanet.com",
+            "news.cn",
+            "people.cn",
+            "people.com.cn",
+            "cctv.com",
+            "cctv.cn",
+            "cnr.cn",
+            "qstheory.cn",
+        ]
+    ):
         return "central_official_media"
     # 地方融媒体（含 .gov.cn 但不是顶级部委、地方党媒）
     if d.endswith(".gov.cn") and source_type in ("official", "regulator"):
@@ -31,16 +43,51 @@ def _domain_to_category(domain: str, source_type: str | None = None) -> str:
     if any(x in d for x in [".gov.cn", "rongmei", "融媒", "dzwww", "scol", "gmw.cn", "ce.cn"]):
         return "local_official_media"
     # 主流媒体
-    if any(x in d for x in ["caixin.com", "yicai.com", "21jingji.com", "thepaper.cn", "nbd.com.cn", "stcn.com", "cs.com.cn"]):
+    if any(
+        x in d
+        for x in [
+            "caixin.com",
+            "yicai.com",
+            "21jingji.com",
+            "thepaper.cn",
+            "nbd.com.cn",
+            "stcn.com",
+            "cs.com.cn",
+        ]
+    ):
         return "mainstream_media"
     # 百科
     if "baike" in d or "wikipedia" in d:
         return "encyclopedia"
     # 自媒体平台
-    if any(x in d for x in ["mp.weixin", "weixin.qq", "baijiahao", "toutiao.com", "sohu.com/a", "sohu.com/dy", "163.com/dy", "qq.com/rain", "163.com/news/article"]):
+    if any(
+        x in d
+        for x in [
+            "mp.weixin",
+            "weixin.qq",
+            "baijiahao",
+            "toutiao.com",
+            "sohu.com/a",
+            "sohu.com/dy",
+            "163.com/dy",
+            "qq.com/rain",
+            "163.com/news/article",
+        ]
+    ):
         return "self_media"
     # 社交媒体
-    if any(x in d for x in ["weibo.com", "weibo.cn", "zhihu.com", "douyin.com", "xiaohongshu.com", "bilibili.com", "tieba.baidu"]):
+    if any(
+        x in d
+        for x in [
+            "weibo.com",
+            "weibo.cn",
+            "zhihu.com",
+            "douyin.com",
+            "xiaohongshu.com",
+            "bilibili.com",
+            "tieba.baidu",
+        ]
+    ):
         return "social_media"
     # 聚合门户
     if any(x in d for x in ["sina.com.cn", "sina.cn", "163.com", "qq.com", "sohu.com", "ifeng.com"]):
@@ -127,9 +174,7 @@ class TimelineBuilder:
             note=note,
         )
 
-    def _detect_pattern(
-        self, stops: list[PropagationStop], dates: list[str]
-    ) -> tuple[str, int, str]:
+    def _detect_pattern(self, stops: list[PropagationStop], dates: list[str]) -> tuple[str, int, str]:
         if len(stops) < 2 or len(dates) < 2:
             return "insufficient_data", 20, "时间数据不足 2 个，无法判断模式"
 

@@ -226,9 +226,7 @@ class FactCheckPipeline:
                 try:
                     inference_chain = InferenceChainBuilder().build(ev_for_timeline)
                 except Exception as exc:
-                    logger.warning(
-                        "inference_chain_failed", request_id=request_id, error=str(exc)
-                    )
+                    logger.warning("inference_chain_failed", request_id=request_id, error=str(exc))
 
         # 传播性谣言启发式：query planner 标记的 viral claim flag
         suspected_viral = bool(getattr(plan, "suspected_viral_claim", False))

@@ -48,13 +48,7 @@ class InferenceChainBuilder:
 
         返回 None 表示无足够数据（< 2 个带日期 + snippet 的 evidence）。
         """
-        valid = [
-            e
-            for e in evidences
-            if e.get("source_url")
-            and e.get("snippet")
-            and e.get("published_at")
-        ]
+        valid = [e for e in evidences if e.get("source_url") and e.get("snippet") and e.get("published_at")]
 
         if len(valid) == 0:
             return None
@@ -90,9 +84,7 @@ class InferenceChainBuilder:
         snippets = [(e["snippet"] or "")[:500] for e in valid]
         try:
             model = self._get_model()
-            embs = model.encode(
-                snippets, normalize_embeddings=True, show_progress_bar=False
-            )
+            embs = model.encode(snippets, normalize_embeddings=True, show_progress_bar=False)
         except Exception as exc:
             logger.warning("bge model failed: %s; returning chain without similarities", exc)
             return self._build_no_embedding(valid)
@@ -148,9 +140,7 @@ class InferenceChainBuilder:
         avg_sim = round(sum(sims_only) / len(sims_only), 3) if sims_only else 0.0
 
         # 时间跨度（小时）
-        timeline_hours = self._compute_timeline_hours(
-            valid[0]["published_at"], valid[-1]["published_at"]
-        )
+        timeline_hours = self._compute_timeline_hours(valid[0]["published_at"], valid[-1]["published_at"])
 
         # 模式分类
         pattern, note = self._classify_pattern(nodes, timeline_hours, avg_sim)
@@ -188,16 +178,12 @@ class InferenceChainBuilder:
             chain_length=len(nodes),
             avg_similarity=0.0,
             pattern="insufficient_data",
-            timeline_hours=self._compute_timeline_hours(
-                valid[0]["published_at"], valid[-1]["published_at"]
-            ),
+            timeline_hours=self._compute_timeline_hours(valid[0]["published_at"], valid[-1]["published_at"]),
             note="bge embedding 不可用，仅时间线结构",
         )
 
     @staticmethod
-    def _classify_role(
-        idx: int, total: int, category: str, sim_to_prev: float | None
-    ) -> str:
+    def _classify_role(idx: int, total: int, category: str, sim_to_prev: float | None) -> str:
         """决定节点的 role：origin / debunker / amplifier / propagator。"""
         if idx == 0:
             return "origin"
@@ -249,12 +235,7 @@ class InferenceChainBuilder:
                 f"起源即权威 {first_cat}，常规信息发布",
             )
 
-        if (
-            timeline_hours is not None
-            and timeline_hours <= 72
-            and len(nodes) >= 3
-            and first_cat in UPSTREAM
-        ):
+        if timeline_hours is not None and timeline_hours <= 72 and len(nodes) >= 3 and first_cat in UPSTREAM:
             return (
                 "coordinated",
                 f"{len(nodes)} 个非权威源在 {timeline_hours:.1f}h 内集中出现",
